@@ -1,17 +1,20 @@
-### Starter Theme
+# Sens nomades
 
-Starter Theme de BTG Communication. Développé par [Grégoire] de [BTG] [Communication]
+Thème pour le site de l'agence Sens Nomades, agence de voyages bien-être et détente. Ce site a été développé par 
+[Grégoire] de [BTG Communication]
 
 ## Technologies
 
 Sass
+WordPress
+WooCommerce
+Advanced Custom Fields pro
 
 ## Script npm
 
 ```bash
-npm run sass
+pnpm sass
 ```
 
-[btg]: https://www.btg-communication.fr
-[communication]: https://www.btg-communication.fr
-[grégoire]: https://github.com/Tuvedunyel
+[BTG Communication]: https://www.btg-communication.fr
+[Grégoire]: https://github.com/Tuvedunyel
