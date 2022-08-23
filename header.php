@@ -33,7 +33,15 @@
         </div>
 		<?php if ( have_rows( 'panier_compte_contact', 'option' ) ) : ?>
             <div class="header-infos">
-                <nav class="commerce">
+                <button class="show__commerce-menu" id="show-commerce">
+                    <span id="arrow">
+                        &#10096;
+                    </span>
+                    <span class="screen-reader-text">
+                        <?php _e( 'Ouvrir le menu', 'wp-commerce' ); ?>
+                    </span>
+                </button>
+                <nav class="commerce" id="commerce-links">
                     <ul id="commerce-list">
                         <?php while( have_rows('panier_compte_contact', 'option') ) : the_row();
                             $lien = get_sub_field('lien');
@@ -48,7 +56,7 @@
 
                             $radio = get_sub_field('deuxieme_image');
                         ?>
-                            <li>
+                            <li class="<?= $radio === 'Oui' ? 'pos' : '' ?>">
                                 <a href="<?= esc_url($lien_url) ?>" target="<?= esc_attr($lien_target); ?>"
                                    title="<?= esc_html($lien_title); ?>" >
                                     <img src="<?= esc_url($image_commerce_url); ?>" alt="<?= esc_attr

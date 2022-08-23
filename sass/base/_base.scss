@@ -21,6 +21,7 @@ html {
 
 /* Set core body defaults */
 body {
+  font-family: 'Red Hat Display', sans-serif;
   min-height: 100vh;
   font-size: 1.6rem;
   text-rendering: optimizeSpeed;
@@ -155,13 +156,13 @@ ul {
 /* Set text selection color & background */
 
 ::-moz-selection {
-  color: #000;
-  background-color: #fd0;
+  color: white;
+  background-color: #DA725A;
 }
 
 ::selection {
-  color: #000;
-  background-color: #fd0;
+  color: white;
+  background-color: #DA725A;
 }
 
 /* Set font-family, base font-size and line-height */

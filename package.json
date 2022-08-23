@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch sass:css --style compressed"
+    "sass": "sass --watch sass:css --style compressed",
+    "typescript": "tsc -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "sass": "^1.54.5"
+  },
+  "dependencies": {
+    "typescript": "^4.7.4"
   }
 }
