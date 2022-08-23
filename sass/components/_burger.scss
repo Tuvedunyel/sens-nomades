@@ -1,0 +1,102 @@
+@use '../abstracts' as var;
+
+.menu-menu-principal-container {
+  display: flex;
+  align-items: center;
+}
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger {
+  width: 40px;
+  height: 3px;
+  background-color: var.$black_300;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: var.$black_300;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger::before {
+  transform: translateY(-10px);
+}
+.menu-btn__burger::after {
+  transform: translateY(10px);
+}
+
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+  background: var.$terracota;
+}
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+  background: var.$terracota;
+}
+
+.menu-btn ~ #main-menu {
+  position: absolute;
+  width: 97%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-100px);
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+  background: var.$sable;
+  display: none;
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: -12%;
+    height: fit-content;
+  }
+}
+
+.menu-btn.open ~ #main-menu {
+  display: flex;
+  z-index: 99;
+  width: 97%;
+  height: auto;
+  flex-direction: column;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  align-items: center;
+  text-align: center;
+  transform: translateY(202px);
+  li {
+    display: flex !important;
+    margin: 0 0 2rem;
+  }
+}
+
+#main-menu .menu-item:last-of-type {
+  border-right: 0px solid transparent;
+}
+#main-menu .menu-item:first-of-type {
+  margin-left: 1rem;
+}

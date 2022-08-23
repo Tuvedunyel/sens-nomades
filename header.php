@@ -14,9 +14,14 @@
 		<?php $logo = get_field( 'logo', 'option' );
 		$logo_url   = $logo['url'];
 		$logo_alt   = $logo['alt'];
+
+        $logo_mobile = get_field('logo_mobile', 'option');
+        $logo_mobile_url = $logo_mobile['url'];
+        $logo_mobile_alt = $logo_mobile['alt'];
 		?>
         <a href="<?= home_url( $path = '/', $scheme = 'https' ); ?>">
-            <img src="<?= esc_url( $logo_url ) ?>" alt="<?= esc_attr( $logo_alt ) ?>">
+            <img src="<?= esc_url( $logo_url ) ?>" alt="<?= esc_attr( $logo_alt ) ?>" class="logo-desktop">
+            <img src="<?= esc_url($logo_mobile_url); ?>" alt="<?= esc_attr($logo_mobile_alt); ?>" class="logo-mobile">
         </a>
         <div class="main-menu__container">
 			<?php wp_nav_menu( array(
@@ -24,8 +29,8 @@
 				'container'      => 'nav',
 				'menu_id'        => 'main-menu',
 				'fallback_cb'    => false,
-				'items_wrap'     => '<div class="menu-btn">
-                    <div class="menu-btn__burger" id="burget-btn">
+				'items_wrap'     => '<div class="menu-btn" id="burger-btn">
+                    <div class="menu-btn__burger">
                     </div>
                 </div><ul id="%1$s" class="%2$s">%3$s<div class="form-button__container">
             </div></ul>',
@@ -33,14 +38,6 @@
         </div>
 		<?php if ( have_rows( 'panier_compte_contact', 'option' ) ) : ?>
             <div class="header-infos">
-                <button class="show__commerce-menu" id="show-commerce">
-                    <span id="arrow">
-                        &#10096;
-                    </span>
-                    <span class="screen-reader-text">
-                        <?php _e( 'Ouvrir le menu', 'wp-commerce' ); ?>
-                    </span>
-                </button>
                 <nav class="commerce" id="commerce-links">
                     <ul id="commerce-list">
                         <?php while( have_rows('panier_compte_contact', 'option') ) : the_row();
