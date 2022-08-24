@@ -4,15 +4,35 @@ header {
 
   .container {
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr 1fr;
     justify-items: center;
     align-items: center;
     gap: 1em;
+
+    @media screen and (min-width: 592px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
+}
+
+.logo-link {
+  padding-block: 0.2em;
 }
 
 .logo-desktop {
   display: none;
+
+  @media screen and (min-width: 592px) {
+    display: flex;
+  }
+}
+
+.logo-mobile {
+  display: block;
+
+  @media screen and (min-width: 592px) {
+    display: none;
+  }
 }
 
 .main-menu__container {
@@ -132,7 +152,7 @@ header {
   li {
     list-style: none;
 
-    &:nth-of-type(2), &:nth-of-type(3) {
+    &:nth-of-type(3) {
       display: none;
     }
   }
@@ -146,5 +166,9 @@ header {
     inset: 0;
     margin: auto;
   }
+}
+
+#main-menu .header-infos {
+  align-self: center;
 }
 
