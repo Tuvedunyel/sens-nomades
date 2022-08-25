@@ -12,6 +12,7 @@ function btg_register_assets()
 register_nav_menus( array(
     'main' => 'Menu principal',
     'footer-main' => 'Menu bas de page',
+	'legals' => 'Menu mentions légales'
 ) );
 
 /* Disable WordPress Admin Bar for all users */

@@ -13,6 +13,10 @@
   height: 90px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
 }
 .menu-btn__burger {
   width: 40px;
@@ -67,6 +71,19 @@
   background: var.$sable;
   display: none;
 
+  @media screen and (min-width: 1200px) {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    transform: translateY(0);
+    height: fit-content;
+    z-index: 2;
+    background: transparent;
+    margin-inline: 0 !important;
+    justify-content: space-between;
+    width: 100%;
+  }
+
   &.active {
     display: flex;
     flex-direction: column;
@@ -99,4 +116,8 @@
 }
 #main-menu .menu-item:first-of-type {
   margin-left: 1rem;
+
+  @media screen and (min-width: 1200px) {
+    margin-left: 0;
+  }
 }
