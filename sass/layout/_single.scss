@@ -1,0 +1,53 @@
+@use '../abstracts' as var;
+
+.single-blog {
+  padding-top: 5rem;
+
+  h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4.2rem;
+    font-weight: var.$regular;
+    text-align: center;
+    color: var.$bleu_glacié;
+
+    span {
+      text-transform: uppercase;
+      font-weight: var.$black;
+    }
+  }
+
+  article {
+    background: var.$sable;
+    padding-top: 3.6rem;
+    padding-bottom: 10.1rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    color: var.$terracota;
+  }
+}
+
+.categories {
+  margin-top: 0.8rem !important;
+  margin-bottom: 3.8rem !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+
+  li {
+    padding: 1rem 0.8rem;
+    background: white;
+  }
+
+  a {
+    text-decoration: none;
+    color: var.$bleu_glacié;
+    font-weight: var.$bold;
+  }
+}
