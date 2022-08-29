@@ -1,7 +1,7 @@
 @use '../abstracts' as var;
 
 .blog {
-  h2 {
+  h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,5 +19,72 @@
       text-transform: uppercase;
       font-weight: var.$black;
     }
+  }
+
+  article {
+    width: 100%;
+    background: var.$sable;
+    padding-block: 11.1rem 17.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .articles__card {
+    background: white;
+  }
+
+  .articles {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+
+    .card__thumbnail img {
+      width: 100%;
+      height: 204px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .card__thumbnail li {
+      color: var.$bleu_glacié;
+      font-weight: var.$bold;
+      font-size: 1.6rem;
+    }
+  }
+
+  .categories ul {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+
+    li {
+      list-style: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      font-weight: var.$bold;
+      color: var.$bleu_glacié;
+      transition: 0.3s ease-in-out;
+      width: fit-content;
+
+      &:hover {
+        color: white;
+        background: var.$bleu_glacié;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 3.6rem;
+    color: var.$terracota;
+    font-weight: var.$bold;
+    text-align: center;
   }
 }

@@ -3,7 +3,7 @@
 <main class="single-blog">
     <section class="hero-banner">
         <div class="container-narrow">
-            <h2>Les actualités <span>Sens nomades</span></h2>
+            <h1>Les actualités <span>Sens nomades</span></h1>
         </div>
     </section>
     <article>

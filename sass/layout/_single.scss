@@ -212,6 +212,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2em;
 
   @media screen and (min-width: 1000px) {
     flex-direction: row;
@@ -250,7 +251,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
-  picture {
+  picture, img {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -281,6 +282,7 @@
   justify-content: center;
   align-items: start;
   margin-top: 0.9rem;
+  padding: 0 1em 1em;
 
   h3 {
     margin-top: 0;
