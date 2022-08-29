@@ -1,0 +1,23 @@
+@use '../abstracts' as var;
+
+.blog {
+  h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4.2rem;
+    font-weight: var.$regular;
+    text-align: center;
+    color: var.$bleu_glacié;
+
+    @media screen and (min-width: 638px) {
+      align-items: start;
+    }
+
+    span {
+      text-transform: uppercase;
+      font-weight: var.$black;
+    }
+  }
+}
