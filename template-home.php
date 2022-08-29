@@ -61,12 +61,12 @@ $categories = get_the_category();
         computed: {
             filteredPosts () {
                 if ( this.categoryId === 0 ) {
-                    console.log("toto")
                     return this.posts
                 } else {
-                    console.log('id > 0')
                     return this.posts.filter( post => {
-                        return post.category_ids.map( category => category.includes( this.categoryId ) )
+                        if ( post.category_ids.length > 0 ) {
+                            return post.category_ids.includes( this.categoryId )
+                        }
                     } )
                 }
             }
@@ -82,7 +82,6 @@ $categories = get_the_category();
         },
         methods: {
             handleClick ( categoryId ) {
-                console.log( categoryId )
                 this.categoryId = categoryId
             }
         }

@@ -33,6 +33,10 @@
 
   .articles__card {
     background: white;
+    @media screen and (min-width: 1000px) {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   .articles {
@@ -42,6 +46,7 @@
     justify-content: center;
     align-items: center;
     background: transparent;
+    width: 100%;
 
     .card__thumbnail img {
       width: 100%;
@@ -86,5 +91,20 @@
     color: var.$terracota;
     font-weight: var.$bold;
     text-align: center;
+  }
+
+  .categories ul {
+    @media screen and (min-width: 984px) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(300px, 1fr));
+      row-gap: 7.4rem;
+    }
   }
 }
