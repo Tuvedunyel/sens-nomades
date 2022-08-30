@@ -5,10 +5,12 @@ Thème pour le site de l'agence Sens Nomades, agence de voyages bien-être et d�
 
 ## Technologies
 
-Sass
-WordPress
-WooCommerce
-Advanced Custom Fields pro
+- Sass
+- WordPress
+- WooCommerce
+- Advanced Custom Fields pro
+- VueJS
+- Axios
 
 ## Script npm
 

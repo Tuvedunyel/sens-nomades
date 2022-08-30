@@ -3,11 +3,11 @@
 <main class="single-blog">
     <section class="hero-banner">
         <div class="container-narrow">
-            <h1>Les actualités <span>Sens nomades</span></h1>
+            <h2>Les actualités <span>Sens nomades</span></h2>
         </div>
     </section>
     <article>
-        <a href="<?= home_url(); ?>" class="return">&#10094; Retour aux actualités</a>
+        <a href="<?= home_url('/template-home.php'); ?>" class="return">&#10094; Retour aux actualités</a>
         <div class="container-narrow">
 			<?php $categories = get_the_category(); ?>
             <h1><?php the_title(); ?></h1>
@@ -76,7 +76,7 @@
 					<?php while ( $categories__query->have_posts() ) : $categories__query->the_post(); ?>
                         <div class="article__card">
                             <div class="card__thumbnail">
-								<?php the_post_thumbnail(); ?>
+								<?php the_post_thumbnail('full'); ?>
                                 <ul class="categories">
 									<?php wp_list_categories( array(
 										'orderby'    => 'name',
