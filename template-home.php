@@ -26,9 +26,26 @@ $categories = get_the_category();
                             </ul>
                         </div>
                         <div class="card__content">
-                            <h3>{{ post.title }}</h3>
+                            <h3 v-html="post.title"></h3>
                             <p>{{ post.excerpt }}</p>
                             <a :href="post.permalink">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+                <div v-else class="card-container">
+                    <div class="articles__card">
+                        <div class="card__thumbnail">
+                            <div class="img"></div>
+                            <ul class="categories">
+                                <li>
+                                    Chargement...
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card__content">
+                            <h3>Chargement...</h3>
+                            <p>Chargement...</p>
+                            <a href="#">Chargement...</a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +71,7 @@ $categories = get_the_category();
                             </ul>
                         </div>
                         <div class="card__content">
-                            <h3>{{ post.title }}</h3>
+                            <h3 v-html="post.title"></h3>
                             <p>{{ post.excerpt }}</p>
                             <a :href="post.permalink">Lire la suite</a>
                         </div>
@@ -73,6 +90,25 @@ $categories = get_the_category();
                         <span class="screen-reader-text">Suivant</span>
                         <div class="next-arrow"></div>
                     </button>
+                </div>
+            </section>
+            <section v-else class="articles">
+                <div class="card-container">
+                    <div class="articles__card">
+                        <div class="card__thumbnail">
+                            <div class="img"></div>
+                            <ul class="categories">
+                                <li>
+                                    Chargement...
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card__content">
+                            <h3>Chargement...</h3>
+                            <p>Chargement...</p>
+                            <a href="#">Chargement...</a>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

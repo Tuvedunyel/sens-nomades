@@ -88,9 +88,13 @@
     margin-bottom: 2rem;
     font-weight: var.$regular;
   }
+
+  h4 {
+    text-align: left;
+  }
 }
 
-.categories {
+.categories, .post-categories {
   margin-top: 0.8rem !important;
   margin-bottom: 3.8rem !important;
   display: flex;
@@ -122,7 +126,7 @@
 }
 
 .tiled-gallery__row {
-  flex-direction: column !important;
+  flex-direction: column-reverse !important;
   align-items: center;
 }
 
@@ -272,7 +276,7 @@
     }
   }
 
-  .categories {
+  .categories, .post-categories {
     position: relative;
     z-index: 1;
     margin-left: 0.3em;
@@ -306,5 +310,84 @@
     font-size: 1.9rem;
     color: var.$bleu_glacié;
     align-self: end;
+  }
+}
+
+.passions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: 400px) {
+    align-items: start;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.7rem;
+    list-style: none;
+
+    @media screen and (min-width: 400px) {
+      flex-direction: row;
+    }
+
+    li {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-self: center;
+      gap: 0.3em;
+    }
+  }
+
+  p {
+    font-size: 1.6rem;
+    color: var.$roche;
+    text-align: center;
+  }
+}
+
+.passions-title {
+  margin-top: 0 !important;
+  font-size: 1.9rem;
+  font-weight: var.$bold !important;
+  color: var.$terracota;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+
+  button {
+    text-transform: uppercase;
+    background: var.$terracota;
+    position: relative;
+    color: white;
+    border: none;
+    font-weight: var.$bold;
+    font-size: 1.9rem;
+    width: min(309px, 75%);
+    border-radius: 10px;
+    height: 58px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      top: 8%;
+      left: 2%;
+      border: 1px solid var.$terracota;
+    }
   }
 }

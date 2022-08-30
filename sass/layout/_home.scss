@@ -21,6 +21,36 @@
     }
   }
 
+  .articles, .most-recent-articles {
+    .img {
+      position: absolute;
+      width: 100%;
+      height: 204px;
+      inset: 0;
+      z-index: 0;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      background: #cccccc;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100px);
+        background: linear-gradient(
+                        90deg,
+                        transparent,
+                        rgba(255, 255, 255, 0.2),
+                        transparent
+        );
+        animation: loading 0.8s infinite;
+      }
+    }
+  }
+
   .most-recent-articles .card-container {
     display: flex;
     justify-content: center;
@@ -38,84 +68,86 @@
     align-items: center;
   }
 
-  .articles__card {
-    background: white;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    @media screen and (min-width: 1000px) {
-      height: 100%;
-      width: 100%;
-    }
-  }
 
-  .articles, .most-recent-articles {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    width: 100%;
-  }
-
-  .card__thumbnail img {
-    width: 100%;
-    height: 204px;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .card__thumbnail li {
-    color: var.$bleu_glacié;
-    font-weight: var.$bold;
-    font-size: 1.6rem;
-  }
-
-  .categories ul {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5em;
-
-    li {
-      list-style: none;
-      font-size: 1.6rem;
-      cursor: pointer;
-      font-weight: var.$bold;
-      color: var.$bleu_glacié;
-      transition: 0.3s ease-in-out;
-      width: fit-content;
-
-      &:hover {
-        color: white;
-        background: var.$bleu_glacié;
-      }
-    }
-  }
-
-  h2 {
-    font-size: 3.6rem;
-    color: var.$terracota;
-    font-weight: var.$bold;
-    text-align: center;
-  }
-
-  .categories ul {
-    @media screen and (min-width: 984px) {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
+.articles__card {
+  background: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   @media screen and (min-width: 1000px) {
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(300px, 1fr));
-      row-gap: 7.4rem;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.articles, .most-recent-articles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  width: 100%;
+  margin: 0 auto 5.4rem;
+}
+
+.card__thumbnail img {
+  width: 100%;
+  height: 204px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__thumbnail li {
+  color: var.$bleu_glacié;
+  font-weight: var.$bold;
+  font-size: 1.6rem;
+}
+
+.categories ul {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+
+  li {
+    list-style: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    font-weight: var.$bold;
+    color: var.$bleu_glacié;
+    transition: 0.3s ease-in-out;
+    width: fit-content;
+
+    &:hover {
+      color: white;
+      background: var.$bleu_glacié;
     }
   }
+}
+
+h2 {
+  font-size: 3.6rem;
+  color: var.$terracota;
+  font-weight: var.$bold;
+  text-align: center;
+}
+
+.categories ul {
+  @media screen and (min-width: 984px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    row-gap: 7.4rem;
+  }
+}
+
 }
 
 .pagination {
@@ -179,5 +211,11 @@
   .next-arrow {
     border-right: none;
     border-left: 14px solid white;
+  }
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
   }
 }
