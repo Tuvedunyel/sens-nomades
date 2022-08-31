@@ -2,6 +2,48 @@
 
 main.pages {
   margin-bottom: 10.9rem;
+
+  .wp-block-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: unset;
+    flex-basis: unset;
+  }
+
+  .hero-strong {
+    font-size: 1.9rem;
+    color: var.$roche;
+    font-weight: var.$bold;
+    text-align: center;
+    margin-top: 2.4rem;
+    display: flow-root;
+  }
+
+  .container-narrow.pages-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    @media screen and (min-width: 1200px) {
+      flex-direction: row;
+      align-items: start;
+    }
+  }
+
+  .right-side .articles {
+    margin-top: 0;
+  }
+
+  .left-cont {
+    margin: 0 auto;
+  }
+
+  article {
+    margin: 0 auto;
+  }
 }
 
 .randonneur {
@@ -11,6 +53,11 @@ main.pages {
   align-items: center;
   gap: 0.5em;
   margin-top: 2.3rem;
+
+  @media screen and (min-width: 750px) {
+    flex-direction: row;
+    justify-content: start;
+  }
 
   p {
     font-family: var.$moon_flower;
@@ -40,10 +87,23 @@ article .wp-block-columns {
 .wp-container-6.wp-block-columns {
   flex-direction: column-reverse !important;
 
+  @media screen and (min-width: 800px) {
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center !important;
+
+    .wp-block-column {
+      flex-basis: unset !important;
+      flex-grow: unset !important;
+    }
+  }
+
   img {
     margin: 0 auto;
   }
+
 }
+
 
 .bottom {
   position: relative;
