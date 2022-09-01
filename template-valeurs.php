@@ -37,6 +37,20 @@ get_template_part( 'parts/hero-wave' );
                     </ul>
 				<?php endif; ?>
             </div>
+            <div class="bottom-valeurs">
+                <div class="text-area">
+                    <?php the_field('zone_de_texte'); ?>
+                </div>
+                <div class="badges">
+                    <?php $badge_img = get_field('badge'); ?>
+                    <img src="<?= esc_url($badge_img['url']) ?>" alt="<?= esc_attr($badge_img['alt']); ?>">
+                    <strong><?php the_field('legende'); ?></strong>
+                </div>
+                <?php $sign_img = get_field('panneau'); ?>
+                <img src="<?= esc_url($sign_img['url']) ?>" alt="<?= esc_attr($sign_img['alt']); ?>">
+                <?php $button = get_field('button'); ?>
+                <a href="<?= esc_url($button['url']); ?>" target="<?= esc_attr($button['target']); ?>" ><?= esc_html($button['title']); ?></a>
+            </div>
         </section>
 
 		<?php get_template_part( 'parts/left-part-page' ); ?>
@@ -44,3 +58,4 @@ get_template_part( 'parts/hero-wave' );
 </section>
 
 </main>
+<?php get_footer(); ?>
