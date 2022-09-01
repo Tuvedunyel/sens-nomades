@@ -71,5 +71,12 @@ $query = new WP_Query( $args ); ?>
 				</ul>
 			<?php endif; ?>
 		</div>
+        <?php $encadrer_bas = get_field('encadrer_partie_gauche')
+            if ( $encadrer_bas === 'Oui' ) : ?>
+            <aside class="optionnal-rs">
+                <h4><?php the_field('titre_un'); ?></h4>
+                <h4><?php the_field('titre_deux'); ?></h4>
+            </aside>
+        <?php endif; ?>
 	</div>
 </div>

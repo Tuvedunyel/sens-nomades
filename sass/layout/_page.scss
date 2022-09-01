@@ -200,3 +200,39 @@ article .wp-block-columns {
     }
   }
 }
+
+.column-content {
+  .wp-block-column {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
+.reverse-arrow {
+  transform: rotateY(180deg);
+}
+
+.button-pages a {
+  font-size: 1.9rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  background: var.$terracota;
+  padding: 1em;
+  font-weight: var.$bold;
+  position: relative;
+  margin-bottom: 1.9rem;
+
+  &:after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    top: 10%;
+    left: 3%;
+    border: 1px solid var.$terracota;
+    border-radius: 10px;
+  }
+}

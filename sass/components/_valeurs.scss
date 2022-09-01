@@ -28,17 +28,12 @@
 
   li {
     width: min(100%, 355px);
-    height: min(100%, 271px);
+    height: fit-content;
 
-    &:nth-of-type(2), &:nth-of-type(4) {
-      align-self: end;
-    }
-
-    @media screen and (min-width: 1200px) {
-      height: 100%;
-    }
-    @media screen and (min-width: 1500px) {
-      height: min(100%, 271px);
+    @media screen and (min-width: 910px) {
+      &:nth-of-type(2), &:nth-of-type(4) {
+        align-self: end;
+      }
     }
   }
 
@@ -81,20 +76,16 @@
   margin: 0 auto;
 
   @media screen and (min-width: 468px) {
-    top: -21%;
-  }
-
-  @media screen and (min-width: 818px) {
-    top: -30%;
+    top: -15%;
   }
 
   @media screen and (min-width: 910px) {
-    top: -21%;
+    top: -13%;
     padding: 0 1em;
   }
 
   @media screen and (min-width: 1200px) {
-    top: -17%;
+    top: -11%;
   }
 }
 
