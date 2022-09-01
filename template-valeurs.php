@@ -12,19 +12,18 @@ get_template_part( 'parts/hero-wave' );
             <article>
 				<?php the_content(); ?>
             </article>
-            <div class="pillier">
+            <div class="pilier">
                 <h2><?php the_field( 'titre' ); ?></h2>
 				<?php if ( have_rows( 'pillier_repeater' ) ) : ?>
-                    <ul class="pillier-content">
+                    <ul class="pilier-content">
 						<?php while ( have_rows( 'pillier_repeater' ) ) : the_row(); ?>
-                            <li>
-                                Test
+								<?php $juste_image = get_sub_field( 'juste_une_image' ); ?>
+                            <li class="<?= $juste_image === 'Oui' ? 'no-border' : 'border' ?>">
 								<?php
-								$juste_image = get_sub_field( 'juste_une_image' );
 								if ( $juste_image === 'Non' ) :
-                                    $image_pillier = get_sub_field('image') ?>
+                                    $image_pillier = get_sub_field('image_pillier') ?>
                                     <img src="<?= esc_url($image_pillier['url']); ?>" alt="<?= esc_attr
-                                    ($image_pillier['alt']); ?>">
+                                    ($image_pillier['alt']); ?>" class="picto-pilier">
                                     <h4><?php the_sub_field('titre'); ?></h4>
                                     <p><?php the_sub_field('texte'); ?></p>
 								<?php endif; ?>
