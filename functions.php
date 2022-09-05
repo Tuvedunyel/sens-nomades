@@ -7,7 +7,6 @@ function btg_register_assets()
 {
     wp_enqueue_style('btg-style', get_template_directory_uri() . '/css/style.css', 1.0);
 	wp_enqueue_script('axios', 'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js', array(), 1.0);
-	wp_enqueue_script('vue', 'https://unpkg.com/vue@3', array(), 1.0);
     wp_enqueue_script('btg-script', get_template_directory_uri() . '/js/script.js', array(), 1.0, true);
 }
 
@@ -32,3 +31,6 @@ if (function_exists('acf_add_options_page')) {
         'position' => '2'
     ) );
 }
+
+// Remove contact Form 7 auto p
+add_filter('wpcf7_autop_or_not', '__return_false');
