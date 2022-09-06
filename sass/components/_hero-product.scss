@@ -11,6 +11,24 @@
   row-gap: 1.3rem;
   column-gap: 1.9rem;
 
+  @media screen and (min-width: 464px) {
+    max-width: 80%;
+  }
+
+  @media screen and (min-width: 550px) {
+    max-width: 70%;
+  }
+
+  @media screen and (min-width: 660px) {
+    max-width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 75%;
+  }
+
   button {
     position: absolute;
     inset: 0;
@@ -43,7 +61,7 @@
 
   li, img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 30px;
   }
 }
 
@@ -56,6 +74,6 @@
 
   li, img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 30px;
   }
 }

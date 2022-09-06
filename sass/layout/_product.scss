@@ -1,0 +1,158 @@
+@use '../abstracts' as var;
+
+.upper {
+  margin-top: 5.4rem;
+}
+.product-title {
+  background: var.$bleu_glacié;
+  color: var.$sable;
+  font-size: 3.6rem;
+  padding: 0.4rem 2.9rem;
+  margin-bottom: 2.6rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.attributs {
+  border: 1px solid var.$terracota;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 8rem;
+  background: white;
+
+  li {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    color: var.$terracota;
+    font-size: 1.9rem;
+    font-weight: var.$bold;
+
+    &:first-of-type {
+      padding-top: 6rem;
+    }
+  }
+
+  .intervenant-mini {
+    background: var.$terracota;
+    color: white;
+    font-size: 2rem;
+    font-weight: var.$regular;
+    text-transform: uppercase;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    padding: 2.6rem 6.6rem;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}
+
+.bonhomme {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  font-size: 3.7rem;
+  color: var.$roche;
+  gap: 0.5rem;
+
+  img:last-of-type {
+    align-self: start;
+  }
+}
+
+.product-content {
+  margin-top: 6rem;
+}
+
+.share {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1.2rem;
+
+  strong {
+    font-size: 2.1rem;
+    font-weight: var.$black;
+    color: var.$roche;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  li, a, img {
+    height: 38px;
+    width: 38px;
+  }
+}
+
+.auto-content {
+  margin-top: 3.4rem;
+  font-size: 1.9rem;
+
+  h2 {
+    font-size: 3.5rem;
+
+    &:not(:first-of-type) {
+      margin-top: 5.5rem;
+    }
+  }
+}
+
+#full-program {
+  color: var.$sable;
+  font-weight: var.$bold;
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  margin: 3.4rem auto;
+  background: var.$terracota;
+  position: relative;
+  border-radius: 10px;
+  border: none;
+  padding: 1.4rem 3.4rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid var.$terracota;
+  }
+}
+
+.programme {
+  margin-top: 2rem;
+  background: var.$sable;
+  border-radius: 10px;
+  padding: 3rem 4.1rem;
+  font-size: 1.9rem;
+
+  strong, em {
+    text-decoration: underline;
+    font-style: normal;
+  }
+
+  em {
+    display: flow-root;
+    margin-top: 2rem;
+  }
+}
+
