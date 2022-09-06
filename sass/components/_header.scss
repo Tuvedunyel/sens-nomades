@@ -1,0 +1,236 @@
+@use '../abstracts' as var;
+
+header {
+
+  .container {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 1em;
+
+    @media screen and (min-width: 592px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-template-columns: 0.2fr 1fr 0.2fr;
+    }
+
+    @media screen and (min-width: 1300px) {
+      gap: 3em;
+    }
+
+    @media screen and (min-width: 1500px) {
+      gap: 5em;
+    }
+
+    @media screen and (min-width: 1700px) {
+      gap: 10em;
+    }
+  }
+}
+
+.logo-link {
+  padding-block: 0.2em;
+}
+
+.logo-desktop {
+  display: none;
+
+  @media screen and (min-width: 592px) {
+    display: flex;
+  }
+}
+
+.logo-mobile {
+  display: block;
+
+  @media screen and (min-width: 592px) {
+    display: none;
+  }
+}
+
+.main-menu__container {
+  align-self: start;
+  background: url('../assets/contact-container.svg') no-repeat;
+  background-size: contain;
+
+  @media screen and (min-width: 1200px) {
+    align-self: center;
+    background: transparent;
+    width: 100%;
+  }
+}
+
+#main-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+
+  .current_page_item a {
+    color: var.$terracota;
+  }
+
+  a {
+    font-size: 2.3rem;
+    font-weight: var.$bold;
+    color: var.$black_300;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.5s ease-in-out;
+
+    @media screen and (min-width: 1200px) {
+      font-size: 2rem;
+    }
+
+    &:hover {
+     color: var.$terracota;
+    }
+  }
+}
+
+.form-button__container {
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
+}
+
+.menu-item-has-children {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+  width: 100%;
+
+  @media screen and (min-width: 1200px) {
+    width: fit-content;
+    position: initial;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  a::after {
+    content: "";
+    display: block;
+    background: url('../assets/open.svg');
+    background-size: contain;
+    width: 2.9rem;
+    height: 2.9rem;
+    position: absolute;
+    right: -25%;
+  }
+
+  .sub-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+    width: 95%;
+    border-radius: 10px;
+    padding-block: 0.5em;
+
+    @media screen and (min-width: 620px) {
+      width: 75%;
+    }
+
+    @media screen and (min-width: 750px) {
+      width: min(55%, 411px);
+    }
+
+    @media screen and (min-width: 1200px) {
+      position: absolute;
+      top: 140%;
+      width: 411px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+
+     li:not(:last-of-type) {
+       border-bottom: 1px solid var.$black_300;
+       width: 90%;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       padding-bottom: 0.5em;
+     }
+
+    a {
+      font-size: 2rem !important;
+      text-align: center;
+      font-weight: var.$regular !important;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &.active a::after {
+    background: url("../assets/close.svg");
+  }
+
+  &.active .sub-menu {
+    display: flex;
+  }
+}
+
+.header-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  align-self: start;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    margin-block: 0 !important;
+  }
+
+  li {
+    list-style: none;
+
+    &:nth-of-type(3) {
+      display: none;
+
+      @media screen and (min-width: 1200px ) {
+        display: block;
+      }
+    }
+  }
+}
+
+.pos {
+  position: relative;
+
+  .commerce__img {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+  }
+}
+
+#main-menu .header-infos {
+  align-self: center;
+
+  @media screen and (min-width: 1200px) {
+    display: none;
+  }
+}
+

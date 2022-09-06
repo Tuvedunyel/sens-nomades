@@ -1,0 +1,153 @@
+@use '../abstracts' as var;
+
+.pilier {
+  margin-top: 5.1rem;
+  margin-bottom: 9.1rem;
+
+  h2 {
+    color: var.$terracota;
+    text-align: center;
+    font-size: 3.5rem;
+  }
+}
+
+.pilier-content {
+  margin-top: 6.3rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 8.6rem;
+
+  @media screen and (min-width: 910px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    column-gap: 3.6rem;
+  }
+
+  li {
+    width: min(100%, 355px);
+    height: fit-content;
+
+    @media screen and (min-width: 910px) {
+      &:nth-of-type(2), &:nth-of-type(4) {
+        align-self: end;
+      }
+    }
+  }
+
+  .border {
+    border: 1px solid var.$bleu_glacié;
+    border-radius: 60px;
+    padding: 4.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+  }
+
+  h4 {
+    color: var.$terracota;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.2em !important;
+  }
+
+  p {
+    color: var.$roche;
+    font-size: 1.9rem;
+    text-align: center;
+  }
+}
+
+.picto-pilier {
+  position: absolute;
+  z-index: 1;
+  max-width: 121px;
+  height: 85px;
+  background: white;
+  padding: 1em;
+  top: -13%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  @media screen and (min-width: 468px) {
+    top: -15%;
+  }
+
+  @media screen and (min-width: 910px) {
+    top: -13%;
+    padding: 0 1em;
+  }
+
+  @media screen and (min-width: 1200px) {
+    top: -11%;
+  }
+}
+
+.bottom-valeurs {
+  font-size: 1.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    position: relative;
+    margin-top: 2rem;
+    background: var.$terracota;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: var.$bold;
+    padding: 1em 1em;
+    color: white;
+    border-radius: 10px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 10%;
+      right: -2%;
+      background: transparent;
+      border: 1px solid var.$terracota;
+      border-radius: 10px;
+    }
+  }
+}
+
+.badges {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3.6rem;
+
+  strong {
+    text-align: center;
+    color: var.$terracota;
+    margin-top: 1.4rem;
+  }
+
+}
+
+.text-area {
+  margin-bottom: 1.6rem;
+
+  p:not(:last-of-type) {
+    margin-top: 2em;
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: var.$regular;
+    text-transform: uppercase;
+    margin-top: 7.4rem;
+    margin-bottom: 0.5em;
+  }
+}
