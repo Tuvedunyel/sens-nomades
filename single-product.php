@@ -31,9 +31,8 @@ get_header();
             </button>
         </div>
     </section>
-
-    <div class="container-narrow">
-        <section class="upper">
+    <section class="upper">
+        <div class="container-narrow">
             <h1 class="product-title"><?php the_title(); ?></h1>
             <ul class="attributs">
 				<?php if ( have_rows( 'attributs' ) ) : ?>
@@ -59,36 +58,159 @@ get_header();
                 <p class="moon-flower"><?php the_field( 'texte_bonhomme' ); ?></p>
                 <img src="<?= get_template_directory_uri(); ?>/assets/fleche.svg" alt="Flèche pointant vers le haut">
             </div>
+        </div>
+    </section>
+    <div class="product-wrapper">
+        <div class="container-narrow product-container-narrow">
+            <section class="product-content">
+                <div class="share">
+                    <strong>Partager le voyage : </strong>
+					<?php if ( have_rows( 'partager_le_voyage' ) ) : ?>
+                        <ul class="share-content">
+							<?php while ( have_rows( 'partager_le_voyage' ) ) : the_row();
+								$share_image = get_sub_field( 'image' );
+								$share_link  = get_sub_field( 'lien' );
+								?>
+                                <li>
+                                    <a href="<?= esc_url( $share_link['url'] ); ?>">
+                                        <img src="<?= esc_url( $share_image['url'] ); ?>"
+                                             alt="<?= esc_attr( $share_image['alt'] ); ?>">
+                                    </a>
+                                </li>
+							<?php endwhile; ?>
+                        </ul>
+					<?php endif; ?>
+                </div>
+                <div class="auto-content">
+					<?php the_content(); ?>
+                </div>
+                <div class="programme" v-show="showProgram">
+					<?php the_field( 'tout_le_programme' ) ?>
+                </div>
+                <button id="full-program" @click="handleProgram">{{ buttonText }}</button>
+            </section>
 
-        </section>
+            <section class="intervenante">
+                <h2>Votre intervenant.e</h2>
+                <div class="intervenante-content">
+                    <img src="<?= esc_url( $image_intervenant['url'] ); ?>"
+                         alt="<?= esc_attr( $image_intervenant['alt'] );
+					     ?>" class="intervenante-photo">
+                    <article class="inter">
+                        <h3><?php the_field( 'nom' ); ?></h3>
+                        <p><?php the_field( 'description' ); ?></p>
+                        <div class="passions">
+                            <h4><?php the_field( 'titre_passion' ); ?></h4>
+							<?php if ( have_rows( 'passions' ) ) : ?>
+                                <ul>
+									<?php while ( have_rows( 'passions' ) ) : the_row(); ?>
+                                        <li>
+											<?php $passion_image = get_sub_field( 'image' ); ?>
+                                            <img src="<?= esc_url( $passion_image['url'] ); ?>"
+                                                 alt="<?= esc_attr( $passion_image['alt'] ); ?>">
+                                            <p><?php the_sub_field( 'nom_de_la_passion' ); ?></p>
+                                        </li>
+									<?php endwhile; ?>
+                                </ul>
+							<?php endif; ?>
+                        </div>
+						<?php $lien_intervenante = get_field( 'lien_page_lintervenante' ) ?>
+                        <a href="<?= esc_url( $lien_intervenante['url'] ) ?>" class="lien_intervenante"><?= esc_html
+							( $lien_intervenante['title'] ) ?></a>
+                    </article>
+                </div>
+            </section>
+            <section class="infos-pratique">
+                <h2>Infos pratiques</h2>
+                <div class="infos-pratique__content">
+                    <aside class="where">
+                        <img src="<?= get_template_directory_uri(); ?>/assets/pin-black.svg"
+                             alt="Pin de géolocalisation">
+                        <div class="texte">
+                            <p>Où</p>
+                            <strong><?php the_field( 'adresse' ); ?></strong>
+                        </div>
+                    </aside>
+                    <aside class="time">
+                        <img src="<?= get_template_directory_uri(); ?>/assets/point-to-point.svg" alt="Point à point">
+                        <div class="texte">
+                            <p><?php the_field( 'a_x_minutes_de' ); ?></p>
+                            <strong><?php the_field( 'localite' ); ?></strong>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section class="lieu">
+				<?php the_field( 'le_lieu' ) ?>
+            </section>
+            <section class="sy-rendre">
+				<?php the_field( 'comment_sy_rendre' ); ?>
+                <div class="details-rendre">
+					<?php if ( have_rows( 'sy_rendre' ) ): ?>
+                        <ul>
+							<?php while ( have_rows( 'sy_rendre' ) ) : the_row(); ?>
+                                <li>
+									<?php $image_rendre = get_sub_field( 'image' ); ?>
+                                    <img src="<?= esc_url( $image_rendre['url'] ) ?>"
+                                         alt="<?= esc_attr( $image_rendre['alt'] );
+									     ?>">
+                                    <p><?php the_sub_field( 'texte' ); ?></p>
+                                </li>
+							<?php endwhile; ?>
+                        </ul>
+					<?php endif; ?>
+                </div>
+                <div class="sup-info">
+					<?php the_field( 'supplement_dinfo' ) ?>
+                </div>
+            </section>
+            <section class="inclus">
+                <h2>Ce qui est inclus dans le prix du voyage : </h2>
+				<?php the_field( 'inclus_dans_le_prix' ); ?>
+            </section>
+            <section class="non-inclus">
+                <h2>Ce qui n'est pas inclus dans le prix du voyages</h2>
+				<?php the_field( 'non_inclus_dans_le_prix' ); ?>
+                <p class="preci-bottom"><?php the_field( 'precision_bas' ); ?></p>
+                <div class="bonhomme">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/randonneur-black.svg" alt="Petit randonneur">
+                    <p class="moon-flower"><?php the_field( 'texte_randonneur' ); ?></p>
+                    <img src="<?= get_template_directory_uri(); ?>/assets/fleche.svg"
+                         alt="Flèche pointant vers le haut">
+                </div>
+            </section>
+            <section class="conditions-vente">
+				<?php the_field( 'conditions_de_ventes' ); ?>
+            </section>
+        </div>
 
-        <section class="product-content">
-            <div class="share">
-                <strong>Partager le voyage : </strong>
-				<?php if ( have_rows( 'partager_le_voyage' ) ) : ?>
-                    <ul class="share-content">
-						<?php while ( have_rows( 'partager_le_voyage' ) ) : the_row();
-							$share_image = get_sub_field( 'image' );
-							$share_link  = get_sub_field( 'lien' );
-							?>
-                            <li>
-                                <a href="<?= esc_url( $share_link['url'] ); ?>">
-                                    <img src="<?= esc_url( $share_image['url'] ); ?>"
-                                         alt="<?= esc_attr( $share_image['alt'] ); ?>">
-                                </a>
-                            </li>
-						<?php endwhile; ?>
+        <div class="aside">
+            <section class="mon-voyage">
+                <h2>Mon voyage</h2>
+                <div class="mon-voyage__content">
+                    <h3>Zen avant les fêtes</h3>
+                    <ul>
+						<?php $product = wc_get_product();
+						$variation     = $product->get_available_variations();
+						foreach ( $variation as $key => $value ) { ?>
+							<?php if ( $value['attributes']['attribute_dates'] ) : ?>
+                                <li>
+                                    <span class="date-voyage"><?= $value['attributes']['attribute_dates'] ?></span>
+                                    <span class="remaining-places">(<?= $value['max_qty'] ?> places restantes)</span>
+                                    <span class="price"><?= $value['display_price'] ?>€</span>
+                                </li>
+							<?php endif; ?>
+						<?php } ?>
+                        <a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="storefront-sticky-add-to-cart__content-button button alt" rel="nofollow">
+		                    <?php echo esc_attr( $product->add_to_cart_text() ); ?>
+                        </a>
                     </ul>
-				<?php endif; ?>
-            </div>
-            <div class="auto-content">
-				<?php the_content(); ?>
-            </div>
-            <div class="programme" v-show="showProgram">
-				<?php the_field( 'tout_le_programme' ) ?>
-            </div>
-            <button id="full-program" @click="handleProgram">{{ buttonText }}</button>
-        </section>
+                </div>
+				<?php
+				$variation_json = json_encode( $variation );
+				?>
+            </section>
+        </div>
     </div>
 
     <script>
@@ -107,10 +229,12 @@ get_header();
                     sliceLittleB: 5,
                     buttonText: 'Tout le programme',
                     showProgram: false,
+                    variations: null,
                 }
             },
             async mounted () {
                 await this.getImages()
+                await this.getVariations()
                 this.littleImages = this.images
                 if ( this.images.length > 0 ) {
                     this.sliceLittleA = 1
@@ -123,6 +247,9 @@ get_header();
             methods: {
                 getImages () {
                     this.images = <?php echo $image_export; ?>
+                },
+                getVariations () {
+                    this.variations = <?php echo $variation_json; ?>
                 },
                 handlePrev () {
                     if ( this.sliceBigA > 0 ) {
