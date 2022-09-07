@@ -11,6 +11,11 @@
   row-gap: 1.3rem;
   column-gap: 1.9rem;
 
+  &::before {
+    content: none;
+    display: none;
+  }
+
   @media screen and (min-width: 464px) {
     max-width: 80%;
   }
@@ -38,6 +43,7 @@
     background: transparent;
     border: none;
     border-radius: 50%;
+    padding: 0;
 
     &.prev-arrow {
       right: unset;

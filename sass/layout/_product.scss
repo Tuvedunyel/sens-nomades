@@ -6,6 +6,7 @@ main.product {
     color: var.$terracota;
     margin-bottom: 1rem;
     margin-top: 3.4rem;
+    font-weight: var.$bold;
   }
 
   strong {
@@ -128,6 +129,7 @@ main.product {
 }
 
 #full-program {
+  display: block;
   color: var.$sable;
   font-weight: var.$bold;
   font-size: 1.9rem;
@@ -148,6 +150,7 @@ main.product {
     height: 100%;
     border-radius: 10px;
     border: 1px solid var.$terracota;
+    display: block;
   }
 }
 
@@ -237,6 +240,7 @@ main.product {
   font-size: 1.9rem;
   color: var.$bleu_glacié;
   font-weight: var.$bold;
+  text-decoration: underline;
 }
 
 .infos-pratique {
@@ -335,6 +339,103 @@ main.product {
   p strong {
     display: flow-root;
     margin-top: 2rem;
+  }
+}
+
+div.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min(100%, 379px);
+  gap: 4.6rem;
+}
+
+.mon-voyage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #F8F8F8;
+  border-radius: 10px;
+  width: min(100%, 379px);
+
+  h2 {
+    color: var.$sable !important;
+    font-size: 3.6rem;
+    font-weight: var.$bold;
+    background: var.$bleu_glacié;
+    display: block;
+    width: 100%;
+    padding-block: 1.2rem;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    text-align: center;
+  }
+}
+
+.mon-voyage__content {
+  font-size: 2rem;
+  color: var.$roche;
+  background: transparent;
+  padding: 2.1rem 3.4rem;
+  text-align: center;
+}
+
+.reservation {
+  background: var.$bleu_glacié;
+  width: 100%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding-block: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    text-align: center;
+    font-size: 2rem;
+    color: var.$sable;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: var.$bold;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.6rem;
+  width: 100%;
+
+  a {
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 1.9rem;
+    font-weight: var.$bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+  }
+
+  .private-button {
+    background: var.$sable;
+    color: var.$roche;
+  }
+
+  .offer-button, .contact-button {
+    position: relative;
+    &::after {
+      content: "";
+      border: 1px solid;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 10%;
+      left: 5%;
+    }
   }
 }
 

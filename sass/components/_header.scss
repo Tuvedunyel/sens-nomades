@@ -1,7 +1,7 @@
 @use '../abstracts' as var;
 
 header {
-
+  width: 100%;
   .container {
     display: grid;
     grid-template-columns: 0.5fr 0.5fr 1fr;
@@ -53,7 +53,7 @@ header {
 
 .main-menu__container {
   align-self: start;
-  background: url('../assets/contact-container.svg') no-repeat;
+  background: url('assets/contact-container.svg') no-repeat;
   background-size: contain;
 
   @media screen and (min-width: 1200px) {
@@ -122,7 +122,7 @@ header {
   a::after {
     content: "";
     display: block;
-    background: url('../assets/open.svg');
+    background: url('assets/open.svg');
     background-size: contain;
     width: 2.9rem;
     height: 2.9rem;
@@ -180,7 +180,7 @@ header {
   }
 
   &.active a::after {
-    background: url("../assets/close.svg");
+    background: url("assets/close.svg");
   }
 
   &.active .sub-menu {
@@ -201,6 +201,7 @@ header {
     align-items: center;
     gap: 0.5em;
     margin-block: 0 !important;
+    margin-inline: 0;
   }
 
   li {
