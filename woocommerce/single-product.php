@@ -193,22 +193,16 @@ get_header(); ?>
                 <section class="mon-voyage">
                     <h2>Mon voyage</h2>
                     <div class="mon-voyage__content">
-                        <h3>Zen avant les fêtes</h3>
-
-
-
-		                    <?php wc_get_template_part( 'content', 'single-product' ); ?>
-
-
+                        <?php wc_get_template_part( 'content', 'single-product' ); ?>
                     </div>
                     <div class="reservation">
-                        <a href="#">Je réserve mon voyage</a>
+                        <a href="#" id="reverver">Je réserve mon voyage</a>
                     </div>
                 </section>
                 <section class="buttons">
-                    <a class="private-button">Je privatise mon voyage</a>
-                    <a class="offer-button">J'offre un voyage</a>
-                    <a class="contact-button">Contactez-nous</a>
+                    <a href="#" class="private-button">Je privatise mon voyage</a>
+                    <a href="#" class="offer-button">J'offre un voyage</a>
+                    <a href="#" class="contact-button">Contactez-nous</a>
                 </section>
             </div>
         </div>

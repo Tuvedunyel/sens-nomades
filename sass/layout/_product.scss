@@ -347,7 +347,8 @@ div.aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: min(100%, 379px);
+  width: 95%;
+  margin: 3rem auto;
   gap: 4.6rem;
 }
 
@@ -367,6 +368,7 @@ div.aside {
     background: var.$bleu_glacié;
     display: block;
     width: 100%;
+    margin-top: 0 !important;
     padding-block: 1.2rem;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -380,6 +382,26 @@ div.aside {
   background: transparent;
   padding: 2.1rem 3.4rem;
   text-align: center;
+
+  h3 {
+    font-weight: var.$regular;
+    text-transform: uppercase;
+    font-size: 2rem;
+    text-align: center;
+    margin-block: 2.3rem 2.5rem;
+  }
+
+  .variations_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .variations_form::before {
+    content: none;
+    display: none;
+  }
 }
 
 .reservation {
@@ -408,16 +430,18 @@ div.aside {
   justify-content: center;
   align-items: center;
   gap: 2.6rem;
-  width: 100%;
+  width: min(100%, 379px);
 
   a {
-    width: 100%;
     text-align: center;
     display: block;
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     font-weight: var.$bold;
     text-transform: uppercase;
     border-radius: 10px;
+    padding: 1.8rem 4.7rem;
+    cursor: pointer;
+    text-decoration: none;
   }
 
   .private-button {
@@ -425,17 +449,79 @@ div.aside {
     color: var.$roche;
   }
 
+  .offer-button {
+    background: var.$bleu_glacié;
+    color: var.$sable;
+
+    &::after {
+      border: 1px solid var.$bleu_glacié;
+    }
+  }
+
+  .contact-button {
+    background: var.$terracota;
+    color: var.$sable;
+
+    &::after {
+        border: 1px solid var.$terracota;
+    }
+  }
+
   .offer-button, .contact-button {
     position: relative;
+
     &::after {
       content: "";
-      border: 1px solid;
+      border-radius: 10px;
       position: absolute;
-      width: 100%;
+      width: 98%;
       height: 100%;
       top: 10%;
       left: 5%;
     }
+  }
+}
+
+.variations {
+  margin-bottom: 0 !important;
+}
+
+.variations-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.options-container {
+  font-size: 1.9rem;
+  font-weight: var.$regular;
+  color: var.$roche;
+  padding-bottom: 1.2em;
+  margin-bottom: 1.2em;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var.$roche;
+  }
+
+  .simple-options {
+    font-weight: var.$regular !important;
+  }
+}
+
+#cart-perso {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+
+  &.active {
+    display: flex;
   }
 }
 
