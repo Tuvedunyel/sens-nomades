@@ -46,24 +46,25 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
                                         <span class="option-details">
                                             <p class="simple-options"><?= $option ?></p>
 											<?php foreach ( $available_variations as $variations ) :
-                                                if ( $variations['attributes']['attribute_dates'] == $option ) :
-                                                ?>
-                                                <p>(<?= $variations['max_qty'] ?> places restantes)</p>
+												if ( $variations['attributes']['attribute_dates'] == $option ) :
+													?>
+                                                    <p class="custom__stock">(<?= $variations['max_qty'] ?> places
+                                                    restantes)</p>
                                                 <?php if ( $variations['display_price'] !== $variations['display_regular_price'] ) : ?>
-                                                <p class="price"> à partie de <span class="previous-price"><?=
-                                                        $variations['display_regular_price'] ?> €</span> <span
-                                                            class="current-price"><?= $variations['display_price']
-                                                        ?> €</span></p>
-                                                <?php else : ?>
-                                                    <p class="price"> à partir de <span class="current-price"><?=
-                                                            $variations['display_price'] ?> €</span></p>
-                                                <?php endif; ?>
-<!--                                                --><?php //var_dump( $variations ); ?>
-											<?php endif;
-                                                endforeach; ?>
+                                                    <p class="custom-price"> à partie de <span class="previous-price"><?=
+															$variations['display_regular_price'] ?> €</span> <span
+                                                                class="custom__current-price"><?= $variations['display_price']
+															?> €</span></p>
+												<?php else : ?>
+                                                    <p class="custom-price"> à partir de <span class="
+                                                    custom__current-price"><?=
+															$variations['display_price'] ?> €</span></p>
+												<?php endif; ?>
+												<?php endif;
+											endforeach; ?>
                                         </span>
                                     </label>
-                                </div>
+                                </span>
 							<?php endforeach; ?>
 						<?php endif;
 					endforeach; ?>

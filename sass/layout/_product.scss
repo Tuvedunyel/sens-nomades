@@ -1,6 +1,8 @@
 @use '../abstracts' as var;
 
 main.product {
+  margin-bottom: 4.6rem;
+
   h2 {
     font-size: 3.5rem;
     color: var.$terracota;
@@ -18,6 +20,27 @@ main.product {
   margin-top: 5.4rem;
 }
 
+.product-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+    align-items: start;
+    gap: 0.6em;
+
+    .aside {
+      width: 379px;
+    }
+
+    .product-container-narrow {
+      width: calc(100% - 379px);
+    }
+  }
+}
+
 .product-title {
   background: var.$bleu_glacié;
   color: var.$sable;
@@ -26,6 +49,8 @@ main.product {
   margin-bottom: 2.6rem;
   text-align: center;
   border-radius: 10px;
+  width: fit-content;
+  margin-inline: auto;
 }
 
 .attributs {
@@ -37,6 +62,15 @@ main.product {
   justify-items: center;
   gap: 8rem;
   background: white;
+  max-width: 350px;
+  margin: 0 auto !important;
+
+  @media screen and (min-width: 1000px) {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 100%;
+    gap: 1rem;
+    width: min(100%, 838px);
+  }
 
   li {
     width: 100%;
@@ -54,6 +88,10 @@ main.product {
 
     &:first-of-type {
       padding-top: 6rem;
+
+      @media screen and (min-width: 1000px) {
+        padding-top: 0;
+      }
     }
   }
 
@@ -67,6 +105,11 @@ main.product {
     border-bottom-right-radius: 10px;
 
     padding: 2.6rem 6.6rem;
+
+    @media screen and (min-width: 1000px) {
+      border-bottom-left-radius: 0px;
+      border-top-right-radius: 10px;
+    }
 
     img {
       border-radius: 50%;
@@ -181,12 +224,23 @@ main.product {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media screen and (min-width: 1200px) {
+      flex-direction: row;
+      align-items: start;
+      gap: 1.5em;
+    }
   }
 }
 
 .intervenante-photo {
   border-radius: 50%;
   margin-bottom: 2.3rem;
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 0;
+    margin-top: 2.3rem;
+  }
 }
 
 .inter {
@@ -196,6 +250,10 @@ main.product {
   align-items: center;
   color: var.$roche;
   font-size: 1.9rem;
+
+  @media screen and (min-width: 1200px) {
+    align-items: start;
+  }
 
   h3 {
     font-size: 2rem;
@@ -211,12 +269,31 @@ main.product {
     align-items: center;
     gap: 2.2rem;
 
+    @media screen and (min-width: 1500px) {
+      flex-direction: row;
+      align-items: start;
+    }
+
+    h4 {
+      color: var.$roche;
+      margin-bottom: 0;
+    }
+
     ul {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
       justify-items: center;
       gap: 2.3rem;
+      margin-top: 0;
+
+      @media screen and (min-width: 1500px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media screen and (min-width: 1600px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     img {
@@ -241,6 +318,10 @@ main.product {
   color: var.$bleu_glacié;
   font-weight: var.$bold;
   text-decoration: underline;
+
+  @media screen and (min-width: 1200px) {
+    align-self: end;
+  }
 }
 
 .infos-pratique {
@@ -256,6 +337,12 @@ main.product {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 700px) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 .where, .time {
@@ -298,11 +385,23 @@ main.product {
     align-items: center;
     gap: 0.5rem;
 
+    @media screen and (min-width: 700px) {
+      gap: 1.5rem;
+    }
+
     li {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      @media screen and (min-width: 700px) {
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 1em;
+        width: 100%;
+      }
     }
   }
 
@@ -313,14 +412,42 @@ main.product {
     margin-top: 2rem;
   }
 
+  .options-text {
+    margin-top: 6.1rem;
+  }
+
 }
 
 .inclus h2 {
   margin-top: 7.5rem !important;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1.5rem;
+  @media screen and (min-width: 900px) {
+    &::before {
+      content: '';
+      background: url('../assets/inclus.svg');
+      width: 34px;
+      height: 33px;
+    }
+  }
 }
 
 .non-inclus h2 {
   margin-top: 9.2rem !important;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1.5rem;
+  @media screen and (min-width: 900px) {
+    &::before {
+      content: '';
+      background: url('../assets/non-inclus.svg');
+      width: 34px;
+      height: 33px;
+    }
+  }
 }
 
 .conditions-vente {
@@ -463,7 +590,7 @@ div.aside {
     color: var.$sable;
 
     &::after {
-        border: 1px solid var.$terracota;
+      border: 1px solid var.$terracota;
     }
   }
 
@@ -493,6 +620,12 @@ div.aside {
   align-items: start;
 }
 
+.option-details {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
 .options-container {
   font-size: 1.9rem;
   font-weight: var.$regular;
@@ -504,12 +637,46 @@ div.aside {
   justify-content: start;
   align-items: center;
 
+
   &:not(:last-of-type) {
     border-bottom: 1px solid var.$roche;
   }
 
   .simple-options {
     font-weight: var.$regular !important;
+  }
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 1.9rem;
+  }
+
+  .custom__stock {
+    font-weight: var.$regular;
+    color: black !important;
+    font-size: 1.9rem !important;
+  }
+
+  .custom-price {
+    font-weight: var.$regular;
+    color: var.$roche !important;
+    fon-size: 1.9rem !important;
+  }
+
+  .previous-price {
+    font-weight: var.$regular;
+    color: var.$roche !important;
+    text-decoration: line-through;
+    fon-size: 1.9rem !important;
+  }
+
+  .custom__current-price {
+    font-weight: var.$bold !important;
+    color: var.$roche !important;
+    fon-size: 1.9rem !important;
   }
 }
 
@@ -525,3 +692,25 @@ div.aside {
   }
 }
 
+.pictures {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.map, #map, .pictures img {
+  border-radius: 10px;
+}
+
+.map, #map {
+  height: 456px;
+  width: 100%;
+}
+
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+  font-size: 1.6rem !important;
+  max-width: 192px !important;
+  text-align: center !important;
+}
