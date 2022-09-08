@@ -28,8 +28,9 @@ get_header(); ?>
                             <p><?php the_sub_field( 'coachs_description_courte' ); ?></p>
                             <div class="long-description">
                                 <div class="coach-border"></div>
-                                <div class="close">
-                                    <img src="<?= get_template_directory_uri(); ?>/assets/close.svg" alt="Fermer la
+                                <div class="close coachs-btn">
+                                    <img src="<?= get_template_directory_uri(); ?>/assets/close-roche.svg"
+                                         alt="Fermer la
                                     description">
                                 </div>
                                 <h3><?php the_sub_field('coachs_name') ?><span> - <?php the_sub_field('coachs_description_courte') ?></span></h3>
@@ -51,6 +52,8 @@ get_header(); ?>
 					<?php endwhile; endif; ?>
             </div>
         </section>
+        <?php $lien_boutique = get_field('lien_boutique') ?>
+        <a href="<?= esc_url($lien_boutique['url']); ?>" class="btn"><?= esc_html($lien_boutique['title']); ?></a>
     </div>
 </main>
 
