@@ -40,9 +40,9 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 						if ( $attribute_name == "Dates" ) : ?>
 							<?php foreach ( $options as $option ) : ?>
                                 <span class="options-container">
-                                    <label for="<?= $option ?>">
+                                    <label for="<?= $option ?>" >
                                         <input type="radio" id="<?= $option ?>" name="<?= $attribute_name ?>>"
-                                               value="<?= $option ?>">
+                                               value="<?= $option ?>" >
                                         <span class="option-details">
                                             <p class="simple-options"><?= $option ?></p>
 											<?php foreach ( $available_variations as $variations ) :

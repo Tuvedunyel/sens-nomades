@@ -1,0 +1,123 @@
+@use '../abstracts' as var;
+
+.coachs-list {
+
+  h1 {
+    font-size: 3.6rem;
+    color: var.$terracota;
+    text-align: center;
+  }
+
+  .randonneur-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: var.$roche;
+      font-size: 3.7rem;
+    }
+
+    .arrow-bot {
+      transform: rotateX(180deg);
+    }
+  }
+}
+
+.upper-banner {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.coachs-list__container {
+  width: 100%;
+  border: 1px solid var.$bleu_glacié;
+  border-radius: 10px;
+  padding: 1.5rem 1.7rem;
+}
+
+.coachs-list__container-inter {
+  background: var.$bleu_glacié;
+  border-radius: 10px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+
+.coach-border {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 34px solid white;
+  position: absolute;
+  top: -2;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.coachs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 1rem;
+  color: white;
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+
+  .long-description {
+    margin-top: 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.7rem;
+    background: white;
+    color: var.$roche;
+    border-radius: 10px;
+    padding: 2.7rem 2.4rem;
+
+    h3 span {
+      font-weight: var.$regular;
+    }
+  }
+
+  .lien {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    a {
+      font-weight: var.$bold;
+      font-size: 1.9rem;
+
+      &:first-of-type {
+        color: var.$terracota;
+      }
+
+      &:last-of-type {
+        color: var.$bleu_glacié;
+      }
+    }
+  }
+}

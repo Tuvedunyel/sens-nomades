@@ -38,6 +38,9 @@ get_header(); ?>
                     </button>
                 </div>
             </section>
+            <section class="return-voyages">
+                <a href="#" class="return">&#10094; Retour au voyages</a>
+            </section>
             <section class="upper">
                 <div class="container-narrow">
                     <h1 class="product-title"><?php the_title(); ?></h1>
@@ -349,7 +352,7 @@ get_header(); ?>
                             } else {
                                 this.buttonText = 'Tout le programme'
                             }
-                        }
+                        },
                     }
                 } ).mount( '#root' );
 

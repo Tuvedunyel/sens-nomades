@@ -122,7 +122,7 @@ header {
   a::after {
     content: "";
     display: block;
-    background: url('assets/open.svg');
+    background: url('../assets/open.svg');
     background-size: contain;
     width: 2.9rem;
     height: 2.9rem;
@@ -180,7 +180,7 @@ header {
   }
 
   &.active a::after {
-    background: url("assets/close.svg");
+    background: url("../assets/close.svg");
   }
 
   &.active .sub-menu {

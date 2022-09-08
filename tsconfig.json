@@ -3,7 +3,7 @@
     "module": "commonjs",
     "outDir": "./js",
     "target": "ES2018",
-    "noEmitOnError": true,
+    "noEmitOnError": false,
     "sourceMap": true
   },
   "files": [

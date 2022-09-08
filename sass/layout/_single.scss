@@ -1,5 +1,13 @@
 @use '../abstracts' as var;
 
+.return {
+  font-size: 2.1rem;
+  color: var.$bleu_glacié;
+  text-decoration: none;
+  text-align: center;
+  margin: 0.4em auto;
+}
+
 .single-blog {
   padding-top: 5rem;
   padding-bottom: 8.4rem;
@@ -22,14 +30,6 @@
 
   .hero-banner .container-narrow {
     margin: 0 auto;
-  }
-
-  .return {
-    font-size: 2.1rem;
-    color: var.$bleu_glacié;
-    text-decoration: none;
-    text-align: center;
-    margin: 0.4em auto;
   }
 
   h2 {
