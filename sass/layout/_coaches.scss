@@ -1,6 +1,7 @@
 @use '../abstracts' as var;
 
 .coachs-list {
+  margin-top: 8rem;
 
   h1 {
     font-size: 3.6rem;
@@ -41,6 +42,8 @@
     position: absolute;
     top: -2%;
     right: 0;
+    z-index: 101;
+    pointer-events: all;
 
     @media screen and (min-width: 408px) {
       top: -3%;
@@ -204,6 +207,7 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    pointer-events: all;
 
     @media screen and (min-width: 500px) {
       flex-direction: row;

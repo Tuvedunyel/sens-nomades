@@ -12,17 +12,18 @@ const longDescription = document.querySelectorAll('.long-description');
 const containerPos = document.querySelector('.coachs-list__container-inter');
 let y = null;
 let x = null;
-if (coachs && coachsBtn && longDescription) {
+if (coachs && coachsBtn && longDescription && containerPos) {
     containerPos.addEventListener('mousemove', e => {
         let rect = containerPos.getBoundingClientRect();
         x = e.clientX - rect.left - 28;
         y = (e.clientY - rect.top) + 49;
         for (let i = 0; i < coachs.length; i++) {
-            coachs[i].addEventListener('click', () => {
-                console.log(x);
+            coachs[i].addEventListener('click', e => {
+                e.stopPropagation();
                 longDescription[i].style.top = y + 'px';
                 border[i].style.left = x + 'px';
                 border[i].style.right = 'unset';
+                coachs.forEach(coach => coach.style['pointer-events'] = 'none');
                 longDescription.forEach(item => item.classList.remove('active'));
                 longDescription[i].classList.add('active');
             });
@@ -31,6 +32,7 @@ if (coachs && coachsBtn && longDescription) {
     for (let i = 0; i < coachsBtn.length; i++) {
         coachsBtn[i].addEventListener('click', e => {
             e.stopPropagation();
+            coachs.forEach(coach => coach.style['pointer-events'] = 'all');
             longDescription[i].classList.toggle('active');
         });
     }
