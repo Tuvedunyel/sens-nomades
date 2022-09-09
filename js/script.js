@@ -12,6 +12,22 @@ const longDescription = document.querySelectorAll('.long-description');
 const containerPos = document.querySelector('.coachs-list__container-inter');
 let y = null;
 let x = null;
+const input = document.querySelectorAll('.variable-item-radio-input');
+const optionsContainer = document.querySelectorAll('.variable-item.radio-variable-item');
+const reververBtn = document.getElementById('reverver');
+if (input && reververBtn) {
+    reververBtn.addEventListener('click', e => {
+        e.preventDefault();
+        for (let i = 0; i < input.length; i++) {
+            for (let j = 0; j < optionsContainer.length; j++) {
+                optionsContainer[j].classList.add('checkout');
+                if (input[i].checked && i === j) {
+                    optionsContainer[j].classList.add('active');
+                }
+            }
+        }
+    });
+}
 if (coachs && coachsBtn && longDescription && containerPos) {
     containerPos.addEventListener('mousemove', e => {
         let rect = containerPos.getBoundingClientRect();

@@ -31,7 +31,7 @@ footer {
 
     @media screen and (min-width: 1000px) {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 2fr 1fr 1.3fr;
     }
   }
 }
@@ -48,6 +48,13 @@ footer {
 
 .left {
   max-width: 37.9rem;
+
+  h4 {
+    text-align: left;
+  }
+  p {
+    font-size: 1.6rem;
+  }
 }
 
 h4 {
@@ -62,11 +69,16 @@ h4 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 0.5em;
+  align-items: start;
 
   li {
     width: fit-content;
+  }
+}
+
+.middle {
+  h4 {
+    text-align: start;
   }
 }
 
@@ -164,7 +176,7 @@ aside {
   }
 
   a {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     text-decoration: none;
     color: var.$black_300;
     text-align: center;
@@ -173,7 +185,7 @@ aside {
 
 .realiser {
   color: var.$black_300;
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   margin-top: 0.2em;
 
   @media screen and (min-width: 650px) {
@@ -183,6 +195,6 @@ aside {
   a {
     color: var.$black_300;
     text-decoration: none;
-    font-size: 1.9rem;
+    font-size: 1.6rem;
   }
 }

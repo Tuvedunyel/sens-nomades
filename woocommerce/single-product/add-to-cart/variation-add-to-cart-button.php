@@ -17,12 +17,12 @@ $attributes = $product->get_attributes();
 		<?php foreach ( $attributes as $attribute_name => $options ) :
 			if ( $attribute_name == "type-de-chambre" ) : ?>
                 <div class="chambre-loop">
-                    <label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>">Type de chambre</label>
+                    <label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?= $options["data"]["name"] ?></label>
                     <div class="chambre-loop__value">
 						<?php
 						wc_dropdown_variation_attribute_options(
 							array(
-								'options'   => $options,
+								'options'   => $options["data"]["options"],
 								'attribute' => $attribute_name,
 								'product'   => $product,
 							)
@@ -50,12 +50,12 @@ $attributes = $product->get_attributes();
 
 	do_action( 'woocommerce_after_add_to_cart_quantity' );
 	?>
-    <!--	<button type="submit" class="single_add_to_cart_button button alt">-->
-	<?php //echo esc_html( $product->single_add_to_cart_text() ); ?><!--</button>-->
-    <!---->
-    <!--	--><?php //do_action( 'woocommerce_after_add_to_cart_button' ); ?>
-    <!---->
-    <!--	<input type="hidden" name="add-to-cart" value="--><?php //echo absint( $product->get_id() ); ?><!--" />-->
-    <!--	<input type="hidden" name="product_id" value="--><?php //echo absint( $product->get_id() ); ?><!--" />-->
-    <!--	<input type="hidden" name="variation_id" class="variation_id" value="0" />-->
+    	<button type="submit" class="single_add_to_cart_button button alt">
+	<?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+
+    	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+
+    	<input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
+    	<input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
+    	<input type="hidden" name="variation_id" class="variation_id" value="0" />
 </div>

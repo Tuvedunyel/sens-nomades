@@ -37,35 +37,17 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
             <div class="variations" role="presentation">
                 <div class="variations-container">
 					<?php foreach ( $attributes as $attribute_name => $options ) :
-						if ( $attribute_name == "Dates" ) : ?>
-							<?php foreach ( $options as $option ) : ?>
-                                <span class="options-container">
-                                    <label for="<?= $option ?>" >
-                                        <input type="radio" id="<?= $option ?>" name="<?= $attribute_name ?>>"
-                                               value="<?= $option ?>" >
-                                        <span class="option-details">
-                                            <p class="simple-options"><?= $option ?></p>
-											<?php foreach ( $available_variations as $variations ) :
-												if ( $variations['attributes']['attribute_dates'] == $option ) :
-													?>
-                                                    <p class="custom__stock">(<?= $variations['max_qty'] ?> places
-                                                    restantes)</p>
-                                                <?php if ( $variations['display_price'] !== $variations['display_regular_price'] ) : ?>
-                                                    <p class="custom-price"> à partie de <span class="previous-price"><?=
-															$variations['display_regular_price'] ?> €</span> <span
-                                                                class="custom__current-price"><?= $variations['display_price']
-															?> €</span></p>
-												<?php else : ?>
-                                                    <p class="custom-price"> à partir de <span class="
-                                                    custom__current-price"><?=
-															$variations['display_price'] ?> €</span></p>
-												<?php endif; ?>
-												<?php endif;
-											endforeach; ?>
-                                        </span>
-                                    </label>
-                                </span>
-							<?php endforeach; ?>
+						if ( $attribute_name == "pa_dates" ) :
+                            ?>
+							<?php
+							wc_dropdown_variation_attribute_options(
+								array(
+									'options'   => $options,
+									'attribute' => $attribute_name,
+									'product'   => $product,
+								)
+							);
+							?>
 						<?php endif;
 					endforeach; ?>
                 </div>

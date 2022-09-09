@@ -183,17 +183,24 @@ main.product {
   border-radius: 10px;
   border: none;
   padding: 1.4rem 3.4rem;
+  transition: 0.4s ease-in-out;
 
   &::after {
     content: '';
     position: absolute;
-    top: 10%;
-    left: 5%;
+    top: 8%;
+    left: 2%;
     width: 100%;
     height: 100%;
     border-radius: 10px;
     border: 1px solid var.$terracota;
     display: block;
+    transition: 0.4s ease-in-out;
+  }
+
+  &:hover::after {
+    top: 10%;
+    left: 5%;
   }
 }
 
@@ -277,6 +284,10 @@ main.product {
     h4 {
       color: var.$roche;
       margin-bottom: 0;
+      white-space: nowrap;
+      @media screen and (min-width: 1200px) {
+        margin-top: 2rem;
+      }
     }
 
     ul {
@@ -292,6 +303,7 @@ main.product {
       }
 
       @media screen and (min-width: 1600px) {
+        gap: 0.3rem;
         grid-template-columns: repeat(4, 1fr);
       }
     }
@@ -326,6 +338,12 @@ main.product {
 
 .return-voyages {
   margin-left: 2em;
+  position: relative;
+  z-index: 101;
+  @media screen and (min-width: 1200px) {
+    position: absolute;
+    top: 54%;
+  }
 }
 
 .infos-pratique {
@@ -334,6 +352,9 @@ main.product {
   justify-content: center;
   align-items: center;
   margin-bottom: 4.2rem;
+  @media screen and (min-width: 1200px) {
+    align-items: start;
+  }
 }
 
 .infos-pratique__content {
@@ -344,7 +365,8 @@ main.product {
 
   @media screen and (min-width: 700px) {
     flex-direction: row;
-    justify-content: space-between;
+    gap: 5em;
+    justify-content: start;
     width: 100%;
   }
 }
@@ -444,11 +466,12 @@ main.product {
   justify-content: start;
   align-items: center;
   gap: 1.5rem;
+  line-height: 1;
   @media screen and (min-width: 900px) {
     &::before {
       content: '';
       background: url('../assets/non-inclus.svg');
-      width: 34px;
+      width: 37px;
       height: 33px;
     }
   }
@@ -578,6 +601,11 @@ div.aside {
   .private-button {
     background: var.$sable;
     color: var.$roche;
+    position: relative;
+
+    &::after {
+      border: 1px solid var.$sable;
+    }
   }
 
   .offer-button {
@@ -598,8 +626,9 @@ div.aside {
     }
   }
 
-  .offer-button, .contact-button {
+  .offer-button, .contact-button, .private-button {
     position: relative;
+    transition: 0.4s ease-in-out;
 
     &::after {
       content: "";
@@ -607,6 +636,12 @@ div.aside {
       position: absolute;
       width: 98%;
       height: 100%;
+      top: 8%;
+      left: 3%;
+      transition: 0.4s ease-in-out;
+    }
+
+    &:hover::after {
       top: 10%;
       left: 5%;
     }
@@ -617,70 +652,53 @@ div.aside {
   margin-bottom: 0 !important;
 }
 
-.variations-container {
+.variable-items-vrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
 }
 
-.option-details {
+.variable-item {
   display: flex;
   flex-direction: column;
   text-align: start;
-}
-
-.options-container {
-  font-size: 1.9rem;
-  font-weight: var.$regular;
-  color: var.$roche;
-  padding-bottom: 1.2em;
-  margin-bottom: 1.2em;
+  padding-bottom: 1.2em !important;
+  margin-bottom: 1.2em !important;
   width: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-
 
   &:not(:last-of-type) {
     border-bottom: 1px solid var.$roche;
   }
 
-  .simple-options {
-    font-weight: var.$regular !important;
+  &.checkout:not(.active) {
+    display: none !important;
   }
 
-  label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5em;
-    font-size: 1.9rem;
+  &.active {
+    border-bottom: 1px solid var.$roche;
+  }
+}
+
+.variable-item-contents {
+  font-size: 1.9rem;
+  font-weight: var.$regular;
+  color: var.$roche;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+
+  &.checkout:not(.active) {
+    display: none;
   }
 
-  .custom__stock {
-    font-weight: var.$regular;
-    color: black !important;
-    font-size: 1.9rem !important;
+  &.active {
+    border-bottom: 1px solid var.$roche;
   }
 
-  .custom-price {
-    font-weight: var.$regular;
-    color: var.$roche !important;
-    fon-size: 1.9rem !important;
-  }
-
-  .previous-price {
-    font-weight: var.$regular;
-    color: var.$roche !important;
-    text-decoration: line-through;
-    fon-size: 1.9rem !important;
-  }
-
-  .custom__current-price {
-    font-weight: var.$bold !important;
-    color: var.$roche !important;
-    fon-size: 1.9rem !important;
+  span {
+    font-weight: 400 !important;
   }
 }
 
@@ -718,3 +736,36 @@ div.aside {
   max-width: 192px !important;
   text-align: center !important;
 }
+
+.woo-variation-swatches .variable-items-wrapper.radio-variable-items-wrapper .radio-variable-item.selected {
+  box-shadow: none !important;
+}
+
+.woo-variation-swatches .variable-items-wrapper.radio-variable-items-wrapper .radio-variable-item:hover {
+  box-shadow: none;
+}
+
+.woocommerce div.product span.price {
+  font-size: 1.9rem !important;
+  color: var.$roche !important;
+  font-weight: var.$bold !important;
+}
+
+.woocommerce div.product p.stock {
+  color: black !important;
+  font-size: 1.9rem !important;
+}
+
+.woocommerce div.product span.price del {
+  font-weight: 400 !important;
+  font-size: 1.9rem !important;
+  opacity: 1 !important;
+  color: var.$roche !important;
+}
+
+.woocommerce div.product span.price ins {
+  text-decoration: none !important;
+  color: var.$roche !important;
+  font-size: 1.9rem !important;
+}
+

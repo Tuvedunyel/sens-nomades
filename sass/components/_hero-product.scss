@@ -47,11 +47,11 @@
 
     &.prev-arrow {
       right: unset;
-      left: 0;
+      left: -2.5%;
     }
 
     &.next-arrow {
-        right: 0;
+        right: -2.5%;
         left: unset;
         transform: rotate(180deg);
     }
@@ -77,6 +77,7 @@
   width: 100%;
   row-gap: 1.3rem;
   column-gap: 1.9rem;
+  align-self: start;
 
   li, img {
     width: 100%;
