@@ -4,10 +4,10 @@ get_header(); ?>
     <main class="product" id="root">
 		<?php while ( have_posts() ) :
 			the_post();
-			$longitude = json_encode( get_field( 'longitude' ) );
-			$latitude  = json_encode( get_field( 'latitude' ) );
-			$zoom      = json_encode( get_field( 'zoom' ) );
-            $address_map = json_encode( get_field( 'adresse_map' ) );
+			$longitude   = json_encode( get_field( 'longitude' ) );
+			$latitude    = json_encode( get_field( 'latitude' ) );
+			$zoom        = json_encode( get_field( 'zoom' ) );
+			$address_map = json_encode( get_field( 'adresse_map' ) );
 
 			if ( have_rows( 'gallerie' ) ) :
 				$image_array = array();
@@ -178,7 +178,7 @@ get_header(); ?>
 							<?php the_field( 'supplement_dinfo' ) ?>
                         </div>
                         <div class="options-text">
-                            <?php the_field('options'); ?>
+							<?php the_field( 'options' ); ?>
                         </div>
                     </section>
                     <section class="inclus">
@@ -206,7 +206,59 @@ get_header(); ?>
                     <section class="mon-voyage">
                         <h2>Mon voyage</h2>
                         <div class="mon-voyage__content">
-							<?php wc_get_template_part( 'content', 'single-product' ); ?>
+                            <!--							--><?php //wc_get_template_part( 'content', 'single-product' );
+							?>
+                            <p class="product-date__item">
+                                Du <?php the_field( 'date_de_depart' ); ?> au <?php the_field( 'date_de_retour' ); ?>
+                            </p>
+                            <div class="details-temp-product">
+								<?php if ( have_rows( 'type_de_chambre' ) ) :
+									$chambre = [];
+									$price   = [];
+									while ( have_rows( 'type_de_chambre' ) ) : the_row();
+										$chambre[] = get_sub_field( 'chambre' );
+										$price[]   = get_sub_field( 'prix' );
+									endwhile;
+								endif; ?>
+								<?php if ( have_rows( 'en_option' ) ):
+									$option      = [];
+									$priceOption = [];
+									while ( have_rows( 'en_option' ) ) : the_row();
+										$option[]       = get_sub_field( 'option' );
+										$price_option[] = get_sub_field( 'prix' );
+									endwhile; endif; ?>
+                                <div class="temp__type-chambre">
+                                    <select name="chambre" id="chambre" @change="handleChamberPrice($event)">
+                                        <option value="" selected="selected" disabled>type de chambre</option>
+                                        <option v-for="(chambre, index) in typeChamber.chambre" :key="index"
+                                                :value="chambre">{{ chambre }}
+                                        </option>
+                                    </select>
+
+                                    <div class="participant__temp">
+                                        <label for="participants">Nombre de participant.e.s : </label>
+                                        <input type="number" name="participants" id="participants"
+                                               v-model="numberParticipant">
+                                    </div>
+
+                                    <div class="temp__option">
+                                        <p class="option-title">En option :</p>
+                                        <div class="options-container">
+                                            <div v-for="(option, index) in options.option">
+                                                <input type="number" name="quantity" :id="index"
+                                                       v-model="options.quantity[index]" @change="handleOptionPrice(index)">
+                                                {{ option }} - <span class="bold-option">{{ options.price[index] }}
+                                                    €</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="temp-price">
+                                        <p class="price-temp">Tarifs :</p>
+                                        <h5>{{totalPrice}} €</h5>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="reservation">
                             <a href="#" id="reverver">Je réserve mon voyage</a>
@@ -256,15 +308,31 @@ get_header(); ?>
                             addressMap: null,
                             markerIcon: L.icon( {
                                 iconUrl: '<?= get_stylesheet_directory_uri(); ?>/assets/marker.svg',
-                                iconSize: [38, 57],
-                                iconAnchor: [22, 44],
-                                popupAnchor:  [-3, -36]
-                            } )
+                                iconSize: [ 38, 57 ],
+                                iconAnchor: [ 22, 44 ],
+                                popupAnchor: [ -3, -36 ]
+                            } ),
+                            typeChamber: {
+                                chambre: [],
+                                price: [],
+                            },
+                            options: {
+                                option: [],
+                                price: [],
+                                quantity: [],
+                                currentPrice: [],
+                            },
+                            numberParticipant: 1,
+                            chamberPrice: 0,
+                            totalChamberPrice: 1,
+                            totalPrice: 0,
+                            optionsPrice: 1,
                         }
                     },
                     async mounted () {
                         await this.getImages()
                         await this.getCoord()
+                        await this.tempFunction()
                         this.littleImages = this.images
                         if ( this.images.length > 0 ) {
                             this.sliceLittleA = 1
@@ -273,20 +341,34 @@ get_header(); ?>
                             this.sliceLittleB = this.images.length
                         }
 
-                        this.map = L.map( 'map', { attributionControl: false, dragging: false, zoomControl: false,
-                            boxZoom: false, doubleClickZoom: false, scrollWheelZoom: false, tap: false, touchZoom: false } ).setView( [ this.longitude,this.latitude ], this.zoom );
+                        this.map = L.map( 'map', {
+                            attributionControl: false, dragging: false, zoomControl: false,
+                            boxZoom: false, doubleClickZoom: false, scrollWheelZoom: false, tap: false, touchZoom: false
+                        } ).setView( [ this.longitude, this.latitude ], this.zoom );
 
                         L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         } ).addTo( this.map );
 
-                        this.marker = L.marker([ this.longitude, this.latitude  ], {icon: this.markerIcon}).addTo( this
+                        this.marker = L.marker( [ this.longitude, this.latitude ], { icon: this.markerIcon } ).addTo( this
                             .map );
 
-                        this.marker.bindPopup(this.addressMap).openPopup();
+                        this.marker.bindPopup( this.addressMap ).openPopup();
                         this.isLoaded = true
                     },
                     methods: {
+                        tempFunction () {
+                            this.typeChamber.chambre = <?= json_encode( $chambre ); ?>;
+                            this.typeChamber.price = <?= json_encode( $price ); ?>;
+                            this.options.option = <?= json_encode( $option ); ?>;
+                            this.options.price = <?= json_encode( $price_option ); ?>;
+                            this.options.option.forEach( option => {
+                                this.options.quantity.push( 0 );
+                            } )
+                            for ( let i = 0; i < this.options.option.length; i++ ) {
+                                this.options.currentPrice.push( this.options.quantity[i] * this.options.price[i] );
+                            }
+                        },
                         getImages () {
                             this.images = <?php echo $image_export; ?>
                         },
@@ -297,9 +379,9 @@ get_header(); ?>
                             this.latitude = Number( this.latitude ).toFixed( 3 )
                             this.zoom = <?php echo $zoom; ?>;
                             this.addressMap = <?php echo $address_map; ?>;
-                            this.longitude = Number(this.longitude);
-                            this.latitude = Number(this.latitude);
-                            this.zoom = Number(this.zoom);
+                            this.longitude = Number( this.longitude );
+                            this.latitude = Number( this.latitude );
+                            this.zoom = Number( this.zoom );
                         },
                         handlePrev () {
                             if ( this.sliceBigA > 0 ) {
@@ -353,6 +435,31 @@ get_header(); ?>
                                 this.buttonText = 'Tout le programme'
                             }
                         },
+                        handleChamberPrice ( e ) {
+                            this.typeChamber.chambre.forEach( chambre => {
+                                if ( chambre === e.target.value ) {
+                                    this.chamberPrice = this.typeChamber.price[ this.typeChamber.chambre.indexOf(
+                                        chambre ) ]
+                                    this.totalPrice = this.chamberPrice
+                                }
+                            } )
+                        },
+                        handleOptionPrice ( index ) {
+                            this.options.currentPrice[index] = this.options.quantity[index] * this.options.price[index]
+                            this.options.currentPrice[index] = Number( this.options.currentPrice[index] )
+                            this.optionsPrice = Number(this.optionsPrice) + this.options.currentPrice[index]
+                        }
+                    },
+                    watch: {
+                        numberParticipant ( val ) {
+                            this.totalChamberPrice = Number(this.chamberPrice) * Number(val)
+                        },
+                        optionsPrice ( val ) {
+                            this.totalPrice = Number(this.totalChamberPrice) + Number(val)
+                        },
+                        totalChamberPrice ( val ) {
+                            this.totalPrice = Number(val) + Number(this.optionsPrice)
+                        }
                     }
                 } ).mount( '#root' );
 

@@ -29,7 +29,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="157d6ef5-f617-4fdc-b1bc-91cdc1dcf011">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
+      <console name="Connection" type="STANDARD" schema="mysql" session="Main"><![CDATA[CREATE DATABASE credit-agricole
+    DEFAULT CHARACTER SET = 'utf8mb4';]]></console>
+      <console name="Connection 1" type="STANDARD" schema="mysql" session="Main"><![CDATA[CREATE DATABASE IF NOT EXISTS `credit-agricole` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

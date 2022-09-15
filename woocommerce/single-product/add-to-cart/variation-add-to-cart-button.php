@@ -9,30 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 global $product;
-$attributes = $product->get_attributes();
-
 ?>
-<div class="woocommerce-variation-add-to-cart variations_button" id="cart-perso">
-    <div class="chambre">
-		<?php foreach ( $attributes as $attribute_name => $options ) :
-			if ( $attribute_name == "type-de-chambre" ) : ?>
-                <div class="chambre-loop">
-                    <label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>"><?= $options["data"]["name"] ?></label>
-                    <div class="chambre-loop__value">
-						<?php
-						wc_dropdown_variation_attribute_options(
-							array(
-								'options'   => $options["data"]["options"],
-								'attribute' => $attribute_name,
-								'product'   => $product,
-							)
-						);
-						?>
-                    </div>
-                </div>
-			<?php endif;
-		endforeach; ?>
-    </div>
     <p class="participant">Nombre de participant.e.s :</p>
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
