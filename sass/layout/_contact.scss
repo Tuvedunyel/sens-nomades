@@ -75,10 +75,10 @@ form {
 }
 
 .telephone {
-    @media screen and (min-width: 1000px) {
-        grid-column: 1;
-        grid-row: 2;
-    }
+  @media screen and (min-width: 1000px) {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }
 
 .message {
@@ -111,6 +111,11 @@ label {
   width: 100%;
   height: fit-content;
   position: relative;
+  pointer-events: none;
+
+  input {
+    pointer-events: all;
+  }
 
   @media screen and (min-width: 1000px) {
     grid-column: 1 / 3;
@@ -122,6 +127,7 @@ label {
   @media screen and (min-width: 358px) {
     width: fit-content;
   }
+
   &::after {
     content: '';
     width: 100%;

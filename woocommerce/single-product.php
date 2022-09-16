@@ -302,6 +302,7 @@ get_header(); ?>
                             <p>Nombre(s) de personne(s): {{`${numberParticipant} - ${chambreSelect}`}}</p>
                             <div class="options__form">
                                 <p class="options__form-title">En option :</p>
+                                <p><i>selon disponibilités au moment de la réservation</i></p>
                                 <p v-for="(option, index) in selectedOptions" :key="index">{{ `${option.name} -
                                     Nombres de personnes : ${option.quantity}` }}</p>
                             </div>
@@ -414,7 +415,7 @@ get_header(); ?>
                             optionsPrice: 0,
                             showTempForm: false,
                             chambreSelect: null,
-                            selectedOptions: [],
+                            selectedOptions: [{ name: 'aucune', quantity: 0 }],
                             name: null,
                             prenom: null,
                             phone: null,
