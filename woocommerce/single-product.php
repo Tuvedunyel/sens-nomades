@@ -238,7 +238,7 @@ get_header(); ?>
                                 </div>
                                 <div class="participant__temp">
                                     <label for="participants">Nombre de participant.e.s : </label>
-                                    <input type="number" name="participants" id="participants"
+                                    <input type="number" name="participants" id="participants" min="0"
                                            v-model="numberParticipant">
                                 </div>
 
@@ -246,7 +246,7 @@ get_header(); ?>
                                     <p class="option-title">En option :</p>
                                     <div class="options-container">
                                         <div v-for="(option, index) in options.option">
-                                            <input type="number" name="quantity" :id="index"
+                                            <input type="number" name="quantity" :id="index" min="0"
                                                    v-model="options.quantity[index]" @change="handleOptionPrice(index)">
                                             <p>{{ option }} - <span class="bold-option">{{ options.price[index] }}
                                                     €</span></p>
@@ -331,6 +331,35 @@ get_header(); ?>
                                        v-model="mail"
                                        required>
                             </label>
+                            <label for="naissance">
+                                Votre date de naissance*
+                                <input type="date" name="naissance" id="naissance" v-model="naissance" required>
+                            </label>
+                            <label for="adresse">
+                                Votre adresse *
+                                <input type="text" name="adresse" id="adresse" placeholder="1 rue des nomades"v-model="adresse"required>
+                            </label>
+                            <label for="ville">
+                                Votre ville *
+                                <input type="text" name="ville" id="ville" placeholder="Paris" v-model="ville" required>
+                            </label>
+                            <label for="postale">
+                                Code postal *
+                                <input type="text" name="postale" id="postale" placeholder="75000" v-model="postale" required>
+                            </label>
+                            <label for="regime">
+                                Avez-vous un régime allimentaire particulier ?
+                                <input type="text" name="regime" id="regime" placeholder="Végétarien" v-model="regime">
+                            </label>
+                            <label for="allergie">
+                                Il y a t-il des éléments que nous devons connaître : allergies ? etc... C'est le moment de tout nous dire :)
+                                <input type="text" name="allergie" id="allergie" placeholder="Aucune" v-model="allergie">
+                            </label>
+                            <label for="assurance">
+                                Souhaitez vous souscrire à l'assurance voyages Chapka ? *
+                                <input type="text" name="assurance" id="assurance" placeholder="Oui"
+                                       v-model="assurance" required>
+                            </label>
                             <button class="form-btn" @click="submitForm($event)">Envoyer ma réservation</button>
                         </form>
                     </div>
@@ -391,6 +420,12 @@ get_header(); ?>
                             response: null,
                             voyage: null,
                             sentResa: false,
+                            adresse: null,
+                            postale: null,
+                            ville: null,
+                            naissance: null,
+                            regime: null,
+                            allergie: null,
                         }
                     },
                     async mounted () {
@@ -437,11 +472,18 @@ get_header(); ?>
                                 bodyFormData.set("chambre", this.chambreSelect);
                                 bodyFormData.set("options", JSON.stringify(this.selectedOptions));
                                 bodyFormData.set("prix-estime", this.totalPrice);
+                                bodyFormData.set("adresse", this.adresse);
+                                bodyFormData.set("ville", this.ville);
+                                bodyFormData.set("postal", this.postale);
+                                bodyFormData.set("regime", this.regime);
+                                bodyFormData.set("allergie", this.allergie);
+                                bodyFormData.set("assurance", this.assurance);
+                                bodyFormData.set("naissance", this.naissance);
 
                                 axios( {
                                     method: "post",
                                     url: "https://sens-nomades.btg-communication-dev" +
-                                        ".com/wp-json/contact-form-7/v1/contact-forms/563/feedback",
+                                        ".com/wp-json/contact-form-7/v1/contact-forms/582/feedback",
                                     data: bodyFormData,
                                     config: { headers: { "Content-Type": "multipart/form-data" } },
                                 } ).then( response => {
@@ -476,6 +518,21 @@ get_header(); ?>
                             }
                             if (this.selectedOptions.length === 0) {
                                 this.errors.push('Les options sont requises.');
+                            }
+                            if (this.adresse === null) {
+                                this.errors.push('L\'adresse est requise.');
+                            }
+                            if (this.postale === null) {
+                                this.errors.push('Le code postal est requis.');
+                            }
+                            if (this.ville === null) {
+                                this.errors.push('La ville est requise.');
+                            }
+                            if (this.naissance === null) {
+                                this.errors.push('La date de naissance est requise.');
+                            }
+                            if (this.assurance === null) {
+                                this.errors.push("Nous avons besoin de savoir si vous souhaitez l'assurance.");
                             }
                             if (this.errors.length > 0) {
                                 return false;

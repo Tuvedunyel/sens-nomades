@@ -5,10 +5,10 @@
             <a href="<?= home_url( $path = '/', $scheme = 'https' ); ?>" title="Retour à l'accueil" class="footer-home">
                 <img src="<?= esc_url( $logo_blanc['url'] ); ?>" alt="<?= esc_attr( $logo_blanc['alt'] ); ?>">
             </a>
-            <div class="left">
-                <h4><?php the_field( 'titre_un', 'option' ); ?></h4>
-                <p><?php the_field( 'texte', 'option' ); ?></p>
-            </div>
+<!--            <div class="left">-->
+<!--                <h4>--><?php //the_field( 'titre_un', 'option' ); ?><!--</h4>-->
+<!--                <p>--><?php //the_field( 'texte', 'option' ); ?><!--</p>-->
+<!--            </div>-->
             <div class="middle">
                 <h4><?php the_field( 'titre_deux', 'option' ); ?></h4>
 				<?php wp_nav_menu( array(
