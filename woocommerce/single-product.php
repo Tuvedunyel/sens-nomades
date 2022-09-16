@@ -39,7 +39,7 @@ get_header(); ?>
                 </div>
             </section>
             <section class="return-voyages">
-                <a href="#" class="return">&#10094; Retour au voyages</a>
+                <a href="#" class="return">&#10094; Retours au voyages</a>
             </section>
             <section class="upper">
                 <div class="container-narrow">
@@ -186,7 +186,7 @@ get_header(); ?>
 						<?php the_field( 'inclus_dans_le_prix' ); ?>
                     </section>
                     <section class="non-inclus">
-                        <h2>Ce qui n'est pas inclus dans le prix du voyages</h2>
+                        <h2>Ce qui n'est pas inclus dans le prix du voyage</h2>
 						<?php the_field( 'non_inclus_dans_le_prix' ); ?>
                         <p class="preci-bottom"><?php the_field( 'precision_bas' ); ?></p>
                         <div class="bonhomme">
@@ -290,7 +290,7 @@ get_header(); ?>
                     <img src="<?= get_template_directory_uri() ?>/assets/close.svg" alt="Fermer la popup">
                 </div>
                 <div class="container-narrow" @click="stayPopUp">
-                    <h2>Récaputilatif de votre voyage</h2>
+                    <h2>Récapitulatif de votre voyage</h2>
                     <div class="info-voyage">
 						<?php $image_temp = get_field( 'image_voyage_form' ); ?>
                         <img src="<?= esc_url( $image_temp['url'] ) ?>" alt="<?= esc_attr( $image_temp['alt'] ); ?>">
@@ -304,7 +304,7 @@ get_header(); ?>
                                 <p class="options__form-title">En option :</p>
                                 <p><i>selon disponibilités au moment de la réservation</i></p>
                                 <p v-for="(option, index) in selectedOptions" :key="index">{{ `${option.name} -
-                                    Nombres de personnes : ${option.quantity}` }}</p>
+                                    Nombre de personnes : ${option.quantity}` }}</p>
                             </div>
                             <div class="form__price">
                                 <p>Prix : {{totalPrice}}€</p>
