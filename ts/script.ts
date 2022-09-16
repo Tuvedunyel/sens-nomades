@@ -4,7 +4,7 @@ const burgerBtn = document.getElementById( 'burger-btn' );
 const linkChildren = document.querySelectorAll( '.menu-item-has-children > a' );
 const menuChildren = document.querySelectorAll( ' .menu-item-has-children ' );
 const cart = document.getElementById( 'cart-perso' );
-const reserver = document.getElementById( 'reverver' );
+// const reserver = document.getElementById( 'reverver' );
 const coachs = document.querySelectorAll( '.coachs' );
 const coachsBtn = document.querySelectorAll( '.coachs-btn' );
 const border = document.querySelectorAll( '.coach-border' );
@@ -74,9 +74,9 @@ if (linkChildren) {
     } );
 }
 
-if (reserver && cart) {
-    reserver.addEventListener( 'click', ( e ) => {
-        e.preventDefault();
-        cart.classList.toggle( 'active' );
-    } );
-}
+// if (reserver && cart) {
+//     reserver.addEventListener( 'click', ( e ) => {
+//         e.preventDefault();
+//         cart.classList.toggle( 'active' );
+//     } );
+// }

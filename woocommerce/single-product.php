@@ -228,40 +228,41 @@ get_header(); ?>
 										$price_option[] = get_sub_field( 'prix' );
 									endwhile; endif; ?>
                                 <div class="temp__type-chambre">
-                                    <select name="chambre" id="chambre" @change="handleChamberPrice($event)">
-                                        <option value="" selected="selected" disabled>type de chambre</option>
+                                    <select name="chambre" id="chambre" @change="handleChamberPrice($event)"
+                                            v-model="chambreSelect">
+                                        <option value="" selected="selected" disabled>{{ chambreSelect }}</option>
                                         <option v-for="(chambre, index) in typeChamber.chambre" :key="index"
                                                 :value="chambre">{{ chambre }}
                                         </option>
                                     </select>
+                                </div>
+                                <div class="participant__temp">
+                                    <label for="participants">Nombre de participant.e.s : </label>
+                                    <input type="number" name="participants" id="participants"
+                                           v-model="numberParticipant">
+                                </div>
 
-                                    <div class="participant__temp">
-                                        <label for="participants">Nombre de participant.e.s : </label>
-                                        <input type="number" name="participants" id="participants"
-                                               v-model="numberParticipant">
-                                    </div>
-
-                                    <div class="temp__option">
-                                        <p class="option-title">En option :</p>
-                                        <div class="options-container">
-                                            <div v-for="(option, index) in options.option">
-                                                <input type="number" name="quantity" :id="index"
-                                                       v-model="options.quantity[index]" @change="handleOptionPrice(index)">
-                                                {{ option }} - <span class="bold-option">{{ options.price[index] }}
-                                                    €</span>
-                                            </div>
+                                <div class="temp__option">
+                                    <p class="option-title">En option :</p>
+                                    <div class="options-container">
+                                        <div v-for="(option, index) in options.option">
+                                            <input type="number" name="quantity" :id="index"
+                                                   v-model="options.quantity[index]" @change="handleOptionPrice(index)">
+                                            <p>{{ option }} - <span class="bold-option">{{ options.price[index] }}
+                                                    €</span></p>
                                         </div>
                                     </div>
-
-                                    <div class="temp-price">
-                                        <p class="price-temp">Tarifs :</p>
-                                        <h5>{{totalPrice}} €</h5>
-                                    </div>
                                 </div>
+
+                                <div class="temp-price">
+                                    <p class="price-temp">Tarifs :</p>
+                                    <h5>{{totalPrice}} €</h5>
+                                </div>
+
                             </div>
                         </div>
                         <div class="reservation">
-                            <a href="#" id="reverver">Je réserve mon voyage</a>
+                            <a href="#" id="reverver" @click="handleClick">Je réserve mon voyage</a>
                         </div>
                     </section>
                     <section class="buttons">
@@ -283,6 +284,58 @@ get_header(); ?>
                     </section>
                 </div>
             </div>
+
+            <section class="temp-form" v-if="showTempForm">
+                <div class="container-narrow">
+                    <h2>Récaputilatif de votre voyage</h2>
+                    <div class="info-voyage">
+						<?php $image_temp = get_field( 'image_voyage_form' ); ?>
+                        <img src="<?= esc_url( $image_temp['url'] ) ?>" alt="<?= esc_attr( $image_temp['alt'] ); ?>">
+                        <div class="temp__info-voyage">
+                            <h3><?php the_title(); ?></h3>
+                            <p class="temp__info-title">
+                                Du <?php the_field( 'date_de_depart' ); ?> au <?php the_field( 'date_de_retour' ); ?>
+                            </p>
+                            <p>Nombre(s) de personne(s): {{`${numberParticipant} - ${chambreSelect}`}}</p>
+                            <div class="options__form">
+                                <p class="options__form-title">En option :</p>
+                                <p v-for="(option, index) in selectedOptions" :key="index">{{ `${option.name} -
+                                    Nombres de personnes : ${option.quantity}` }}</p>
+                            </div>
+                            <div class="form__price">
+                                <p>Prix : {{totalPrice}}€</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form_confirm">
+                        <h2 v-if="sentResa">{{response}}</h2>
+                        <form action="" v-if="!sentResa">
+                            <label for="name">
+                                Votre nom*
+                                <input type="text" name="name" id="name" placeholder="Nomades" required
+                                       v-model="name">
+                            </label>
+                            <label for="prenom">
+                                Votre prénom*
+                                <input type="text" name="prenom" id="prenom" placeholder="Marie" v-model="prenom"
+                                       required>
+                            </label>
+                            <label for="phone">
+                                Votre numéro de téléphone*
+                                <input type="tel" name="phone" id="phone" placeholder="06 00 00 00 00" v-model="phone"
+                                       required>
+                            </label>
+                            <label for="mail">
+                                Votre adresse mail
+                                <input type="email" name="mail" id="mail" placeholder="nomades-marie@sens-nomades.com"
+                                       v-model="mail"
+                                       required>
+                            </label>
+                            <button class="form-btn" @click="submitForm($event)">Envoyer ma réservation</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
 
             <script>
                 const { createApp } = Vue
@@ -324,16 +377,28 @@ get_header(); ?>
                             },
                             numberParticipant: 1,
                             chamberPrice: 0,
-                            totalChamberPrice: 1,
+                            totalChamberPrice: 0,
                             totalPrice: 0,
-                            optionsPrice: 1,
+                            optionsPrice: 0,
+                            showTempForm: false,
+                            chambreSelect: null,
+                            selectedOptions: [],
+                            name: null,
+                            prenom: null,
+                            phone: null,
+                            mail: null,
+                            error: null,
+                            response: null,
+                            voyage: null,
+                            sentResa: false,
                         }
                     },
                     async mounted () {
                         await this.getImages()
                         await this.getCoord()
                         await this.tempFunction()
-                        this.littleImages = this.images
+                        this.littleImages = this.images;
+                        this.voyage = <?= json_encode(get_the_title()); ?>;
                         if ( this.images.length > 0 ) {
                             this.sliceLittleA = 1
                         }
@@ -357,6 +422,82 @@ get_header(); ?>
                         this.isLoaded = true
                     },
                     methods: {
+                        submitForm (e) {
+                            e.preventDefault();
+                            this.errors = [];
+                            this.checkForm();
+                            if ( !this.errors.length ) {
+                                const bodyFormData = new FormData();
+                                bodyFormData.set("nom", this.name);
+                                bodyFormData.set("prenom", this.prenom);
+                                bodyFormData.set("tel", this.phone);
+                                bodyFormData.set("mail", this.mail);
+                                bodyFormData.set("voyage", this.voyage);
+                                bodyFormData.set("participants", this.numberParticipant);
+                                bodyFormData.set("chambre", this.chambreSelect);
+                                bodyFormData.set("options", JSON.stringify(this.selectedOptions));
+                                bodyFormData.set("prix-estime", this.totalPrice);
+
+                                axios( {
+                                    method: "post",
+                                    url: "https://sens-nomades.btg-communication-dev" +
+                                        ".com/wp-json/contact-form-7/v1/contact-forms/563/feedback",
+                                    data: bodyFormData,
+                                    config: { headers: { "Content-Type": "multipart/form-data" } },
+                                } ).then( response => {
+                                    console.log( response )
+                                    this.response = response.data.message;
+                                    this.sentResa = true;
+                                    this.name = null;
+                                    this.prenom = null;
+                                    this.mail = null;
+                                    this.phone = "";
+                                    return true;
+                                } ).catch( error => console.log( error ) );
+                            }
+                        },
+                        checkForm() {
+                            if (this.name === null) {
+                                this.errors.push('Le nom est requis.');
+                            }
+                            if (this.prenom === null) {
+                                this.errors.push('Le prénom est requis.');
+                            }
+                            if (this.phone === null) {
+                                this.errors.push('Le numéro de téléphone est requis.');
+                            }
+                            if (this.mail === null) {
+                                this.errors.push('L\'adresse mail est requise.');
+                            } else if (!this.validEmail(this.mail)) {
+                                this.errors.push('L\'adresse mail n\'est pas valide.');
+                            }
+                            if (this.chambreSelect === null) {
+                                this.errors.push('La chambre est requise.');
+                            }
+                            if (this.selectedOptions.length === 0) {
+                                this.errors.push('Les options sont requises.');
+                            }
+                            if (this.errors.length > 0) {
+                                return false;
+                            }
+                            return true;
+                        },
+                        validEmail ( email ) {
+                            const re =
+                                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                            return re.test( email );
+                        },
+                        handleClick () {
+                            for ( let i = 0; i < this.options.option.length; i++ ) {
+                                if ( this.options.quantity[ i ] > 0 ) {
+                                    this.selectedOptions.push( {
+                                        name: this.options.option[ i ], quantity: this
+                                            .options.quantity[ i ]
+                                    } )
+                                }
+                            }
+                            this.showTempForm = !this.showTempForm
+                        },
                         tempFunction () {
                             this.typeChamber.chambre = <?= json_encode( $chambre ); ?>;
                             this.typeChamber.price = <?= json_encode( $price ); ?>;
@@ -366,7 +507,7 @@ get_header(); ?>
                                 this.options.quantity.push( 0 );
                             } )
                             for ( let i = 0; i < this.options.option.length; i++ ) {
-                                this.options.currentPrice.push( this.options.quantity[i] * this.options.price[i] );
+                                this.options.currentPrice.push( this.options.quantity[ i ] * this.options.price[ i ] );
                             }
                         },
                         getImages () {
@@ -440,25 +581,27 @@ get_header(); ?>
                                 if ( chambre === e.target.value ) {
                                     this.chamberPrice = this.typeChamber.price[ this.typeChamber.chambre.indexOf(
                                         chambre ) ]
-                                    this.totalPrice = this.chamberPrice
+                                    this.totalChamberPrice = this.chamberPrice
                                 }
                             } )
                         },
                         handleOptionPrice ( index ) {
-                            this.options.currentPrice[index] = this.options.quantity[index] * this.options.price[index]
-                            this.options.currentPrice[index] = Number( this.options.currentPrice[index] )
-                            this.optionsPrice = Number(this.optionsPrice) + this.options.currentPrice[index]
+                            this.options.currentPrice[ index ] = this.options.quantity[ index ] * this.options.price[ index ]
+                            this.optionsPrice = 0;
+                            this.options.currentPrice.forEach( price => {
+                                this.optionsPrice += Number( price )
+                            } )
                         }
                     },
                     watch: {
                         numberParticipant ( val ) {
-                            this.totalChamberPrice = Number(this.chamberPrice) * Number(val)
+                            this.totalChamberPrice = Number( this.chamberPrice ) * Number( val )
                         },
                         optionsPrice ( val ) {
-                            this.totalPrice = Number(this.totalChamberPrice) + Number(val)
+                            this.totalPrice = Number( this.totalChamberPrice ) + Number( val )
                         },
                         totalChamberPrice ( val ) {
-                            this.totalPrice = Number(val) + Number(this.optionsPrice)
+                            this.totalPrice = Number( val ) + Number( this.optionsPrice )
                         }
                     }
                 } ).mount( '#root' );
