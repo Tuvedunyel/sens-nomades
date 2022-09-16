@@ -248,7 +248,7 @@
 
 .article__card {
   display: grid;
-  grid-template-row: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   justify-items: center;
   align-items: center;
   border-top-left-radius: 10px;

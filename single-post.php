@@ -91,7 +91,7 @@
                 <div class="card-container">
 					<?php while ( $categories__query->have_posts() ) : $categories__query->the_post(); ?>
                         <div class="article__card">
-                            <div class="card__thmbnail">
+                            <div class="card__thumbnail">
 								<?php the_post_thumbnail( 'full' ); ?>
 								<?php the_category(); ?>
                             </div>

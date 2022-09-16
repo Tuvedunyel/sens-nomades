@@ -127,9 +127,9 @@ get_header(); ?>
 									<?php endif; ?>
                                 </div>
 								<?php $lien_intervenante = get_field( 'lien_page_lintervenante' ) ?>
-                                <a href="<?= esc_url( $lien_intervenante['url'] ) ?>"
-                                   class="lien_intervenante"><?= esc_html
-									( $lien_intervenante['title'] ) ?></a>
+<!--                                <a href="--><?//= esc_url( $lien_intervenante['url'] ) ?><!--"-->
+<!--                                   class="lien_intervenante">--><?//= esc_html
+//									( $lien_intervenante['title'] ) ?><!--</a>-->
                             </article>
                         </div>
                     </section>
@@ -265,11 +265,11 @@ get_header(); ?>
                             <a href="#" id="reverver" @click="handleClick">Je réserve mon voyage</a>
                         </div>
                     </section>
-                    <section class="buttons">
-                        <a href="#" class="private-button">Je privatise mon voyage</a>
-                        <a href="#" class="offer-button">J'offre un voyage</a>
-                        <a href="#" class="contact-button">Contactez-nous</a>
-                    </section>
+<!--                    <section class="buttons">-->
+<!--                        <a href="#" class="private-button">Je privatise mon voyage</a>-->
+<!--                        <a href="#" class="offer-button">J'offre un voyage</a>-->
+<!--                        <a href="#" class="contact-button">Contactez-nous</a>-->
+<!--                    </section>-->
                     <section class="map">
                         <div id="map"></div>
                     </section>
@@ -285,8 +285,11 @@ get_header(); ?>
                 </div>
             </div>
 
-            <section class="temp-form" v-if="showTempForm">
-                <div class="container-narrow">
+            <section class="temp-form" v-if="showTempForm" >
+                <div class="close" @click="closePopUp">
+                    <img src="<?= get_template_directory_uri() ?>/assets/close.svg" alt="Fermer la popup">
+                </div>
+                <div class="container-narrow" @click="stayPopUp">
                     <h2>Récaputilatif de votre voyage</h2>
                     <div class="info-voyage">
 						<?php $image_temp = get_field( 'image_voyage_form' ); ?>
@@ -348,7 +351,7 @@ get_header(); ?>
                                 <input type="text" name="postale" id="postale" placeholder="75000" v-model="postale" required>
                             </label>
                             <label for="regime">
-                                Avez-vous un régime allimentaire particulier ?
+                                Avez-vous un régime alimentaire particulier ?
                                 <input type="text" name="regime" id="regime" placeholder="Végétarien" v-model="regime">
                             </label>
                             <label for="allergie">
@@ -457,6 +460,9 @@ get_header(); ?>
                         this.isLoaded = true
                     },
                     methods: {
+                        closePopUp () {
+                            this.showTempForm = false
+                        },
                         submitForm (e) {
                             e.preventDefault();
                             this.errors = [];
@@ -482,8 +488,7 @@ get_header(); ?>
 
                                 axios( {
                                     method: "post",
-                                    url: "https://sens-nomades.btg-communication-dev" +
-                                        ".com/wp-json/contact-form-7/v1/contact-forms/582/feedback",
+                                    url: "https://www.sens-nomades.com/wp-json/contact-form-7/v1/contact-forms/582/feedback",
                                     data: bodyFormData,
                                     config: { headers: { "Content-Type": "multipart/form-data" } },
                                 } ).then( response => {

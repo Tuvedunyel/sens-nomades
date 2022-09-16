@@ -456,6 +456,8 @@ main.product {
       background: url('../assets/inclus.svg');
       width: 34px;
       height: 33px;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 }
@@ -473,6 +475,8 @@ main.product {
       background: url('../assets/non-inclus.svg');
       width: 37px;
       height: 33px;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 }

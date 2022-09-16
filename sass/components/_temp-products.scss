@@ -147,6 +147,53 @@ body {
   background: rgba(0, 0, 0, 0.5);
   z-index: 201;
 
+  .close {
+    width: 35px;
+    bottom: 39.5%;
+    height: 35px;
+    display: flex;
+    position: absolute;
+    right: 4%;
+    cursor: pointer;
+
+    @media screen and (min-width: 396px) {
+      bottom: 40.5%;
+    }
+    @media screen and (min-width: 476px) {
+      bottom: 41.5%;
+    }
+    @media screen and (min-width: 660px) {
+      bottom: 43.5%;
+    }
+    @media screen and (min-width: 1000px) {
+      bottom: 40%;
+    }
+
+    @media screen and (min-width: 730px) {
+      bottom: 48%;
+    }
+
+    @media screen and (min-width: 1200px) {
+      bottom: 44%;
+      right: 13%;
+    }
+    @media screen and (min-width: 1234px) {
+      bottom: 92%;
+      right: 6%;
+    }
+
+    @media screen and (min-width: 1330px) {
+      bottom: 93%;
+    }
+    @media screen and (min-width: 1440px) {
+      bottom: 94%;
+    }
+    @media screen and (min-width: 1500px) {
+      bottom: 97%;
+      right: 18%;
+    }
+  }
+
   .container-narrow {
     position: absolute;
     width: 95%;

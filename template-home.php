@@ -151,10 +151,10 @@ $categories = get_the_category();
             },
         },
         async mounted () {
-            await axios.get( 'https://sens-nomades.test/wp-json/wp/v2/categories' ).then( res => {
+            await axios.get( 'https://sens-nomades.com/wp-json/wp/v2/categories' ).then( res => {
                 this.categories = res.data
             } )
-            await axios.get( 'https://sens-nomades.test/wp-json/better-rest-endpoints/v1/posts' ).then( res => {
+            await axios.get( 'https://sens-nomades.com/wp-json/better-rest-endpoints/v1/posts' ).then( res => {
                 this.posts = res.data
             } )
             this.numberOfPages = Math.ceil( this.posts.length / this.step );
