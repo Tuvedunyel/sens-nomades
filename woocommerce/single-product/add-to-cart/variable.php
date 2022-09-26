@@ -37,18 +37,13 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
             <div class="variations" role="presentation">
                 <div class="variations-container">
 					<?php foreach ( $attributes as $attribute_name => $options ) :
-						if ( $attribute_name == "pa_dates" ) :
-                            ?>
-							<?php
-							wc_dropdown_variation_attribute_options(
-								array(
-									'options'   => $options,
-									'attribute' => $attribute_name,
-									'product'   => $product,
-								)
-							);
-							?>
-						<?php endif;
+						wc_dropdown_variation_attribute_options(
+							array(
+								'options'   => $options,
+								'attribute' => $attribute_name,
+								'product'   => $product,
+							)
+						);
 					endforeach; ?>
                 </div>
             </div>
@@ -68,28 +63,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 				 * @hooked woocommerce_single_variation - 10 Empty div for variation data.
 				 * @hooked woocommerce_single_variation_add_to_cart_button - 20 Qty and cart button.
 				 */
-                ?>
-                <div class="woocommerce-variation-add-to-cart variations_button" id="cart-perso">
-                    <div class="chambre">
-			            <?php foreach ( $attributes as $attribute_name => $options ) :
-				            if ( $attribute_name == "pa_type-de-chambre" ) : ?>
-                                <div class="chambre-loop">
-                                    <label for="<?php echo esc_attr( sanitize_title( $attribute_name ) ); ?>">Type de chambre</label>
-                                    <div class="chambre-loop__value">
-							            <?php
-							            wc_dropdown_variation_attribute_options(
-								            array(
-									            'options'   => $options,
-									            'attribute' => $attribute_name,
-									            'product'   => $product,
-								            )
-							            );
-							            ?>
-                                    </div>
-                                </div>
-				            <?php endif;
-			            endforeach; ?>
-                    </div>
+				?>
 				<?php do_action( 'woocommerce_single_variation' );
 
 				/**

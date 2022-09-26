@@ -4,17 +4,22 @@ const burgerBtn = document.getElementById('burger-btn');
 const linkChildren = document.querySelectorAll('.menu-item-has-children > a');
 const menuChildren = document.querySelectorAll(' .menu-item-has-children ');
 const cart = document.getElementById('cart-perso');
-// const reserver = document.getElementById( 'reverver' );
+const reserver = document.getElementById('reverver');
+const reserverContainer = document.querySelector('.reservation');
 const coachs = document.querySelectorAll('.coachs');
 const coachsBtn = document.querySelectorAll('.coachs-btn');
 const border = document.querySelectorAll('.coach-border');
 const longDescription = document.querySelectorAll('.long-description');
 const containerPos = document.querySelector('.coachs-list__container-inter');
+const minus = document.getElementById('minus');
+const plus = document.getElementById('plus');
+const quantity = document.querySelector('[name="quantity"]');
 let y = null;
 let x = null;
 const input = document.querySelectorAll('.variable-item-radio-input');
 const optionsContainer = document.querySelectorAll('.variable-item.radio-variable-item');
 const reververBtn = document.getElementById('reverver');
+const typeChambre = document.getElementById('pa_type-de-chambre');
 if (input && reververBtn) {
     reververBtn.addEventListener('click', e => {
         e.preventDefault();
@@ -66,10 +71,26 @@ if (linkChildren) {
         });
     });
 }
-// if (reserver && cart) {
-//     reserver.addEventListener( 'click', ( e ) => {
-//         e.preventDefault();
-//         cart.classList.toggle( 'active' );
-//     } );
-// }
+if (reserver && cart && typeChambre) {
+    reserver.addEventListener('click', (e) => {
+        e.preventDefault();
+        typeChambre.classList.toggle('active');
+        cart.classList.toggle('active');
+        reserverContainer.classList.toggle('inactive');
+    });
+}
+if (minus && plus && quantity) {
+    minus.addEventListener('click', () => {
+        if (quantity.value > 1) {
+            quantity.value = Number(quantity.value) - 1;
+        }
+    });
+    plus.addEventListener('click', () => {
+        let inStock = document.querySelector('.in-stock');
+        let currentStock = inStock.textContent.slice(0, 1);
+        if (Number(quantity.value) < Number(currentStock)) {
+            quantity.value = Number(quantity.value) + 1;
+        }
+    });
+}
 //# sourceMappingURL=script.js.map

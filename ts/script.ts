@@ -4,27 +4,32 @@ const burgerBtn = document.getElementById( 'burger-btn' );
 const linkChildren = document.querySelectorAll( '.menu-item-has-children > a' );
 const menuChildren = document.querySelectorAll( ' .menu-item-has-children ' );
 const cart = document.getElementById( 'cart-perso' );
-// const reserver = document.getElementById( 'reverver' );
-const coachs = document.querySelectorAll( '.coachs' );
+const reserver = document.getElementById( 'reverver' );
+const reserverContainer = document.querySelector( '.reservation' );
+const coachs = <HTMLDivElement[]> <unknown> document.querySelectorAll( '.coachs' );
 const coachsBtn = document.querySelectorAll( '.coachs-btn' );
-const border = document.querySelectorAll( '.coach-border' );
-const longDescription = document.querySelectorAll( '.long-description' );
-const containerPos = document.querySelector( '.coachs-list__container-inter' )
+const border = <HTMLDivElement[]> <unknown> document.querySelectorAll( '.coach-border' );
+const longDescription = <HTMLDivElement[]> <unknown> document.querySelectorAll( '.long-description' );
+const containerPos = document.querySelector( '.coachs-list__container-inter' );
+const minus = <HTMLDivElement> <unknown> document.getElementById( 'minus' );
+const plus = <HTMLDivElement> <unknown> document.getElementById( 'plus' );
+const quantity = <HTMLInputElement> <unknown> document.querySelector( '[name="quantity"]' );
 let y: null | number = null;
 let x: null | number = null;
 
-const input = document.querySelectorAll( '.variable-item-radio-input' );
+const input = <HTMLInputElement[]> <unknown> document.querySelectorAll( '.variable-item-radio-input' );
 const optionsContainer = document.querySelectorAll( '.variable-item.radio-variable-item' );
 const reververBtn = document.getElementById( 'reverver' );
+const typeChambre = document.getElementById( 'pa_type-de-chambre' );
 
 if (input && reververBtn) {
     reververBtn.addEventListener( 'click', e => {
         e.preventDefault();
         for ( let i = 0; i < input.length; i++ ) {
             for ( let j = 0; j < optionsContainer.length; j++ ) {
-                optionsContainer[j].classList.add( 'checkout' );
+                optionsContainer[ j ].classList.add( 'checkout' );
                 if (input[ i ].checked && i === j) {
-                    optionsContainer[j].classList.add('active')
+                    optionsContainer[ j ].classList.add( 'active' )
                 }
             }
         }
@@ -74,9 +79,27 @@ if (linkChildren) {
     } );
 }
 
-// if (reserver && cart) {
-//     reserver.addEventListener( 'click', ( e ) => {
-//         e.preventDefault();
-//         cart.classList.toggle( 'active' );
-//     } );
-// }
+if (reserver && cart && typeChambre) {
+    reserver.addEventListener( 'click', ( e ) => {
+        e.preventDefault();
+        typeChambre.classList.toggle( 'active' );
+        cart.classList.toggle( 'active' );
+        reserverContainer.classList.toggle( 'inactive' );
+    } );
+}
+
+if (minus && plus && quantity) {
+    minus.addEventListener( 'click', () => {
+        if (quantity.value > 1) {
+            quantity.value = Number( quantity.value ) - 1;
+        }
+    } )
+
+    plus.addEventListener( 'click', () => {
+        let inStock = <HTMLDivElement> <unknown> document.querySelector( '.in-stock' );
+        let currentStock = inStock.textContent.slice(0, 1);
+        if ( Number(quantity.value) < Number( currentStock ) ) {
+            quantity.value = Number( quantity.value ) + 1;
+        }
+    } )
+}
