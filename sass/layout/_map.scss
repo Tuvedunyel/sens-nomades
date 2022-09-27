@@ -1,0 +1,119 @@
+@use '../abstracts' as var;
+
+
+#map-container {
+  width: 100%;
+  height: 80vh;
+
+  .attachment-post-thumbnail {
+    max-height: 107px;
+    max-width: 167px;
+  }
+
+  .leaflet-popup-content-wrapper {
+    width: 348px;
+    height: 189px;
+    position: relative;
+  }
+
+  .leaflet-popup-content {
+    display: flex;
+    flex-direction: column;
+    width: 348px !important;
+    height: 189px;
+    margin: 0;
+    padding: 0.5rem;
+  }
+
+  .leaflet-popup {
+    opacity: 1;
+    transform: translate3d(749px, 338px, 0px);
+    bottom: -7px;
+    left: -96px;
+    width: 348px;
+    height: 189px;
+  }
+
+  a.leaflet-popup-close-button {
+    top: -15% !important;
+    right: -79% !important;
+    background: white !important;
+    border-radius: 50% !important;
+    font-size: 1.9rem !important;
+    color: var.$roche !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      line-height: 1;
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+}
+
+.price-marker {
+  background: url('../assets/fanion.svg');
+  background-position: center;
+  background-size: contain;
+  font-size: 1.7rem;
+  color: var.$sable;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 62px;
+  height: 62px;
+}
+
+.marker-map {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.upper {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0;
+}
+
+.right-marker {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  img {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.lower {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start ;
+
+  h4 {
+    font-size: 1.9rem;
+    font-weight: var.$regular;
+    color: var.$roche;
+    text-align: start;
+    margin-bottom: 1.1rem;
+  }
+
+  a {
+    align-self: end;
+    font-size: 1.7rem;
+    text-decoration: none;
+    background: var.$bleu_glacié;
+    color: white;
+    border-radius: 2.7rem;
+    padding: 0.2rem 1rem;
+  }
+}

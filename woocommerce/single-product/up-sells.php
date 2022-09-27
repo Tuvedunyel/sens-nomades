@@ -22,6 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( $upsells ) : ?>
 
 	<section class="up-sells upsells products">
+        <h3 class="option-title">En option :</h3>
 		<?php
 		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
 

@@ -1002,3 +1002,10 @@ input[type=number] {
     display: none !important;
   }
 }
+
+.mon-voyage__content .option-title {
+  text-transform: none;
+  font-size: 1.9rem;
+  text-align: start;
+  align-self: start;
+}

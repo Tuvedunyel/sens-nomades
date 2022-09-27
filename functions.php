@@ -19,6 +19,7 @@ function btg_register_assets()
 
 register_nav_menus( array(
     'main' => 'Menu principal',
+	'icon-menu' => 'Menu d\'icônes',
     'footer-main' => 'Menu bas de page',
 	'legals' => 'Menu mentions légales'
 ) );
@@ -41,3 +42,19 @@ if (function_exists('acf_add_options_page')) {
 
 // Remove contact Form 7 auto p
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+add_filter( 'wp_nav_menu_objects', 'btg_wp_nav_menu_objects', 10, 2 );
+
+function btg_wp_nav_menu_objects( $items, $args ) {
+	// loop
+	foreach( $items as &$item ) {
+		// vars
+		$icon = get_field('image', $item);
+		// append icon
+		if( $icon ) {
+			$item->title = '<span class="screen-reader-text">' . $item->title . '</span><img src="' . $icon . '" alt="' . $item->title . '" />';
+		}
+	}
+	// return
+	return $items;
+}
