@@ -43,7 +43,7 @@ get_header(); ?>
                 <div class="button-container">
 					<?php while ( have_rows( 'boutons' ) ) : the_row(); ?>
                         <button class="choose__btn" @click="toggleForm($event)"><?php the_sub_field( 'texte' );
-                        ?></button>
+							?></button>
 					<?php endwhile; ?>
                 </div>
 			<?php endif; ?>
@@ -54,50 +54,122 @@ get_header(); ?>
 					<?php if ( have_rows( 'arguments' ) ) : ?>
 						<?php while ( have_rows( 'arguments' ) ) : the_row(); ?>
                             <div class="arguments">
-                                <h3><?php the_sub_field('titre'); ?></h3>
+                                <h3><?php the_sub_field( 'titre' ); ?></h3>
                                 <div class="texte__arguments">
-                                    <?php the_sub_field('texte'); ?>
+									<?php the_sub_field( 'texte' ); ?>
                                 </div>
                             </div>
 						<?php endwhile; ?>
 					<?php endif; ?>
                     <div class="form-container">
-                        <?= do_shortcode('[contact-form-7 id="650" title="Particulier"]') ?>
+						<?= do_shortcode( '[contact-form-7 id="650" title="Particulier"]' ) ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particulier entreprise" v-if="!particulier && entreprise">
+                <div class="particulier__container">
+					<?php if ( have_rows( 'arguments_entreprise' ) ) : ?>
+						<?php while ( have_rows( 'arguments_entreprise' ) ) : the_row(); ?>
+                            <div class="arguments">
+                                <h3><?php the_sub_field( 'titre' ); ?></h3>
+                                <div class="texte__arguments">
+									<?php the_sub_field( 'texte' ); ?>
+                                </div>
+                            </div>
+						<?php endwhile; ?>
+					<?php endif; ?>
+                    <div class="form-container">
+						<?= do_shortcode( '[contact-form-7 id="656" title="Particulier"]' ) ?>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+	<?php if ( have_rows( 'ils_parlent_de_nous' ) ) :
+		$lien_reviews = [];
+		$image_reviews = [];
+		?>
+        <section class="reviews" v-if="particulier || entreprise">
+            <div class="container-narrow">
+                <h2 class="title__reviews">Il parlent de nous :</h2>
+                <div class="reviews__contianer">
+					<?php while ( have_rows( 'ils_parlent_de_nous' ) ) : the_row();
+						$lien            = get_sub_field( 'lien' );
+						$image           = get_sub_field( 'image' );
+						$lien_reviews[]  = array_push( $lien_reviews, $lien );
+						$image_reviews[] = array_push( $image_reviews, $image );
+					endwhile; ?>
+                    <a v-for="(link, index) in slideLink" :key="index" :href="link" target="_blank" class="lien__reviews">
+                        <img :src="image[index]['url']" :alt="image[index]['alt']">
+                    </a>
+                </div>
+            </div>
+        </section>
+	<?php endif; ?>
 
     <script>
         const { createApp } = Vue;
 
-        createApp({
-            data() {
+        createApp( {
+            data () {
                 return {
                     particulier: false,
-                    entreprise: false
+                    entreprise: false,
+                    image: null,
+                    lien: null,
+                    windowWidth: null,
+                    sliceA: 0,
+                    sliceB: 1,
+                }
+            },
+            computed: {
+                slideLink () {
+                    return this.lien.slice(this.sliceA, this.sliceB);
+                }
+            },
+            mounted () {
+                this.getReviewsInfo();
+                this.windowWidth = window.innerWidth;
+                if ( this.windowWidth < 650 ) {
+                    this.sliceB = 1;
+                } else if ( this.windowWidth < 1000 ) {
+                    this.sliceB = 2;
+                } else if ( this.windowWidth < 1200 ) {
+                    this.sliceB = 3;
+                } else {
+                    this.sliceB = 4;
                 }
             },
             methods: {
-                toggleForm(e) {
-                    if (e.target.innerText.includes('PARTICULIER')) {
-                        console.log(e.target.innerText)
+                getReviewsInfo () {
+                    this.image = <?= json_encode( $image_reviews ); ?>;
+                    this.lien = <?= json_encode( $lien_reviews ); ?>;
+                    this.lien = this.lien.filter( function ( item ) {
+                        return typeof item !== 'number';
+                    } );
+                    this.image = this.image.filter( function ( item ) {
+                        return typeof item !== 'number';
+                    } );
+                },
+                toggleForm ( e ) {
+                    if ( e.target.innerText.includes( 'PARTICULIER' ) ) {
+                        console.log( e.target.innerText )
                         this.toggleParticulier();
-                    } else if ( e.target.innerText.includes('ENTREPRISE') ) {
+                    } else if ( e.target.innerText.includes( 'ENTREPRISE' ) ) {
                         this.toggleEntreprise();
                     }
                 },
-                toggleParticulier() {
-                    this.particulier = !this.particulier;
+                toggleParticulier () {
+                    this.particulier = true;
                     this.entreprise = !this.particulier
                 },
                 toggleEntreprise () {
-                    this.entreprise = !this.entreprise;
+                    this.entreprise = true;
                     this.particulier = !this.entreprise
                 }
             }
-        }).mount('#root')
+        } ).mount( '#root' )
     </script>
 </main>
 

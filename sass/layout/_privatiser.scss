@@ -16,6 +16,16 @@
   p {
     margin-bottom: 4.1rem;
   }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: min(75%, 859px);
+    margin-inline: auto;
+  }
+
 }
 
 .road {
@@ -196,6 +206,40 @@
   padding: 1rem 1.3rem;
 }
 
+.particulier.entreprise {
+  border-color: var.$terracota;
+
+  .particulier__container {
+    background: var.$terracota;
+
+    h3 {
+      max-width: min(75%, 402px);
+    }
+
+    h3::after, h3::before {
+      bottom: -10%;
+
+      @media screen and (min-width: 450px) {
+        bottom: -16%;
+      }
+
+      @media screen and (min-width: 780px) {
+        right: -4%;
+      }
+    }
+
+    h3::before {
+      @media screen and (min-width: 780px) {
+        right: -8%;
+      }
+    }
+  }
+
+  .texte__arguments p:last-of-type, strong {
+    margin-bottom: 0;
+  }
+}
+
 .particulier__container {
   background: var.$bleu_glacié;
   color: white;
@@ -208,6 +252,11 @@
   padding-block: 3.7rem;
   padding-inline: 0.5rem;
   width: 100%;
+
+  ul, li {
+    list-style: none;
+    text-align: center;
+  }
 
   strong {
     margin-bottom: 5.9rem;
@@ -293,15 +342,177 @@
     &::before, &::after {
       display: none;
     }
+
+    @media screen and (min-width: 730px) {
+      align-self: start;
+      margin-inline: initial;
+      text-align: start;
+    }
+  }
+
+  .subtitle {
+    @media screen and (min-width: 730px) {
+      align-self: start;
+      text-align: start;
+    }
   }
 
   :is( select, input, textarea ) {
     width: 100%;
+    border-radius: 10px;
+    border: 1px solid var.$bleu_odysée;
+    padding: 1em;
+    font-size: 1.7rem;
+    background: white;
+    font-weight: var.$regular;
+    color: var.$roche;
+    position: relative;
   }
 
   .fields__container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    @media screen and (min-width: 730px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 2rem;
+      row-gap: 1.5rem;
+    }
+  }
+
+  .textarea__container {
+    @media screen and (min-width: 730px) {
+      grid-column: 1 / 3;
+      justify-self: center;
+      align-self: center;
+      width: 100%;
+    }
+  }
+
+  .submit-private__container {
+    width: fit-content;
+    position: relative;
+    margin: auto;
+    pointer-events: none;
+
+    @media screen and (min-width: 730px) {
+      grid-column: 1 / 3;
+      justify-self: center;
+      align-self: center;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5%;
+      right: -1%;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      border: 1px solid white;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover {
+
+      &::after {
+        top: 5%;
+        right: -3%;
+      }
+    }
+  }
+
+  .submit-private {
+    width: fit-content;
+    background: white;
+    border: none;
+    color: var.$terracota;
+    padding: 1.7rem 3.3rem;
+    font-weight: var.$regular;
+    pointer-events: all;
+  }
+}
+
+.arrow_select {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0.5%;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 11px solid var.$terracota;
+    margin-block: auto;
+    pointer-events: none;
+    z-index: 100;
+  }
+}
+
+.jours__form {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &::after {
+    content: 'jours';
+    position: absolute;
+    right: 1%;
+    top: 0;
+    bottom: 0;
+    margin-block: auto;
+    height: calc(100% - 2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 50px;
+    background: white;
+    pointer-events: none;
+    color: var.$terracota
+  }
+}
+
+.reviews .container-narrow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 9.5rem;
+
+  h2 {
+    color: var.$terracota;
+    font-size: 3.3rem;
+    text-align: center;
+  }
+
+  .reviews__contianer {
+    display: flex;
+    gap: 4.5rem;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      width: 255px;
+      height: 255px;
+      border-radius: 50%;
+      border: none;
+
+
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 }
