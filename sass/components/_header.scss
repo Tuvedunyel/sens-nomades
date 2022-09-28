@@ -76,7 +76,7 @@ header {
   }
 
   a {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
     font-weight: var.$bold;
     color: var.$black_300;
     text-decoration: none;
@@ -84,7 +84,7 @@ header {
     transition: 0.5s ease-in-out;
 
     @media screen and (min-width: 1200px) {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
 
     &:hover {
@@ -174,7 +174,7 @@ header {
      }
 
     a {
-      font-size: 2rem !important;
+      font-size: 1.8rem !important;
       text-align: center;
       font-weight: var.$regular !important;
 
@@ -201,7 +201,8 @@ header {
   align-self: start;
 
   ul {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
     gap: 0.5em;
@@ -211,6 +212,18 @@ header {
 
   li {
     list-style: none;
+    width: 100%;
+    height: 100%;
+
+    a {
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
     &:nth-of-type(3) {
       display: none;

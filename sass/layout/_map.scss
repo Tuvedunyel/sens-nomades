@@ -39,7 +39,7 @@
     right: -79% !important;
     background: white !important;
     border-radius: 50% !important;
-    font-size: 1.9rem !important;
+    font-size: 1.7rem !important;
     color: var.$roche !important;
     display: flex;
     justify-content: center;
@@ -58,8 +58,29 @@
   background: url('../assets/fanion.svg');
   background-position: center;
   background-size: contain;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: var.$sable;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 62px;
+  height: 62px;
+}
+
+.fanion-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.97rem;
+  width: 100%;
+}
+
+.days-spend {
+  background: url('../assets/fanion-sable.svg');
+  background-position: center;
+  background-size: contain;
+  font-size: 1.5rem;
+  color: var.$bleu_glacié;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,6 +97,7 @@
 
 .upper {
   display: flex;
+  justify-content: space-between;
   gap: 2rem;
   margin-top: 0;
 }
@@ -84,11 +106,13 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: center;
+  align-items: end;
+  width: 100%;
 
   img {
     width: 34px;
     height: 34px;
+    align-self: start;
   }
 }
 
@@ -100,7 +124,7 @@
   align-items: start ;
 
   h4 {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     font-weight: var.$regular;
     color: var.$roche;
     text-align: start;
@@ -109,7 +133,7 @@
 
   a {
     align-self: end;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     text-decoration: none;
     background: var.$bleu_glacié;
     color: white;

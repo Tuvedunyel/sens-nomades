@@ -4,7 +4,7 @@ main.product {
   margin-bottom: 4.6rem;
 
   h2 {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     color: var.$terracota;
     margin-bottom: 1rem;
     margin-top: 3.4rem;
@@ -12,7 +12,7 @@ main.product {
   }
 
   strong {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -44,7 +44,7 @@ main.product {
 .product-title {
   background: var.$bleu_glacié;
   color: var.$sable;
-  font-size: 3.6rem;
+  font-size: 3.4rem;
   padding: 0.4rem 2.9rem;
   margin-bottom: 2.6rem;
   text-align: center;
@@ -83,7 +83,7 @@ main.product {
     text-align: center;
     gap: 0.5rem;
     color: var.$terracota;
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     font-weight: var.$bold;
 
     &:first-of-type {
@@ -98,7 +98,7 @@ main.product {
   .intervenant-mini {
     background: var.$terracota;
     color: white;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: var.$regular;
     text-transform: uppercase;
     border-bottom-left-radius: 10px;
@@ -121,7 +121,7 @@ main.product {
   display: flex;
   justify-content: center;
   align-items: end;
-  font-size: 3.7rem;
+  font-size: 3.5rem;
   color: var.$roche;
   gap: 0.5rem;
 
@@ -141,7 +141,7 @@ main.product {
   gap: 1.2rem;
 
   strong {
-    font-size: 2.1rem;
+    font-size: 1.9rem;
     font-weight: var.$black;
     color: var.$roche;
   }
@@ -161,7 +161,7 @@ main.product {
 
 .auto-content {
   margin-top: 3.4rem;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 
   h2 {
 
@@ -175,7 +175,7 @@ main.product {
   display: block;
   color: var.$sable;
   font-weight: var.$bold;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   text-transform: uppercase;
   margin: 3.4rem auto;
   background: var.$terracota;
@@ -209,7 +209,7 @@ main.product {
   background: var.$sable;
   border-radius: 10px;
   padding: 3rem 4.1rem;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 
   strong, em {
     text-decoration: underline;
@@ -256,14 +256,14 @@ main.product {
   justify-content: center;
   align-items: center;
   color: var.$roche;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 
   @media screen and (min-width: 1200px) {
     align-items: start;
   }
 
   h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
     margin-bottom: 1.2rem;
   }
@@ -314,19 +314,19 @@ main.product {
     }
 
     p {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
   }
 
   h4 {
     font-family: var.$moon_flower;
-    font-size: 3rem;
+    font-size: 2.8rem;
     text-transform: uppercase;
   }
 }
 
 .lien_intervenante {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   color: var.$bleu_glacié;
   font-weight: var.$bold;
   text-decoration: underline;
@@ -487,7 +487,7 @@ main.product {
   padding: 2.5rem 4rem;
 
   h3 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
 
     &:not(:first-of-type) {
       margin-top: 4.6rem;
@@ -521,7 +521,7 @@ div.aside {
 
   h2 {
     color: var.$sable !important;
-    font-size: 3.6rem;
+    font-size: 3.4rem;
     font-weight: var.$bold;
     background: var.$bleu_glacié;
     display: block;
@@ -535,7 +535,7 @@ div.aside {
 }
 
 .mon-voyage__content {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var.$roche;
   background: transparent;
   text-align: center;
@@ -544,7 +544,7 @@ div.aside {
   h3 {
     font-weight: var.$regular;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
     margin-block: 2.3rem 2.5rem;
   }
@@ -579,7 +579,7 @@ div.aside {
 
   a {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var.$sable;
     text-decoration: none;
     text-transform: uppercase;
@@ -598,7 +598,7 @@ div.aside {
   a {
     text-align: center;
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: var.$bold;
     text-transform: uppercase;
     border-radius: 10px;
@@ -690,7 +690,7 @@ div.aside {
 }
 
 .variable-item-contents {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: var.$regular;
   color: var.$roche;
   width: 100%;
@@ -741,7 +741,7 @@ div.aside {
 }
 
 .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
-  font-size: 1.6rem !important;
+  font-size: 1.4rem !important;
   max-width: 192px !important;
   text-align: center !important;
 }
@@ -755,19 +755,19 @@ div.aside {
 }
 
 .woocommerce div.product span.price {
-  font-size: 1.9rem !important;
+  font-size: 1.7rem !important;
   color: var.$roche !important;
   font-weight: var.$bold !important;
 }
 
 .woocommerce div.product p.stock {
   color: black !important;
-  font-size: 1.9rem !important;
+  font-size: 1.7rem !important;
 }
 
 .woocommerce div.product span.price del {
   font-weight: 400 !important;
-  font-size: 1.9rem !important;
+  font-size: 1.7rem !important;
   opacity: 1 !important;
   color: var.$roche !important;
 }
@@ -775,7 +775,7 @@ div.aside {
 .woocommerce div.product span.price ins {
   text-decoration: none !important;
   color: var.$roche !important;
-  font-size: 1.9rem !important;
+  font-size: 1.7rem !important;
 }
 
 select#pa_type-de-chambre {
@@ -785,7 +785,7 @@ select#pa_type-de-chambre {
 
   &.active {
     display: inline-block;
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     color: var.$roche;
     background: white;
     border: 1px solid var.$bleu_odysée;
@@ -813,7 +813,7 @@ select#pa_type-de-chambre {
 }
 
 bdi {
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin-bottom: 0.2em;
   display: flow-root;
 }
@@ -850,7 +850,7 @@ bdi {
   justify-content: center !important;
   align-items: center !important;
   text-align: center !important;
-  font-size: 2rem !important;
+  font-size: 1.8rem !important;
   color: #fff5ed !important;
   text-decoration: none !important;
   text-transform: uppercase !important;
@@ -869,7 +869,7 @@ input[type=number] {
   width: 58px;
   height: 58px;
   color: black;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: var.$black;
   border: none;
   margin: 0 !important;
@@ -948,7 +948,7 @@ input[type=number] {
 
     h2 {
       display: flow-root;
-      font-size: 1.9rem !important;
+      font-size: 1.7rem !important;
       background: transparent !important;
       padding: 0 !important;
       border-radius: 0 !important;
@@ -958,7 +958,7 @@ input[type=number] {
     }
 
     .price, .price bdi {
-        font-size: 1.9rem !important;
+        font-size: 1.7rem !important;
         color: var.$roche !important;
         font-weight: var.$black !important;
       margin-bottom: 0 !important;
@@ -976,7 +976,7 @@ input[type=number] {
       justify-content: center;
       align-items: center;
       text-align: center;
-      font-size: 1.9rem;
+      font-size: 1.7rem;
       color: #fff;
       font-weight: 800;
       cursor: pointer;
@@ -1005,7 +1005,7 @@ input[type=number] {
 
 .mon-voyage__content .option-title {
   text-transform: none;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   text-align: start;
   align-self: start;
 }

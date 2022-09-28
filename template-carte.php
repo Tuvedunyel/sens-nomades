@@ -15,6 +15,7 @@ get_header(); ?>
 		public $image;
 		public $link;
 		public $tags;
+        public $days;
 	}
 
 	$product_list = [];
@@ -40,6 +41,7 @@ get_header(); ?>
 				$product->image     = get_the_post_thumbnail();
 				$product->link      = get_the_permalink();
 				$product->tags      = get_field( 'tag_image' );
+                $product->days      = get_field( 'nombre_de_jours' );
 				array_push( $product_list, $product );
 			endif; endwhile; endif;
 	$product_list = json_encode( $product_list );
@@ -80,8 +82,10 @@ get_header(); ?>
                         const marker = L.marker( [ Number( product.longitude ).toFixed( 4 ), Number( product.latitude
                         ).toFixed( 4 ) ], { icon: this.markerIcon } ).addTo( this.map );
                         marker.bindPopup( `<div class="marker-map"><div class="upper">${ product
-                            .image }<div class="right-marker"><div
-                            class="price-marker">${product.price}€</div><img src="${product.tags['url']}"
+                            .image }<div class="right-marker"><div class="fanion-container"><div
+                            class="days-spend">${product
+                            .days}</div><div
+                            class="price-marker">${product.price}€</div></div><img src="${product.tags['url']}"
                             alt="${product.tags['alt']}" title="${product.title}" /></div></div><div
                             class="lower"><h4>${product.title}</h4><a href="${product.link}"
                             target="_blank">Voir les dates</a></div></div>` );

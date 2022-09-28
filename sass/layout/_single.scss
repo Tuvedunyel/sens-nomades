@@ -1,7 +1,7 @@
 @use '../abstracts' as var;
 
 .return {
-  font-size: 2.1rem;
+  font-size: 1.9rem;
   color: var.$bleu_glacié;
   text-decoration: none;
   text-align: center;
@@ -37,7 +37,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 4.2rem;
+    font-size: 4rem;
     font-weight: var.$regular;
     text-align: center;
     color: var.$bleu_glacié;
@@ -66,7 +66,7 @@
   }
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     color: var.$terracota;
   }
 
@@ -168,7 +168,7 @@
   h2 {
     background: transparent;
     color: var.$sable;
-    font-size: 2.9rem;
+    font-size: 2.7rem;
     font-weight: var.$bold;
     text-align: center;
     align-items: center;
@@ -191,7 +191,7 @@
   }
 
   a {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var.$roche;
     text-decoration: none;
     display: flex;
@@ -206,7 +206,7 @@
   h2 {
     color: var.$roche;
     font-weight: var.$bold;
-    font-size: 3.6rem;
+    font-size: 3.4rem;
   }
 
   .container-narrow {
@@ -301,18 +301,18 @@
     margin-top: 0;
     margin-bottom: 1.3rem;
     color: var.$terracota;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: var.$bold;
     text-align: left;
     text-transform: uppercase;
   }
 
   p {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 
   a {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     color: var.$bleu_glacié;
     align-self: end;
   }
@@ -351,7 +351,7 @@
   }
 
   p {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: var.$roche;
     text-align: center;
   }
@@ -359,7 +359,7 @@
 
 .passions-title {
   margin-top: 0 !important;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: var.$bold !important;
   color: var.$terracota;
 }
@@ -378,7 +378,7 @@
     color: white;
     border: none;
     font-weight: var.$bold;
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     width: min(309px, 75%);
     border-radius: 10px;
     height: 58px;

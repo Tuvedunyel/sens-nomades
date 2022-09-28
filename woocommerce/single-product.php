@@ -303,6 +303,14 @@ get_header(); ?>
                             this.latitude = Number( this.latitude );
                             this.zoom = Number( this.zoom );
                         },
+                        handleProgram() {
+                            this.showProgram = !this.showProgram
+                            if ( this.showProgram ) {
+                                this.buttonText = 'Réduire le programme'
+                            } else {
+                                this.buttonText = 'Tout le programme'
+                            }
+                        },
                         handlePrev () {
                             if ( this.sliceBigA > 0 ) {
                                 this.sliceBigA--

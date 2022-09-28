@@ -1,0 +1,307 @@
+@use '../abstracts' as var;
+
+.private {
+  h1 {
+    font-size: 3.2rem;
+    font-weight: var.$bold;
+    color: var.$terracota;
+    margin-bottom: 1.7rem;
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 4.3rem;
+  }
+
+  p {
+    margin-bottom: 4.1rem;
+  }
+}
+
+.road {
+  background: var.$sable;
+  padding-block: 5.4rem;
+
+  p {
+    font-size: 1.7rem;
+    color: var.$roche;
+    font-weight: var.$bold;
+  }
+
+  h3 {
+    font-size: 3.3rem;
+    font-weight: var.$bold;
+    color: var.$terracota;
+    text-align: center;
+    margin-bottom: 1.4rem;
+  }
+
+  .container-narrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.raisons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 2em;
+}
+
+.raison {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin: auto;
+
+  &:last-of-type {
+
+    .chemin {
+      transform: rotateX(180deg);
+    }
+
+    @media screen and (min-width: 1200px) {
+      .chemin {
+        align-self: start;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    width: 60%;
+    margin: initial;
+
+    .chemin {
+      align-self: end;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    &:nth-of-type(2) {
+      grid-template-columns: 0.5fr 1fr;
+      align-self: end;
+    }
+  }
+
+  @media screen and (min-width: 1500px) {
+    width: 58%;
+  }
+
+  &:last-of-type {
+    flex-direction: column-reverse;
+  }
+
+  .circle {
+    width: 173px;
+    height: 173px;
+    background: white;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 118px;
+      max-height: 118px;
+    }
+  }
+}
+
+.choose {
+  padding-block: 3.3rem 10rem;
+
+  .container-narrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.1rem;
+  }
+
+  h2 {
+    font-size: 3.3rem;
+    text-align: center;
+    font-weight: var.$bold;
+    margin: 0;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3.3rem;
+
+    @media screen and (min-width: 850px) {
+      flex-direction: row;
+    }
+  }
+
+  .choose__btn {
+    color: white;
+    text-transform: uppercase;
+    font-weight: var.$bold;
+    background: var.$bleu_glacié;
+    padding: 1.3rem 7.7rem;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5%;
+      right: -1%;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      border: 1px solid var.$bleu_glacié;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:nth-of-type(2n) {
+      background: var.$terracota;
+
+      &::after {
+        border-color: var.$terracota;
+      }
+    }
+
+    &:hover {
+      &::after {
+        top: 5%;
+        right: -3%;
+      }
+    }
+  }
+}
+
+.particulier {
+  width: 100%;
+  border: 1px solid var.$bleu_odysée;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 1rem 1.3rem;
+}
+
+.particulier__container {
+  background: var.$bleu_glacié;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding-block: 3.7rem;
+  padding-inline: 0.5rem;
+  width: 100%;
+
+  strong {
+    margin-bottom: 5.9rem;
+    max-width: 745px;
+    display: flow-root;
+  }
+
+  h3 {
+    margin-bottom: 1.15rem;
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid white;
+    position: relative;
+    max-width: min(75%, 469.5px);
+    margin-inline: auto;
+    display: flow-root;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background: url('../assets/fanion-blanc.svg') no-repeat;
+      background-size: contain;
+      right: -14%;
+      bottom: -27%;
+      width: 13px;
+      height: 13px;
+
+      @media screen and (min-width: 420px) {
+        right: -11%;
+      }
+      @media screen and (min-width: 480px) {
+        right: -10%;
+      }
+      @media screen and (min-width: 480px) {
+        right: -8%;
+      }
+      @media screen and (min-width: 780px) {
+        right: -6%;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      background: url('../assets/fanion-blanc.svg') no-repeat;
+      background-size: contain;
+      right: -7%;
+      bottom: -27%;
+      width: 13px;
+      height: 13px;
+
+      @media screen and (min-width: 420px) {
+        right: -5%;
+      }
+      @media screen and (min-width: 420px) {
+        right: -4%;
+      }
+      @media screen and (min-width: 780px) {
+        right: -3%;
+      }
+    }
+  }
+
+  .arguments {
+    max-width: 869px;
+  }
+
+  .arguments:not(:last-of-type) {
+    margin-bottom: 4.2rem;
+  }
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .title_form {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    &::before, &::after {
+      display: none;
+    }
+  }
+
+  :is( select, input, textarea ) {
+    width: 100%;
+  }
+
+  .fields__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
