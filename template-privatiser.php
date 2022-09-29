@@ -100,7 +100,8 @@ get_header(); ?>
 						$lien_reviews[]  = array_push( $lien_reviews, $lien );
 						$image_reviews[] = array_push( $image_reviews, $image );
 					endwhile; ?>
-                    <a v-for="(link, index) in slideLink" :key="index" :href="link" target="_blank" class="lien__reviews">
+                    <a v-for="(link, index) in slideLink" :key="index" :href="link" target="_blank"
+                       class="lien__reviews">
                         <img :src="image[index]['url']" :alt="image[index]['alt']">
                     </a>
                 </div>
@@ -118,28 +119,19 @@ get_header(); ?>
                     entreprise: false,
                     image: null,
                     lien: null,
-                    windowWidth: null,
                     sliceA: 0,
                     sliceB: 1,
                 }
             },
             computed: {
                 slideLink () {
-                    return this.lien.slice(this.sliceA, this.sliceB);
+                    return this.lien.slice( this.sliceA, this.sliceB );
                 }
             },
             mounted () {
                 this.getReviewsInfo();
                 this.windowWidth = window.innerWidth;
-                if ( this.windowWidth < 650 ) {
-                    this.sliceB = 1;
-                } else if ( this.windowWidth < 1000 ) {
-                    this.sliceB = 2;
-                } else if ( this.windowWidth < 1200 ) {
-                    this.sliceB = 3;
-                } else {
-                    this.sliceB = 4;
-                }
+                this.sliceB = this.lien.length;
             },
             methods: {
                 getReviewsInfo () {
