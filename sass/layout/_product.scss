@@ -713,6 +713,10 @@ div.aside {
   }
 }
 
+#gift-card__page #cart-perso {
+  display: flex;
+}
+
 #cart-perso {
   display: none;
   flex-direction: column;
