@@ -131,6 +131,7 @@
 }
 
 .tiled-gallery__col {
+  display: flex;
   margin-left: 0 !important;
   margin-top: 4px !important;
   flex-direction: row !important;
