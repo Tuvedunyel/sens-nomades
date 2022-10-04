@@ -27,7 +27,7 @@ $categories = get_the_category();
                         </div>
                         <div class="card__content">
                             <h3 v-html="post.title"></h3>
-                            <p>{{ post.excerpt }}</p>
+                            <p v-html="post.excerpt.slice(0, 200)"></p>
                             <a :href="post.permalink">Lire la suite</a>
                         </div>
                     </div>
@@ -72,7 +72,7 @@ $categories = get_the_category();
                         </div>
                         <div class="card__content">
                             <h3 v-html="post.title"></h3>
-                            <p>{{ post.excerpt }}</p>
+                            <p v-html="post.excerpt.slice(0, 200)"></p>
                             <a :href="post.permalink">Lire la suite</a>
                         </div>
                     </div>

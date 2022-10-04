@@ -15,23 +15,25 @@ get_header(); ?>
             <h3><?php the_field( 'titre_partie_sable' ); ?></h3>
 			<?php if ( have_rows( 'raisons' ) ) : ?>
                 <div class="raisons">
-					<?php while ( have_rows( 'raisons' ) ) : the_row();
-						$pictogramme  = get_sub_field( 'pictogramme' );
-						$image_chemin = get_sub_field( 'image_chemin' );
-						?>
-                        <div class="raison">
-                            <div class="circle">
-                                <img src="<?= esc_url( $pictogramme['url'] ) ?>"
-                                     alt="<?= esc_attr( $pictogramme['alt'] );
-								     ?>">
+                    <div class="raisons__wrapper">
+						<?php while ( have_rows( 'raisons' ) ) : the_row();
+							$pictogramme  = get_sub_field( 'pictogramme' );
+							$image_chemin = get_sub_field( 'image_chemin' );
+							?>
+                            <div class="raison">
+                                <div class="circle">
+                                    <img src="<?= esc_url( $pictogramme['url'] ) ?>"
+                                         alt="<?= esc_attr( $pictogramme['alt'] );
+									     ?>">
+                                </div>
+                                <p><?php the_sub_field( 'texte' ); ?></p>
+								<?php if ( $image_chemin ) : ?>
+                                    <img src="<?= esc_url( $image_chemin['url'] ); ?>" alt="<?= esc_attr
+									( $image_chemin['alt'] ); ?>" class="chemin">
+								<?php endif; ?>
                             </div>
-                            <p><?php the_sub_field( 'texte' ); ?></p>
-							<?php if ( $image_chemin ) : ?>
-                                <img src="<?= esc_url( $image_chemin['url'] ); ?>" alt="<?= esc_attr
-								( $image_chemin['alt'] ); ?>" class="chemin">
-							<?php endif; ?>
-                        </div>
-					<?php endwhile; ?>
+						<?php endwhile; ?>
+                    </div>
                 </div>
 			<?php endif; ?>
         </div>

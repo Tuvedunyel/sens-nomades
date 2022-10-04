@@ -6,7 +6,7 @@ footer {
 
 .footer-container {
   background: var.$bleu_glacié;
-  color: white;
+  color: var.$sable;
   padding-top: 6.6rem;
   padding-bottom: 2.2rem;
 
@@ -48,6 +48,7 @@ footer {
 
 .left {
   max-width: 37.9rem;
+  align-self: start;
 
   h4 {
     text-align: left;
@@ -77,9 +78,14 @@ h4 {
 }
 
 .middle {
+  align-self: start;
   h4 {
     text-align: start;
   }
+}
+
+.right {
+  align-self: start;
 }
 
 .socials-network {

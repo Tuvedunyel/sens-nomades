@@ -8,6 +8,12 @@
     background-size: cover;
     width: 100%;
     padding-block: 8.6rem 6.4rem;
+
+    .container-narrow {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
   }
 
   .container-narrow {
@@ -186,6 +192,7 @@
     height: fit-content;
     border-radius: 10px;
     pointer-events: none;
+    height: 75.5px;
 
     select {
       border-radius: 10px;
@@ -233,6 +240,7 @@
     border-radius: 10px;
     font-weight: var.$bold;
     font-size: 2rem;
+    height: 75.5px;
 
     @media screen and (min-width: 740px) {
       padding: 2rem 3.6rem;
@@ -269,9 +277,10 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   max-width: 379px;
+  height: 514px;
   border-radius: 10px;
   border: 1px solid rgb(79 92 92 / 0.11);
   padding-bottom: 3.25rem;
