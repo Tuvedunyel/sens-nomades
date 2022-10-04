@@ -85,6 +85,80 @@
   h2 {
     margin-bottom: 0.5rem;
   }
+
+  .pagination {
+    width: 100%;
+
+    @media screen and (min-width: 975px) {
+      grid-column: 1 / 3;
+      align-self: center;
+      justify-self: center;
+    }
+
+    @media screen and (min-width: 1400px) {
+      grid-column: 1 / 4;
+    }
+
+    ul {
+      width: 95%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.3em;
+    }
+
+    li {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+
+      &.next::after, &.prev::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        inset: 0;
+        margin: auto;
+      }
+
+      &.next::after {
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 13px solid var.$sable;
+      }
+
+      &.prev::after {
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 13px solid var.$sable;
+      }
+
+      &.page-number {
+        background: #F8F8F8;
+        font-size: 1.9rem;
+        font-weight: var.$bold;
+        transition: 0.3s ease-in-out;
+
+        &.current {
+          background: var.$bleu_glacié;
+          color: white;
+        }
+
+        &:hover {
+          background: var.$bleu_glacié;
+          color: white;
+        }
+      }
+    }
+
+    ul, li {
+      list-style: none;
+    }
+  }
 }
 
 .dynamic-search {

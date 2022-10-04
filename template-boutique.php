@@ -91,7 +91,7 @@ json_encode( $resume_product_list );
     </article>
     <section class="nos-voyages" v-if="data">
         <div :class="filteredData.length > 0 ? 'container-narrow' : 'no-answer container-narrow'">
-            <div class="voyages-card" v-for="(voyage, index) in filteredData" :key="index">
+            <div class="voyages-card" v-for="(voyage, index) in filteredData.slice(sliceA, sliceB)" :key="index">
                 <div class="voyages-card__thumbnail">
                     <p class="jours">{{voyage.jours}}</p>
                     <p class="prix">{{voyage.prix}}€</p>
@@ -121,6 +121,20 @@ json_encode( $resume_product_list );
                     <a href="<?= get_home_url( '/' ) ?>">Revenir à l'accueil</a>
                     <button class="clear" @click="resetForm()">Réinitialiser la recherche</button>
                 </div>
+            </div>
+
+            <div class="pagination" v-if="data">
+                <ul>
+                    <li class="prev" @click="handlePrev()">
+                        <span class="screen-reader-text">Précédent</span>
+                    </li>
+                    <li v-for="pageNumber in pagination" :key="pageNumber" :class=" pageNumber === currentPage ?
+                    'page-number current' : 'page-number'" @click="handlePageClick($event)">{{pageNumber}}
+                    </li>
+                    <li class="next" @click="handleNext">
+                        <span class="screen-reader-text">Suivant</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -199,7 +213,7 @@ json_encode( $resume_product_list );
             </div>
         </div>
     </section>
-    <?php get_template_part('parts/instagram'); ?>
+	<?php get_template_part( 'parts/instagram' ); ?>
 
     <script>
         const { createApp } = Vue;
@@ -216,6 +230,11 @@ json_encode( $resume_product_list );
                     selectedDuree: 'Durée du voyage',
                     selectedStyle: 'Style de voyage',
                     selectedPeriode: 'Période',
+                    pagination: [],
+                    currentPage: 1,
+                    sliceA: 0,
+                    sliceB: 9,
+                    step: 9,
                 }
             },
             computed: {
@@ -252,11 +271,39 @@ json_encode( $resume_product_list );
             async mounted () {
                 await this.getData();
                 await this.splitData();
+                await this.setPagination();
                 this.selectDuree = this.duree[ 0 ];
                 this.selectedStyle = this.style[ 0 ];
                 this.selectedPeriode = this.periode[ 0 ];
             },
             methods: {
+                handlePrev () {
+                    if ( this.sliceA > 0 ) {
+                        this.currentPage--;
+                        this.sliceA -= this.step;
+                        this.sliceB -= this.step;
+                    }
+                },
+                handlePageClick (event) {
+                    this.currentPage = event.target.innerText;
+                    this.sliceA = ( this.currentPage - 1 ) * this.step;
+                    this.sliceB = this.currentPage * this.step;
+                },
+                handleNext () {
+                    if ( this.sliceB < this.data.length ) {
+                        this.currentPage++;
+                        this.sliceA += this.step;
+                        this.sliceB += this.step;
+                    }
+                },
+                setPagination () {
+                    let pagination = [];
+                    let pages = Math.ceil( this.filteredData.length / this.step );
+                    for ( let i = 1; i <= pages; i++ ) {
+                        pagination.push( i );
+                    }
+                    this.pagination = pagination;
+                },
                 getData () {
                     this.data = <?= json_encode( $resume_product_list ); ?>;
                 },

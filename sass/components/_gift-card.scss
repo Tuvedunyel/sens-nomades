@@ -1,0 +1,254 @@
+@use '../abstracts' as var;
+
+#gift-hero {
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 0;
+
+    & ~ .return-voyages {
+      top: 21%;
+    }
+  }
+}
+
+#gift-card__page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .product_title {
+    display: none;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4.8rem;
+
+    select {
+      min-width: 300px;
+      background: white;
+      border: 1px solid var.$bleu_odysée;
+      border-radius: 10px;
+      padding: 1rem 1.3rem;
+      margin-right: 0 !important;
+    }
+  }
+
+  #gift__btn {
+    background: var.$terracota !important;
+    border-radius: 10px !important;
+    position: relative !important;
+    padding: 1.4rem 4.2rem !important;
+    width: fit-content !important;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5%;
+      right: -1%;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: 1px solid var.$terracota;
+      border-radius: 10px;
+    }
+
+  }
+
+  .woocommerce-variation {
+    text-align: center;
+  }
+
+  #pwgc-purchase-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3em;
+
+    .pwgc-field-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.3em;
+    }
+
+    input, textarea {
+      background: white;
+      border: 1px solid var.$bleu_odysée;
+      border-radius: 10px;
+      padding: 1rem 1.3rem;
+    }
+  }
+
+  .pwgc-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .variations-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 0;
+      bottom: 0;
+      margin-block: auto;
+      right: 1%;
+      border-right: 9px solid transparent;
+      border-left: 9px solid transparent;
+      border-top: 11px solid var.$terracota;
+    }
+  }
+
+  .container-narrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .randonneur {
+
+    @media screen and (min-width: 750px) {
+      align-items: start;
+
+      img:last-of-type {
+        transform: rotateY(180deg);
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-top: 0;
+      align-self: end;
+    }
+
+  }
+
+  .arrow-bottom {
+    transform: rotateX(180deg);
+
+    @media screen and (min-width: 750px) {
+      transform: rotateX(180deg) rotateY(180deg);
+      align-self: end;
+    }
+  }
+
+  .content__gift-card {
+
+    strong {
+      margin-bottom: 1em;
+      display: flow-root;
+    }
+  }
+}
+
+.content__gift-card {
+  width: 100%;
+}
+
+#chemin-gift {
+  width: 100%;
+  background: var.$sable;
+  padding-block: 4.4rem 7.7rem;
+
+  .container-narrow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5em;
+
+    img {
+      max-width: 204px;
+      align-self: center;
+
+      @media screen and (min-width: 1200px) {
+        max-width: 306px;
+      }
+    }
+  }
+
+  .top-chemin {
+    @media screen and (min-width: 1200px) {
+      max-width: 738px;
+      align-self: start;
+    }
+  }
+
+  .middle-chemin {
+    @media screen and (min-width: 1200px) {
+      max-width: 929px;
+      align-self: end;
+    }
+  }
+
+  .bottom-chemin {
+    img {
+      display: none;
+    }
+
+    @media screen and (min-width: 1200px ) {
+      align-self: start;
+      display: grid;
+      grid-template-columns: 1fr 0.5fr;
+      align-items: center;
+      justify-items: start;
+
+      h3 {
+        grid-row: 1;
+        grid-column: 1;
+        align-self: end;
+      }
+
+      img {
+        display: block;
+        grid-column: 2;
+        grid-row: 1;
+        align-self: start;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 3.3rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+#get-gift {
+  margin-top: 5.6rem;
+
+  .container-narrow {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+
+  h3 {
+    font-size: 3.3rem;
+    line-height: 1.2;
+
+    &:last-of-type {
+      margin-bottom: 0.3rem;
+    }
+  }
+}
