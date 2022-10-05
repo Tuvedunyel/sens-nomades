@@ -55,9 +55,11 @@ json_encode( $resume_product_list );
 
 <main id="boutique">
     <section class="hero-banner">
+        <div class="image-filter"></div>
         <div class="container-narrow">
             <div class="hero-banner__content">
-                <h1><?php the_title(); ?></h1>
+                <h1 class="flex-title"><?php the_field('premiere_ligne'); ?> <span><?php the_field('deuxieme_ligne');
+                ?></span></h1>
             </div>
             <div class="dynamic-search">
                 <div class="arrow-select">
