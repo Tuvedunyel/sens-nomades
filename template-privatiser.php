@@ -26,13 +26,38 @@ get_header(); ?>
                                          alt="<?= esc_attr( $pictogramme['alt'] );
 									     ?>">
                                 </div>
-                                <p><?php the_sub_field( 'texte' ); ?></p>
+								<?php
+								$info_bulle = get_sub_field( 'info_bulle' );
+								if ( $info_bulle === 'Oui' ) :
+									?>
+                                    <div class="info-bulle">
+                                        <p><?php the_sub_field( 'texte' ); ?></p>
+                                        <?php
+                                            $close = get_template_directory_uri() . '/assets/close.svg';
+                                            $open = get_template_directory_uri() . '/assets/open.svg';
+                                        ?>
+                                        <img :src=" infoBulle ? close : open " :alt="infoBulle ? closeInfo : openInfo"
+                                             class="open-close" @click="toggleInfoBulle">
+                                        <div class="info-bulle__content" v-show="infoBulle">
+                                            <p><?php the_sub_field( 'info_bulle_texte' ); ?></p>
+                                        </div>
+                                    </div>
+								<?php else : ?>
+                                    <p><?php the_sub_field( 'texte' ); ?></p>
+								<?php endif; ?>
 								<?php if ( $image_chemin ) : ?>
                                     <img src="<?= esc_url( $image_chemin['url'] ); ?>" alt="<?= esc_attr
 									( $image_chemin['alt'] ); ?>" class="chemin">
 								<?php endif; ?>
                             </div>
 						<?php endwhile; ?>
+                    </div>
+                    <div class="randonneur">
+                        <img src=" <?= get_template_directory_uri() ?>/assets/fleche.svg"
+                             alt="Flèche pointant vers le haut">
+                        <p class="moon-flower"><?php the_field( 'randonneur_texte' ); ?></p>
+                        <img src="<?= get_template_directory_uri() ?>/assets/randonneur-black.svg" alt="Petit
+                            randonneur">
                     </div>
                 </div>
 			<?php endif; ?>
@@ -123,6 +148,11 @@ get_header(); ?>
                     lien: null,
                     sliceA: 0,
                     sliceB: 1,
+                    infoBulle: false,
+                    close: null,
+                    open: null,
+                    closeInfo: 'Fermer l\'info bulle',
+                    openInfo: 'Ouvrir l\'info bulle'
                 }
             },
             computed: {
@@ -139,6 +169,8 @@ get_header(); ?>
                 getReviewsInfo () {
                     this.image = <?= json_encode( $image_reviews ); ?>;
                     this.lien = <?= json_encode( $lien_reviews ); ?>;
+                    this.close = <?= json_encode( $close ); ?>;
+                    this.open = <?= json_encode( $open ); ?>;
                     this.lien = this.lien.filter( function ( item ) {
                         return typeof item !== 'number';
                     } );
@@ -161,8 +193,11 @@ get_header(); ?>
                 toggleEntreprise () {
                     this.entreprise = true;
                     this.particulier = !this.entreprise
+                },
+                toggleInfoBulle () {
+                    this.infoBulle = !this.infoBulle;
                 }
-            }
+            },
         } ).mount( '#root' )
     </script>
 </main>
