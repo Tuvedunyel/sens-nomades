@@ -3,12 +3,20 @@
 main.pages {
   margin-bottom: 10.9rem;
 
+  .hero-wave-banner {
+    pointer-events: none;
+  }
+
   .wp-block-column {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: unset;
     flex-basis: unset;
+
+    p {
+      align-self: start;
+    }
 
     &.column {
       flex-direction: column;
@@ -287,5 +295,45 @@ article .wp-block-columns {
   p {
     font-size: 1.7rem;
     color: var.$roche;
+  }
+}
+
+.wp-block-columns.custom-randonneur {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+    justify-content: start;
+    gap: 1em;
+    position: relative;
+    top: -50px;
+    margin-top: 0;
+    margin-left: 7rem;
+
+    .wp-block-column {
+      width: fit-content;
+      flex-basis: unset !important;
+      flex-grow: unset !important;
+      align-self: center;
+      margin-top: 1.5em;
+
+      &:first-of-type {
+        align-self: start;
+        margin-top: 0;
+      }
+
+      &:last-of-type {
+        img {
+          transform: rotateY(180deg);
+        }
+      }
+    }
+
+  }
+
+  @media screen and (min-width: 1700px) {
+    margin-left: 10rem;
   }
 }

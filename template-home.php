@@ -27,7 +27,7 @@ $categories = get_the_category();
                         </div>
                         <div class="card__content">
                             <h3 v-html="post.title"></h3>
-                            <p v-html="post.excerpt.slice(0, 200)"></p>
+                            <p v-html="handlePostExcerpt(post)"></p>
                             <a :href="post.permalink">Lire la suite</a>
                         </div>
                     </div>
@@ -53,8 +53,12 @@ $categories = get_the_category();
             <h2>Toutes les articles</h2>
             <div v-if="loaded" class="categories">
                 <ul>
-                    <li @click="handleClick(0)">Tous les articles</li>
-                    <li v-for="category in categories" :key="category.id" @click="handleClick(category.id)">
+                    <li @click="handleClick(0, 'Tous les articles')" v-model="currentCategory"
+                        :class="currentCategory === 'Tous les articles' && 'currentCat'">Tous
+                        les
+                        articles</li>
+                    <li v-for="category in categories" :key="category.id" @click="handleClick(category.id, category
+                    .name)" v-model="currentCategory" :class="currentCategory === category.name && 'currentCat'">
                         {{ category.name }}
                     </li>
                 </ul>
@@ -72,7 +76,7 @@ $categories = get_the_category();
                         </div>
                         <div class="card__content">
                             <h3 v-html="post.title"></h3>
-                            <p v-html="post.excerpt.slice(0, 200)"></p>
+                            <p v-html="handlePostExcerpt(post)"></p>
                             <a :href="post.permalink">Lire la suite</a>
                         </div>
                     </div>
@@ -121,6 +125,7 @@ $categories = get_the_category();
     createApp( {
         data () {
             return {
+                siteUrl: 'https://www.sens-nomades.com',
                 categories: [],
                 posts: [],
                 loaded: false,
@@ -131,7 +136,8 @@ $categories = get_the_category();
                 pagination: [],
                 i: 1,
                 numberOfPages: 0,
-                step: 9
+                step: 9,
+                currentCategory: 'Tous les articles',
             }
         },
         computed: {
@@ -151,10 +157,11 @@ $categories = get_the_category();
             },
         },
         async mounted () {
-            await axios.get( 'https://sens-nomades.com/wp-json/wp/v2/categories' ).then( res => {
+            await this.getUrl();
+            await axios.get( `${this.siteUrl}/wp-json/wp/v2/categories` ).then( res => {
                 this.categories = res.data
             } )
-            await axios.get( 'https://sens-nomades.com/wp-json/better-rest-endpoints/v1/posts' ).then( res => {
+            await axios.get( `${this.siteUrl}/wp-json/better-rest-endpoints/v1/posts` ).then( res => {
                 this.posts = res.data
             } )
             this.numberOfPages = Math.ceil( this.posts.length / this.step );
@@ -165,7 +172,12 @@ $categories = get_the_category();
             this.loaded = true
         },
         methods: {
-            handleClick ( categoryId ) {
+            getUrl () {
+                const url = new URL( window.location.href );
+                this.siteUrl = url.origin
+            },
+            handleClick ( categoryId, name ) {
+                this.currentCategory = name
                 this.categoryId = categoryId
             },
             handleClickNext () {
@@ -191,6 +203,13 @@ $categories = get_the_category();
                     this.sliceA -= this.step
                     this.sliceB -= this.step
                     this.currentPage = this.currentPage - 1
+                }
+            },
+            handlePostExcerpt(post) {
+                if (post.excerpt.length > 200) {
+                    return post.excerpt.slice(0, 200) + '...'
+                } else {
+                    return post.excerpt
                 }
             }
         }

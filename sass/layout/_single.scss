@@ -10,8 +10,12 @@
 
 .single-blog {
   padding-top: 5rem;
-  padding-bottom: 8.4rem;
 
+  .return {
+    display: flow-root;
+    max-width: 95%;
+    text-align: left;
+  }
 
   .container-narrow {
     @media screen and (min-width: 1200px) {
@@ -30,6 +34,14 @@
 
   .hero-banner .container-narrow {
     margin: 0 auto;
+
+    @media screen and (min-width: 1200px) {
+      max-width: 56%;
+    }
+
+    @media screen and (min-width: 1600px) {
+      max-width: 61%;
+    }
   }
 
   h2 {
@@ -74,8 +86,13 @@
     margin-bottom: 3.49rem;
   }
 
+
   .has-text-color {
     margin-bottom: 3.74rem !important;
+  }
+
+  h4.has-text-color {
+    margin-bottom: 2rem !important;
   }
 
   p strong, .is-margin-top {
@@ -96,7 +113,7 @@
 
 .categories, .post-categories {
   margin-top: 0.8rem !important;
-  margin-bottom: 3.8rem !important;
+  margin-bottom: 2rem !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,12 +148,20 @@
 }
 
 .tiled-gallery__col {
-  display: flex;
+  display: flex !important;
   margin-left: 0 !important;
   margin-top: 4px !important;
   flex-direction: row !important;
   gap: 0.4rem;
-  width: fit-content
+  width: 100%;
+
+  figure {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .tiled-gallery__item {
@@ -144,7 +169,7 @@
 }
 
 .articles {
-  width: min(100%, 353px);
+  width: min(100%, 379px);
   margin: 1em auto 0;
   display: flex;
   flex-direction: column;
@@ -203,6 +228,7 @@
 
 .same-theme {
   margin-top: 6.9rem;
+  margin-bottom: 8.4rem;
 
   h2 {
     color: var.$roche;
@@ -291,7 +317,7 @@
 }
 
 .card__content {
-  display: flex;
+  display: grid;
   flex-direction: column;
   justify-content: center;
   align-items: start;
@@ -300,9 +326,8 @@
 
   h3 {
     margin-top: 0;
-    margin-bottom: 1.3rem;
     color: var.$terracota;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: var.$bold;
     text-align: left;
     text-transform: uppercase;
@@ -315,7 +340,7 @@
   a {
     font-size: 1.7rem;
     color: var.$bleu_glacié;
-    align-self: end;
+    justify-self: end;
   }
 }
 
@@ -371,6 +396,7 @@
   justify-content: center;
   align-items: center;
   gap: 2em;
+  width: 379px;
 
   button {
     text-transform: uppercase;
