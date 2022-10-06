@@ -58,30 +58,47 @@ json_encode( $resume_product_list );
         <div class="image-filter"></div>
         <div class="container-narrow">
             <div class="hero-banner__content">
-                <h1 class="flex-title"><?php the_field('premiere_ligne'); ?> <span><?php the_field('deuxieme_ligne');
-                ?></span></h1>
+                <h1 class="flex-title"><?php the_field( 'premiere_ligne' ); ?>
+                    <span><?php the_field( 'deuxieme_ligne' );
+						?></span></h1>
             </div>
             <div class="dynamic-search">
-                <div class="arrow-select">
+                <button class="show-filter" @click="handleShowFilter" v-if="!desktop">{{ showFilter ? 'Moins ' : 'Plus '
+                    }}
+                    d'options
+                </button>
+                <div class="arrow-select" v-if="showFilter">
                     <select name="duree" id="duree" v-model="selectedDuree">
                         <option v-for="(jours, index) in duree" :key="index" :value="jours">{{jours}}</option>
                     </select>
                 </div>
-                <div class="arrow-select">
+                <div class="arrow-select" v-if="showFilter">
                     <select name="style" id="style" v-model="selectedStyle">
                         <option v-for="(voyage, index) in style" :key="index" :value="voyage">{{voyage}}</option>
                     </select>
                 </div>
-                <div class="arrow-select">
+                <div class="arrow-select" v-if="showFilter">
                     <select name="periode" id="periode" v-model="selectedPeriode">
                         <option v-for="(saison, index) in periode" :key="index" :value="saison">{{saison}}</option>
                     </select>
                 </div>
-                <button class="reset" @click="resetForm()" v-html="btn"></button>
+                <button class="reset" @click="resetForm()" v-if="showFilter">
+                    <svg id="Calque_1" xmlns="http://www.w3.org/2000/svg"
+                         x="0px" y="0px"
+                         viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;">
+                        <style type="text/css">
+                            .st0 {
+                                fill: #FFFFFF;
+                            }
+                        </style>
+                        <polygon class="st0" points="29.6,3 27.1,0.5 15.1,12.5 3.1,0.5 0.6,3 12.6,15 0.6,27 3.1,29.5 15.1,17.5 27.1,29.5 29.6,27
+	17.6,15 "/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
-    <article>
+    <article :class="showFilter && !desktop ? 'bigMargin' : 'littleMargin'">
         <div class="container-narrow">
             <div class="randonneur moon-flower">
                 <img src="<?= get_template_directory_uri() ?>/assets/randonneur-black.svg" alt="Petit randonneur">
@@ -98,11 +115,11 @@ json_encode( $resume_product_list );
                     <p class="jours">{{voyage.jours}}</p>
                     <p class="prix">{{voyage.prix}}€</p>
                     <div class="image" v-html="voyage.image"></div>
-                </div>
-                <div class="voyages-card__bottom">
                     <div class="icon-container">
                         <img :src="voyage.tags.url" :alt="voyage.tags.alt">
                     </div>
+                </div>
+                <div class="voyages-card__bottom">
                     <h3>{{voyage.titre}}</h3>
                     <p class="thematique">{{voyage.thematique}}</p>
                     <div class="prochain-depart">
@@ -237,6 +254,10 @@ json_encode( $resume_product_list );
                     sliceA: 0,
                     sliceB: 9,
                     step: 9,
+                    windowWidth: 1920,
+                    showFilter: true,
+                    desktop: true,
+                    search: null,
                 }
             },
             computed: {
@@ -277,6 +298,36 @@ json_encode( $resume_product_list );
                 this.selectDuree = this.duree[ 0 ];
                 this.selectedStyle = this.style[ 0 ];
                 this.selectedPeriode = this.periode[ 0 ];
+                this.windowWidth = window.innerWidth;
+                this.search = window.location.search;
+                this.search = this.search.replaceAll( '?', '' );
+                this.search = this.search.replaceAll( '%C3%A9', 'é' );
+                this.search = this.search.replaceAll( '%C3%A8', 'è' );
+                this.search = this.search.replaceAll( '%C3%A0', 'à' );
+                this.search = this.search.replaceAll( '%C3%A7', 'ç' );
+                this.search = this.search.replaceAll( '%C3%AA', 'ê' );
+                this.search = this.search.replaceAll( '%C3%AB', 'ë' );
+                this.search = this.search.replaceAll( '%C3%AE', 'î' );
+                this.search = this.search.replaceAll( '%C3%AF', 'ï' );
+                this.search = this.search.replaceAll( '%C3%B4', 'ô' );
+                this.search = this.search.replaceAll( '%C3%B6', 'ö' );
+                this.search = this.search.replaceAll( '%C3%BB', 'û' );
+                this.search = this.search.replaceAll( '%C3%BC', 'ü' );
+                this.search = this.search.replaceAll( '%C3%89', 'É' );
+                this.search = this.search.replaceAll( '%C3%88', 'È' );
+                this.search = this.search.replaceAll( '%C3%80', 'À' );
+                this.search = this.search.replaceAll( '%C3%87', 'Ç' );
+                this.search = this.search.replaceAll( '%20', ' ' );
+                this.search = this.search.replaceAll( '%27', '\'' );
+
+                if ( this.search.length > 1 ) {
+                    this.selectedStyle = `- ${ this.search }`;
+                }
+
+                if ( this.windowWidth < 740 ) {
+                    this.showFilter = false;
+                    this.desktop = false;
+                }
             },
             methods: {
                 handlePrev () {
@@ -286,7 +337,7 @@ json_encode( $resume_product_list );
                         this.sliceB -= this.step;
                     }
                 },
-                handlePageClick (event) {
+                handlePageClick ( event ) {
                     this.currentPage = event.target.innerText;
                     this.sliceA = ( this.currentPage - 1 ) * this.step;
                     this.sliceB = this.currentPage * this.step;
@@ -323,6 +374,9 @@ json_encode( $resume_product_list );
                     this.selectedDuree = 'Durée du voyage';
                     this.selectedStyle = 'Style de voyage';
                     this.selectedPeriode = 'Période';
+                },
+                handleShowFilter () {
+                    this.showFilter = !this.showFilter;
                 }
             }
         } ).mount( '#boutique' );

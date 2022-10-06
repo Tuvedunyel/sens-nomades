@@ -85,8 +85,9 @@ get_header(); ?>
                             .image }<div class="right-marker"><div class="fanion-container"><div
                             class="days-spend">${product
                             .days}</div><div
-                            class="price-marker">${product.price}€</div></div><img src="${product.tags['url']}"
-                            alt="${product.tags['alt']}" title="${product.title}" /></div></div><div
+                            class="price-marker">${product.price}€</div></div><div class="image__picto"><img
+                            src="${product.tags['url']}"
+                            alt="${product.tags['alt']}" title="${product.title}" /></div></div></div><div
                             class="lower"><h4>${product.title}</h4><a href="${product.link}"
                             target="_blank">Voir les dates</a></div></div>` );
                     } );

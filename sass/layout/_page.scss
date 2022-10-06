@@ -15,7 +15,7 @@ main.pages {
     flex-basis: unset;
 
     p {
-      align-self: start;
+      align-self: center;
     }
 
     &.column {
@@ -32,6 +32,8 @@ main.pages {
     text-align: center;
     margin-top: 2.4rem;
     display: flow-root;
+    max-width: 800px;
+    margin-inline: auto;
   }
 
   .container-narrow.pages-container {
@@ -44,6 +46,10 @@ main.pages {
     @media screen and (min-width: 1200px) {
       flex-direction: row;
       align-items: start;
+
+      .randonneur__top {
+        transform: rotateY(180deg);
+      }
     }
   }
 
@@ -58,6 +64,12 @@ main.pages {
   article {
     margin: 0 auto;
   }
+}
+
+.two-line {
+  width: 156px;
+  display: flow-root;
+  text-align: center;
 }
 
 .randonneur {
@@ -77,6 +89,9 @@ main.pages {
     font-family: var.$moon_flower;
     font-size: 3.5rem;
     text-transform: uppercase;
+    display: flow-root;
+    max-width: 189px;
+    text-align: center;
   }
 
   .fleche-randonneur__top {
@@ -106,7 +121,7 @@ article .wp-block-columns {
       position: absolute;
       top: -33%;
       left: -5%;
-      background: url('assets/left-arrow.svg');
+      background: url('../assets/left-tag.svg');
       height: 79px;
       width: 50px;
       display: block;
@@ -117,7 +132,7 @@ article .wp-block-columns {
       position: absolute;
       bottom: -33%;
       right: -2%;
-      background: url('assets/right-arrow.svg');
+      background: url('../assets/right-tag.svg');
       height: 79px;
       width: 50px;
       display: block;
@@ -127,6 +142,10 @@ article .wp-block-columns {
 
 .moon-flower {
   font-family: var.$moon-flower;
+}
+
+.randonneur-formule {
+  line-height: 1.3;
 }
 
 .wp-container-6.wp-block-columns {
@@ -212,6 +231,18 @@ article .wp-block-columns {
       color: var.$sable;
       font-weight: var.$bold;
     }
+  }
+}
+
+.text-moon__container {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+
+  p {
+    line-height: 1.3;
   }
 }
 
@@ -335,5 +366,17 @@ article .wp-block-columns {
 
   @media screen and (min-width: 1700px) {
     margin-left: 10rem;
+  }
+}
+
+.randonneur-basis {
+  div {
+    flex-basis: unset !important;
+    flex-grow: unset !important;
+  }
+
+  @media screen and (min-width: 782px) {
+    justify-content: start;
+    margin-left: 2em;
   }
 }

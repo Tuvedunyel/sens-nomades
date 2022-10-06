@@ -34,6 +34,12 @@ if (input && reververBtn) {
     });
 }
 if (coachs && coachsBtn && longDescription && containerPos) {
+    document.addEventListener('click', e => {
+        longDescription.forEach(item => {
+            item.classList.remove('active');
+        });
+        coachs.forEach(coach => coach.style['pointer-events'] = 'all');
+    });
     containerPos.addEventListener('mousemove', e => {
         let rect = containerPos.getBoundingClientRect();
         x = e.clientX - rect.left - 28;

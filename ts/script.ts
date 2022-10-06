@@ -37,6 +37,14 @@ if (input && reververBtn) {
 }
 
 if (coachs && coachsBtn && longDescription && containerPos) {
+
+    document.addEventListener( 'click', e => {
+        longDescription.forEach( item => {
+            item.classList.remove('active');
+        });
+        coachs.forEach( coach => coach.style['pointer-events'] = 'all' );
+    } )
+
     containerPos.addEventListener( 'mousemove', e => {
         let rect = containerPos.getBoundingClientRect();
         x = e.clientX - rect.left - 28;
@@ -97,8 +105,8 @@ if (minus && plus && quantity) {
 
     plus.addEventListener( 'click', () => {
         let inStock = <HTMLDivElement> <unknown> document.querySelector( '.in-stock' );
-        let currentStock = inStock.textContent.slice(0, 1);
-        if ( Number(quantity.value) < Number( currentStock ) ) {
+        let currentStock = inStock.textContent.slice( 0, 1 );
+        if (Number( quantity.value ) < Number( currentStock )) {
             quantity.value = Number( quantity.value ) + 1;
         }
     } )
