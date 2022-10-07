@@ -715,6 +715,15 @@ div.aside {
 
 #gift-card__page #cart-perso {
   display: flex;
+  width: 100%;
+  height: auto;
+
+  #pwgc-purchase-container {
+    background: var.$bleu_glacié;
+    width: 100%;
+    padding: 1rem 1.4rem;
+    border-radius: 10px;
+  }
 }
 
 #cart-perso {

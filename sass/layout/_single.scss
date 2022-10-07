@@ -407,8 +407,10 @@
   margin-inline: auto;
 
   @media screen and (min-width: 689px) {
-    flex-direction: row;
-    align-items: start;
+    display: grid;
+    grid-template-columns: repeat(2, min(100%, 379px));
+    justify-items: center;
+    align-items: center;
     width: 100%;
   }
 
@@ -417,9 +419,10 @@
   }
 
   @media screen and (min-width: 1200px) {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 1em;
+    margin-top: 0 !important;
     width: 379px;
   }
 

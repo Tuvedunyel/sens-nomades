@@ -51,22 +51,23 @@ endif; ?>
 <section id="chemin-gift">
     <div class="container-narrow">
         <div class="top-chemin">
-            <?php the_field('premier_point'); ?>
+			<?php the_field( 'premier_point' ); ?>
             <img src="<?= get_template_directory_uri(); ?>/assets/trace-gift-top.svg" alt="Chemin allant vers le bas">
         </div>
         <div class="middle-chemin">
-            <?php the_field('second_point'); ?>
+			<?php the_field( 'second_point' ); ?>
         </div>
         <div class="bottom-chemin">
-            <?php the_field('troisieme_point'); ?>
-            <img src="<?= get_template_directory_uri(); ?>/assets/trace-gift-bottom.svg" alt="Chemin allant vers le haut">
+			<?php the_field( 'troisieme_point' ); ?>
+            <img src="<?= get_template_directory_uri(); ?>/assets/trace-gift-bottom.svg"
+                 alt="Chemin allant vers le haut">
         </div>
     </div>
 </section>
 
 <section id="get-gift">
     <div class="container-narrow">
-        <?php the_field('avoir_une_carte'); ?>
+		<?php the_field( 'avoir_une_carte' ); ?>
     </div>
 </section>
 
@@ -83,20 +84,32 @@ endif; ?>
                 sliceBigB: 1,
                 sliceLittleA: 1,
                 sliceLittleB: 5,
+                windowWidth: 1920,
             }
         },
         async mounted () {
             await this.getImages()
+            await this.getSliceB();
             this.littleImages = this.images;
             if ( this.images.length > 0 ) {
                 this.sliceLittleA = 1
             }
-            if ( this.images.length < 6 ) {
-                this.sliceLittleB = this.images.length
-            }
             this.isLoaded = true
         },
         methods: {
+            getSliceB () {
+                this.windowWidth = window.innerWidth;
+                if ( this.windowWidth < 660 ) {
+                    this.sliceLittleB = 3
+                    console.log( this.sliceLittleB );
+                } else {
+                    if ( this.images.length < 6 ) {
+                        this.sliceLittleB = this.images.length
+                    } else {
+                        this.sliceLittleB = 5
+                    }
+                }
+            },
             getImages () {
                 this.images = <?php echo $image_export; ?>
             },

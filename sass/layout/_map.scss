@@ -92,8 +92,9 @@
 .marker-map {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-content: center;
+  height: 100%;
 }
 
 .upper {
@@ -152,5 +153,6 @@
     color: white;
     border-radius: 2.7rem;
     padding: 0.2rem 1rem;
+    margin-rigth: 0.3em;
   }
 }

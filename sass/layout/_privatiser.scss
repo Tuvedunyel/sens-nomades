@@ -77,6 +77,10 @@
     }
   }
 
+  .chemin {
+    display: none;
+  }
+
   @media screen and (min-width: 1200px) {
     display: grid;
     grid-template-columns: 0.5fr 356px 120px;
@@ -87,6 +91,7 @@
       row-gap: 0.7em;
       column-gap: 1em;
       .chemin {
+        display: block;
         grid-column: 2;
         grid-row: 1;
         align-self: start;
@@ -161,10 +166,6 @@
 
   @media screen and (min-width: 1500px) {
     width: 40.5%;
-  }
-
-  &:last-of-type {
-    flex-direction: column-reverse;
   }
 
   .circle {
@@ -293,6 +294,7 @@
 
   .texte__arguments p:last-of-type, strong {
     margin-bottom: 0;
+    margin-inline: auto;
   }
 }
 
@@ -655,10 +657,16 @@
   background: white;
   padding: 2.6rem 0;
   width: 100%;
+  max-width: 354px;
+  margin-inline: auto;
   border: 3px solid var.$terracota;
   height: fit-content;
   //position: absolute;
   bottom: -158%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (min-width: 1200px) {
     windt: fit-content;
