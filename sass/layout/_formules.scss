@@ -228,10 +228,11 @@
 
   @media screen and (min-width: 800px) {
     display: grid;
-    grid-template-columns: 0.1fr 1fr 1fr;
+    grid-template-columns: 0.1fr 0.5fr 1fr;
     justify-items: start;
-    width: 87%;
+    width: 84%;
     align-self: start;
+    margin-left: 8rem;
   }
 }
 
@@ -271,7 +272,7 @@
 
     &::after {
       border: 1px solid var.$terracota;
-      top: 5%;
+      top: 10%;
       right: -3%;
     }
   }

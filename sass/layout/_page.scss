@@ -22,6 +22,10 @@ main.pages {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      wp-block-image {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -80,9 +84,17 @@ main.pages {
   gap: 0.5em;
   margin-top: 2.3rem;
 
+  img:first-of-type {
+    display: none;
+  }
+
   @media screen and (min-width: 750px) {
     flex-direction: row;
     justify-content: start;
+
+    img:first-of-type {
+      display: block;
+    }
   }
 
   p {
@@ -90,7 +102,7 @@ main.pages {
     font-size: 3.5rem;
     text-transform: uppercase;
     display: flow-root;
-    max-width: 189px;
+    max-width: 160px;
     text-align: center;
   }
 
@@ -101,7 +113,7 @@ main.pages {
 
 article .wp-block-columns {
   margin-top: 3em;
-  gap: 2em;
+  gap: 1em;
 
   h5 {
     margin-top: 1.5rem;
@@ -149,17 +161,34 @@ article .wp-block-columns {
 }
 
 .wp-container-6.wp-block-columns {
-  flex-direction: column-reverse !important;
+  flex-direction: row !important;
+  justify-content: start;
+  align-items: center !important;
+  margin-left: 8rem;
 
-  @media screen and (min-width: 800px) {
-    flex-direction: row !important;
-    justify-content: center;
-    align-items: center !important;
+  @media screen and (min-width: 848px) {
+    margin-left: 15rem;
+  }
 
-    .wp-block-column {
-      flex-basis: unset !important;
-      flex-grow: unset !important;
-    }
+  @media screen and (min-width: 1050px) {
+    margin-left: 24rem;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-left: 0;
+  }
+
+  @media screen and (min-width: 1400px) {
+    margin-left: 8rem;
+  }
+
+  @media screen and (min-width: 1676px) {
+    margin-left: 17rem;
+  }
+
+  .wp-block-column {
+    flex-basis: unset !important;
+    flex-grow: unset !important;
   }
 
   img {
@@ -176,7 +205,7 @@ article .wp-block-columns {
   justify-content: center;
   align-items: center;
   height: 316px;
-  width: min(100%, 353px);
+  width: min(100%, 379px);
 
   .bg {
     width: 100%;

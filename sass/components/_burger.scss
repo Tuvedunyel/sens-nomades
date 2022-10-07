@@ -23,7 +23,6 @@
   height: 3px;
   background-color: var.$black_300;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
   transition: all 0.5s ease-in-out;
 }
 .menu-btn__burger::before,
@@ -34,7 +33,6 @@
   height: 3px;
   background: var.$black_300;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
   transition: all 0.5s ease-in-out;
 }
 .menu-btn__burger::before {
@@ -106,6 +104,7 @@
   align-items: center;
   text-align: center;
   transform: translateY(202px);
+  border-radius: 10px;
   li {
     display: flex !important;
     margin: 0 0 2rem;
@@ -126,4 +125,5 @@
 #main-menu #commerce-list {
   display: flex;
   flex-direction: column;
+  width: 65px;
 }

@@ -114,7 +114,7 @@ json_encode( $resume_product_list );
                 <div class="voyages-card__thumbnail">
                     <p class="jours">{{voyage.jours}}</p>
                     <p class="prix">{{voyage.prix}}€</p>
-                    <div class="image" v-html="voyage.image"></div>
+                    <a :href="voyage.permalink" class="image" v-html="voyage.image"></a>
                     <div class="icon-container">
                         <img :src="voyage.tags.url" :alt="voyage.tags.alt">
                     </div>
@@ -163,52 +163,52 @@ json_encode( $resume_product_list );
                 <div class="bleu-glacie__bg"></div>
                 <ul class="bg">
                     <li>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/creer-du-lien-social.svg" alt="Mains
+                        <img src="<?= get_template_directory_uri(); ?>/assets/hands.svg" alt="Mains
                                 levées avec un coeur à l'intérieur">
                     </li>
                     <li>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/acteurs-locaux.svg" alt="Illustration
+                        <img src="<?= get_template_directory_uri(); ?>/assets/bag.svg" alt="Illustration
                                 d'un sac à dos">
                     </li>
                     <li>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/ressourcer.svg" alt="Illustration
+                        <img src="<?= get_template_directory_uri(); ?>/assets/trees.svg" alt="Illustration
                                 d'arbre">
                     </li>
                     <li>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/repondre-aux-challenges-de-la-vie.svg"
+                        <img src="<?= get_template_directory_uri(); ?>/assets/montagne.svg"
                              alt="Illustration d'une montagne">
                     </li>
                     <li>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/decouverte-monde.svg" alt="Illustration
+                        <img src="<?= get_template_directory_uri(); ?>/assets/google.svg" alt="Illustration
                                  d'une paire de jumelle">
                     </li>
                     <li>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/societe-ethique.svg" alt="Illustration
+                        <img src="<?= get_template_directory_uri(); ?>/assets/handsplanet.svg" alt="Illustration
                                 de la planète terre">
                     </li>
 
                     <li class="unused">
-                        <img src="<?= get_template_directory_uri(); ?>/assets/creer-du-lien-social.svg" alt="Mains
+                        <img src="<?= get_template_directory_uri(); ?>/assets/hands.svg" alt="Mains
                                 levées avec un coeur à l'intérieur">
                     </li>
                     <li class="unused">
-                        <img src="<?= get_template_directory_uri(); ?>/assets/acteurs-locaux.svg" alt="Illustration
+                        <img src="<?= get_template_directory_uri(); ?>/assets/bag.svg" alt="Illustration
                                 d'un sac à dos">
                     </li>
                     <li class="unused">
-                        <img src="<?= get_template_directory_uri(); ?>/assets/ressourcer.svg" alt="Illustration
+                        <img src="<?= get_template_directory_uri(); ?>/assets/trees.svg" alt="Illustration
                                 d'arbre">
                     </li>
                     <li class="unused">
-                        <img src="<?= get_template_directory_uri(); ?>/assets/repondre-aux-challenges-de-la-vie.svg"
+                        <img src="<?= get_template_directory_uri(); ?>/assets/montagne.svg"
                              alt="Illustration d'une montagne">
                     </li>
                     <li class="unused">
-                        <img src="<?= get_template_directory_uri(); ?>/assets/decouverte-monde.svg" alt="Illustration
+                        <img src="<?= get_template_directory_uri(); ?>/assets/google.svg" alt="Illustration
                                  d'une paire de jumelle">
                     </li>
                     <li class="unused">
-                        <img src="<?= get_template_directory_uri(); ?>/assets/societe-ethique.svg" alt="Illustration
+                        <img src="<?= get_template_directory_uri(); ?>/assets/handsplanet.svg" alt="Illustration
                                 de la planète terre">
                     </li>
                 </ul>

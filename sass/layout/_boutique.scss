@@ -81,12 +81,17 @@
     justify-content: center;
     align-items: center;
 
+    img:last-of-type {
+      display: none;
+    }
+
     @media screen and (min-width: 740px) {
       flex-direction: row;
       align-items: center;
 
       img:last-of-type {
         align-self: center;
+        display: block;
       }
     }
   }
@@ -324,10 +329,13 @@
   justify-content: space-between;
   align-items: center;
   max-width: 379px;
-  height: 514px;
   border-radius: 10px;
   border: 1px solid rgb(79 92 92 / 0.11);
   padding-bottom: 3.25rem;
+
+  @media screen and (min-width: 390px) {
+    height: 514px;
+  }
 }
 
 .no-voyage {
@@ -578,7 +586,7 @@
   .bleu-glacie__bg {
     position: absolute;
     z-index: 2;
-    opacity: 0.8;
+    opacity: 0.24;
     background: var.$bleu_glacié;
     inset: 0;
     margin: 0;
@@ -613,6 +621,11 @@
     li {
       max-width: 96px;
       max-height: 96px;
+
+      img {
+        width: 96px;
+        height: 96px;
+      }
 
       &.unused {
         display: none;
@@ -680,23 +693,19 @@
 .gift-card {
   .arrow-up {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
 
-    @media screen and (min-width: 618px) {
-      flex-direction: row;
-      gap: 0.5em;
+    img {
+      align-self: end;
     }
-
 
     p {
       font-size: 3.5rem !important;
       margin-bottom: 0 !important;
-
-      @media screen and (min-width: 618px) {
-        align-self: end;
-      }
+      align-self: end;
     }
   }
 }

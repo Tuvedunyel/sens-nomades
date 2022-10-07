@@ -18,6 +18,8 @@
   align-items: center;
   justify-content: center;
   row-gap: 5.6rem;
+  max-width: 80%;
+  margin-inline: auto !important;
 
   @media screen and (min-width: 910px) {
     display: grid;
@@ -29,6 +31,7 @@
 
   @media screen and (min-width: 1200px) {
     row-gap: 8.6rem;
+    max-width: 100%;
   }
 
   li {
@@ -80,11 +83,11 @@
 .picto-pilier {
   position: absolute;
   z-index: 1;
-  width: calc(74px + 2rem);
+  width: calc(100px + 2rem);
   height: 66px;
   background: white;
   padding-inline: 2rem;
-  top: -10%;
+  top: -15%;
   left: 0;
   right: 0;
   margin: 0 auto;
