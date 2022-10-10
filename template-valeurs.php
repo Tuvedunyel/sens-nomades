@@ -12,13 +12,13 @@ get_template_part( 'parts/hero-wave' );
             <article>
 				<?php the_content(); ?>
             </article>
-            <div class="pilier">
+            <div class="pilier valeurs">
 				<?php if ( get_field( 'titre' ) ) : ?>
                     <h2><?php the_field( 'titre' ); ?></h2>
 				<?php endif; ?>
-				<?php if ( have_rows( 'pillier_repeater' ) ) : ?>
+				<?php if ( have_rows( 'pillier_gauche' ) ) : ?>
                     <ul class="pilier-content">
-						<?php while ( have_rows( 'pillier_repeater' ) ) : the_row(); ?>
+						<?php while ( have_rows( 'pillier_gauche' ) ) : the_row(); ?>
 							<?php $juste_image = get_sub_field( 'juste_une_image' ); ?>
                             <li class="<?= $juste_image === 'Oui' ? 'no-border' : 'border' ?>">
 								<?php
@@ -38,6 +38,29 @@ get_template_part( 'parts/hero-wave' );
 						<?php endwhile; ?>
                     </ul>
 				<?php endif; ?>
+	            <?php if ( have_rows( 'pillier_droite' ) ) : ?>
+                    <ul class="pilier-content">
+			            <?php while ( have_rows( 'pillier_droite' ) ) : the_row(); ?>
+				            <?php $juste_image = get_sub_field( 'juste_une_image' ); ?>
+                            <li class="<?= $juste_image === 'Oui' ? 'no-border' : 'border' ?>">
+					            <?php
+					            if ( $juste_image === 'Non' ) :
+						            $image_pillier = get_sub_field( 'image_pillier' ) ?>
+                                    <img src="<?= esc_url( $image_pillier['url'] ); ?>" alt="<?= esc_attr
+						            ( $image_pillier['alt'] ); ?>" class="picto-pilier">
+                                    <h4><?php the_sub_field( 'titre' ); ?></h4>
+                                    <p><?php the_sub_field( 'texte' ); ?></p>
+					            <?php endif; ?>
+					            <?php if ( $juste_image === 'Oui' ) :
+						            $image = get_sub_field( 'image' );
+						            ?>
+                                    <img src="<?= esc_url( $image['url'] ); ?>" alt="<?= esc_attr( $image['alt'] );
+                                    ?>">
+					            <?php endif; ?>
+                            </li>
+			            <?php endwhile; ?>
+                    </ul>
+	            <?php endif; ?>
             </div>
             <div class="bottom-valeurs">
 				<?php if ( get_field( 'zone_de_texte' ) ) : ?>

@@ -1,0 +1,159 @@
+@use '../abstracts' as var;
+
+.woocommerce-cart-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  article {
+    width: 100%;
+  }
+}
+
+.cart__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.4rem;
+  gap: 1em;
+
+  .product-thumbnail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+    a, img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+  }
+
+  .product-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5em;
+
+    a {
+      text-decoration: none;
+      color: var.$terracota;
+      font-size: 2.5rem;
+      font-weight: var.$bold;
+      line-height: 1.1;
+    }
+  }
+
+  .product-price {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0;
+
+    bdi {
+      font-size: 1.7rem;
+      margin: 0;
+      margin-left: 0.5rem;
+    }
+  }
+
+  .product-quantity {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5em;
+
+    .quantity {
+      align-self: center;
+    }
+
+    input {
+      border-radius: 10px;
+      border: 1px solid var.$bleu_odysée;
+      color: var.$roche;
+      font-weight: var.$bold;
+    }
+  }
+
+  .product-subtotal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+
+    bdi {
+      font-size: 1.7rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .product-remove__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn {
+      width: fit-content;
+      background: var.$bleu_glacié;
+      border: none;
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border: 1px solid var.$bleu_glacié;
+        border-radius: 10px;
+        position: absolute;
+        top: 5%;
+        right: -1%;
+        transition: 0.3s ease-in-out;
+      }
+
+      &:hover {
+        &::after {
+          top: 10%;
+          right: -4%;
+        }
+      }
+
+      a {
+        width: fit-content;
+        height: fit-content;
+        color: white !important;
+        font-szie: 1.7rem;
+        font-weight: var.$bold;
+        border-radius: 10px;
+        background: transparent;
+
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+}
+
+
