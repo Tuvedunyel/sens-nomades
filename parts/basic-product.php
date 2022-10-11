@@ -283,7 +283,8 @@ if ( ! WC()->cart->is_empty() ) {
             </div>
             <div class="cart-confirmation__btn-container">
                 <button class="btn btn-continue" @click="closeShowNotification">Continuer mes achats</button>
-                <a href="#" class="btn go-to-cart">Commander</a>
+                <?php $cart_page = get_field('page_panier', 'option') ?>
+                <a href="<?= esc_url($cart_page['url']); ?>" class="btn go-to-cart">Commander</a>
             </div>
         </div>
     </div>
@@ -365,7 +366,7 @@ if ( ! WC()->cart->is_empty() ) {
                     if ( item.product_id === this.currentId ) {
                         this.quantity = item.quantity;
                         this.firstVariation = item.variation.attribute_pa_dates;
-                        this.secondVariation = item.variation.attribute_pa_type_de_chambre;
+                        this.secondVariation = item.variation['attribute_pa_type-de-chambre'];
                         this.price = item.line_total;
                         this.firstVariation = this.firstVariation.replaceAll('-', ' ');
                         this.secondVariation = this.secondVariation.replaceAll('-', ' ');

@@ -19,7 +19,7 @@ let x = null;
 const input = document.querySelectorAll('.variable-item-radio-input');
 const optionsContainer = document.querySelectorAll('.variable-item.radio-variable-item');
 const reververBtn = document.getElementById('reverver');
-const typeChambre = document.getElementById('pa_type_de_chambre');
+const typeChambre = document.getElementById('pa_type-de-chambre');
 if (input && reververBtn) {
     reververBtn.addEventListener('click', e => {
         e.preventDefault();
