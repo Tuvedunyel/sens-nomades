@@ -1,0 +1,71 @@
+@use '../abstracts' as var;
+
+.woocommerce-form-coupon-toggle {
+  grid-column: 1 / 3;
+}
+
+#payment {
+  background: var.$sable !important;
+  color: var.$roche;
+  border-radius: 10px !important;
+
+  .wc_payment_methods {
+    border-bottom: 1px solid var.$terracota !important;
+  }
+
+  .place-order {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #pwgc-redeem-button {
+    background: var.$terracota !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 10px 15px !important;
+    margin: 0 !important;
+    font-size: 1.9rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+  }
+}
+
+#pwgc-redeem-gift-card-form {
+  margin-top: 2rem;
+
+  input {
+    margin-block: 0 !important;
+  }
+}
+
+#place_order {
+  background: var.$bleu_glacié;
+  margin-top: 2.5rem;
+  border-radius: 10px;
+  font-size: 2.8rem;
+  color: var.$sable;
+  position: relative;
+  width: fit-content !important;
+  padding: 1.5rem 2rem;
+  margin-inline: auto;
+
+  &::after {
+    content: '';
+    border: 1px solid var.$bleu_glacié;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 5%;
+    right: -2%;
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    top: 10%;
+    right: -5%;
+  }
+}

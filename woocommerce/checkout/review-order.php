@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <section class="shop_table woocommerce-checkout-review-order-table">
-	<div>
+	<div class="review-order-div">
 	<?php
 	do_action( 'woocommerce_review_order_before_cart_contents' );
 

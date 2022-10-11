@@ -51,7 +51,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         <p class="custom-form-validation">
             <?php $vente = get_field('page_condition_vente', 'option'); ?>
             <label for="consent">J'ai pris connaissance des <a href="<?= esc_url($vente['url']); ?>>" target="_blank">condition générales de vente</a> et les acceptent</label>
-            <input type="checkbox" name="consent" id="consent">
+            <input type="checkbox" name="consent" id="consent" required>
         </p>
 
         <h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
