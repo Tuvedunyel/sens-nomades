@@ -1,0 +1,64 @@
+@use '../abstracts' as var;
+
+#order_review_heading {
+  font-size: 2.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.woocommerce-checkout-review-order-table .cart_item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 90%;
+  width: 100%;
+
+  &:not(:first-of-type) {
+    margin-top: 2.5rem;
+  }
+
+  @media screen and (min-width: 650px) {
+    text-align: start;
+  }
+
+  .product-quantity {
+    place-content: center;
+    place-items: center;
+
+    @media screen and (min-width: 650px) {
+      place-content: start;
+      place-items: start;
+    }
+  }
+
+  .product-name {
+    align-items: center;
+
+    @media screen and (min-width: 650px) {
+      align-items: start;
+    }
+  }
+
+  .product-total {
+    width: 100%;
+
+    bdi {
+      font-size: 1.7rem;
+      text-align: center;
+
+      @media screen and (min-width: 650px) {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.woocommerce-checkout-review-order-table {
+  aside {
+    margin-bottom: 2rem;
+    @media screen and (min-width: 650px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}

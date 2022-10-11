@@ -48,9 +48,16 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
+        <p class="custom-form-validation">
+            <?php $vente = get_field('page_condition_vente', 'option'); ?>
+            <label for="consent">J'ai pris connaissance des <a href="<?= esc_url($vente['url']); ?>>" target="_blank">condition générales de vente</a> et les acceptent</label>
+            <input type="checkbox" name="consent" id="consent">
+        </p>
+
         <h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+
 
         <div id="order_review" class="woocommerce-checkout-review-order">
 			<?php do_action( 'woocommerce_checkout_order_review' ); ?>

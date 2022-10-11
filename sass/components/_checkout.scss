@@ -47,6 +47,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 90%;
+
+  @media screen and (min-width: 650px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 2rem;
+  }
+
+  @media screen and (min-width: 950px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: end;
+
+    #billing_address_1_field, #billing_address_2_field {
+      margin: 0 !important;
+    }
+  }
 
   label {
     color: var.$sable;
@@ -93,6 +111,85 @@
 
     b {
       display: none;
+    }
+  }
+}
+
+.select2-search__field {
+  border-color: rgb( 0 79 113 / 0.4 ) !important;
+  border-radius: 10px !important;
+}
+
+.woocommerce-additional-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+
+  .woocommerce-additional-fields__field-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    p {
+      width: 100%;
+
+    }
+
+    label {
+      color: var.$sable;
+    }
+
+    textarea {
+      border: 1px solid var.$bleu_odysée;
+      border-radius: 10px;
+      min-height: 200px;
+      padding: 1rem 1.5rem;
+    }
+  }
+}
+
+.custom-form-validation {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin-block: 1em;
+
+  label {
+    color: var.$sable;
+
+  }
+
+  input {
+    background: white;
+    border: 1px solid var.$bleu_odysée;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    appearance: none;
+    font: inherit;
+    color: currentColor;
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-content: center;
+
+    &::before {
+      content: '';
+      width: 0.85em;
+      height: 0.85em;
+      border-radius: 3px;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em var.$terracota;
+    }
+
+    &:checked::before {
+      transform: scale(1);
     }
   }
 }
