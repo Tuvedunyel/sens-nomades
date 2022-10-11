@@ -1,0 +1,151 @@
+@use '../abstracts' as var;
+
+.cart-confirmation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 0.5);
+  right: 0;
+  left: 0;
+  margin-inline: 0;
+  top: 0;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+}
+
+.close__pop-up {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -10%;
+  right: 0;
+  cursor: pointer;
+}
+
+.cart-confirmation__wrapper {
+  width: min(95%, 1055px);
+  height: fit-content;
+  margin-inline: auto;
+  position: relative;
+  margin-top: 15em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 11px solid var.$terracota;
+  background: var.$sable;
+  padding: calc(4.2rem - 11px) calc(3.3rem - 11px);
+
+  .wrapper-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3.2rem;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3.3rem;
+    text-align: center;
+
+    img {
+      border-radius: 10px;
+      width: min(100%, 379px);
+    }
+
+    @media screen and (min-width: 750px) {
+      flex-direction: row;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 3.3rem;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+    color: var.$terracota;
+  }
+}
+
+.text__cart-confirmation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.9rem;
+
+
+  @media screen and (min-width: 750px) {
+    text-align: left;
+    align-items: start;
+  }
+}
+
+.cart-confirmation__btn-container {
+  margin-top: calc(8.9rem - 3.2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+
+  @media screen and (min-width: 750px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .btn {
+    border-radius: 10px;
+    border: none;
+    padding: 1.4rem 3.1rem;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var.$sable;
+    font-weight: var.$bold;
+
+    &::after {
+      content: '';
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      border: 1px solid;
+      position: absolute;
+      top: 5%;
+      right: -2%;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover {
+      &::after {
+        top: 10%;
+        right: -5%;
+      }
+    }
+
+    &.btn-continue {
+      background: var.$bleu_glacié;
+
+      &::after {
+        border-color: var.$bleu_glacié;
+      }
+    }
+
+    &.go-to-cart {
+      background: var.$terracota;
+
+      &::after {
+        border-color: var.$terracota;
+      }
+    }
+  }
+}

@@ -543,6 +543,11 @@ div.aside {
   text-align: center;
   width: 100%;
 
+  .woocommerce-message {
+    border: none !important;
+    background: transparent !important;
+  }
+
   h3 {
     font-weight: var.$regular;
     text-transform: uppercase;
@@ -557,6 +562,10 @@ div.aside {
     justify-content: center;
     align-items: center;
     margin-bottom: 0 !important;
+
+    div:first-of-type {
+      width: 100%;
+    }
   }
 
   .variations_form::before {
@@ -793,7 +802,7 @@ div.aside {
   font-size: 1.7rem !important;
 }
 
-select#pa_type-de-chambre {
+select#pa_type_de_chambre {
   display: none;
   width: 100%;
   position: relative;
@@ -899,7 +908,7 @@ input[type=number] {
 
   .plus, .minus {
     background: var.$bleu_glacié;
-    width: 58px;
+    width: 58px !important;
     height: 58px;
     display: flex;
     justify-content: center;

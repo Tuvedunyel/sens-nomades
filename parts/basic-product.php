@@ -232,9 +232,14 @@ endif; ?>
             </div>
         </section>
         <section class="buttons">
-            <a href="#" class="private-button">Je privatise mon voyage</a>
-            <a href="#" class="offer-button">J'offre un voyage</a>
-            <a href="#" class="contact-button">Contactez-nous</a>
+			<?php
+			$contact    = get_field( 'page_contact', 'option' );
+			$gift_card  = get_field( 'page_offre_un_voyage', 'option' );
+			$privatiser = get_field( 'page_privatiser_un_voyage', 'option' );
+			?>
+            <a href="<?= esc_url( $privatiser['url'] ); ?>" class="private-button">Je privatise mon voyage</a>
+            <a href="<?= esc_url( $gift_card['url'] ); ?>" class="offer-button">J'offre un voyage</a>
+            <a href="<?= esc_url( $contact['url'] ); ?>" class="contact-button">Contactez-nous</a>
         </section>
         <section class="map">
             <div id="map"></div>
@@ -250,6 +255,39 @@ endif; ?>
         </section>
     </div>
 </div>
+
+<?php
+$item = array();
+if ( ! WC()->cart->is_empty() ) {
+	$cart = WC()->cart->get_cart();
+
+	foreach ( $cart as $cart_item_key => $cart_item ) {
+		$item[] = $cart_item;
+	}
+} ?>
+
+<section class="cart-confirmation" v-if="showNotification && currentCart.length > 0">
+    <div class="cart-confirmation__wrapper">
+        <img src="<?= get_template_directory_uri() ?>/assets/close.svg" alt="Fermer la fenêtre" class="close__pop-up"
+             @click="closeShowNotification">
+        <div class="wrapper-content">
+            <h2>Votre voyage a été ajouté à votre panier</h2>
+            <div class="description">
+				<?php the_post_thumbnail(); ?>
+                <div class="text__cart-confirmation">
+                    <h3><?php the_title(); ?></h3>
+                    <p class="dates-texte">{{firstVariation}}</p>
+                    <p>Nombre(s) de personne(s) : {{quantity}} - {{secondVariation}}</p>
+                    <strong>Prix : {{price}}</strong>
+                </div>
+            </div>
+            <div class="cart-confirmation__btn-container">
+                <button class="btn btn-continue" @click="closeShowNotification">Continuer mes achats</button>
+                <a href="#" class="btn go-to-cart">Commander</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 <script>
     const { createApp } = Vue
@@ -279,11 +317,24 @@ endif; ?>
                     iconAnchor: [ 22, 44 ],
                     popupAnchor: [ -3, -36 ]
                 } ),
+                showNotification: false,
+                currentCart: [],
+                currentId: null,
+                firstVariation: 'Aucun produit actuellement dans votre panier',
+                secondVariation: 'Aucun produit actuellement dans votre panier',
+                quantity: 0,
+                price: 0,
             }
         },
         async mounted () {
             await this.getImages()
             await this.getCoord()
+            await this.setShowNotification()
+            await this.getPostId();
+            await this.getCartInfo();
+            if ( this.currentCart.length > 0 ) {
+                this.getProductInformation();
+            }
             this.littleImages = this.images;
             this.voyage = <?= json_encode( get_the_title() ); ?>;
             if ( this.images.length > 0 ) {
@@ -309,6 +360,35 @@ endif; ?>
             this.isLoaded = true
         },
         methods: {
+            getProductInformation () {
+                this.currentCart.map( item => {
+                    if ( item.product_id === this.currentId ) {
+                        this.quantity = item.quantity;
+                        this.firstVariation = item.variation.attribute_pa_dates;
+                        this.secondVariation = item.variation.attribute_pa_type_de_chambre;
+                        this.price = item.line_total;
+                        this.firstVariation = this.firstVariation.replaceAll('-', ' ');
+                        this.secondVariation = this.secondVariation.replaceAll('-', ' ');
+                    }
+                } )
+            },
+            getPostId () {
+                this.currentId = <?= json_encode( get_the_ID() ); ?>;
+            },
+            getCartInfo () {
+                this.currentCart = <?= json_encode( $item ); ?>;
+            },
+            closeShowNotification () {
+                this.showNotification = false
+            },
+            setShowNotification () {
+                const message = document.querySelector( '.wc-forward' );
+
+                if ( message ) {
+                    this.showNotification = true;
+                    message.style.display = 'none';
+                }
+            },
             getImages () {
                 this.images = <?php echo $image_export; ?>
             },

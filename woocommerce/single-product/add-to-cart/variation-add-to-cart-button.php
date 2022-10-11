@@ -49,11 +49,11 @@ global $product;
 		do_action( 'woocommerce_after_single_product_summary' );
 	endif;
 	?>
-    <?php if( $template !== 'Gift Card' ) { ?>
-    <button type="submit" class="single_add_to_cart_button button alt">Je valide mon voyage</button>
-    <?php } else { ?>
+	<?php if ( $template !== 'Gift Card' ) { ?>
+        <button type="submit" class="single_add_to_cart_button button alt">Je valide mon voyage</button>
+	<?php } else { ?>
         <button type="submit" class="single_add_to_cart_button button alt" id="gift__btn">Ajouter au panier</button>
-    <?php } ?>
+	<?php } ?>
 
 	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 

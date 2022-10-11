@@ -20,7 +20,7 @@ let x: null | number = null;
 const input = <HTMLInputElement[]> <unknown> document.querySelectorAll( '.variable-item-radio-input' );
 const optionsContainer = document.querySelectorAll( '.variable-item.radio-variable-item' );
 const reververBtn = document.getElementById( 'reverver' );
-const typeChambre = document.getElementById( 'pa_type-de-chambre' );
+const typeChambre = document.getElementById( 'pa_type_de_chambre' );
 
 if (input && reververBtn) {
     reververBtn.addEventListener( 'click', e => {

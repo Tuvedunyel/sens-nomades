@@ -9,10 +9,23 @@
     align-items: start;
     gap: 0.2em;
 
-    .woocommerce-notice-wrapper {
+    .woocommerce-notices-wrapper {
       grid-column: 1 / 3;
     }
 
+  }
+}
+
+.woocommerce-notices-wrapper .woocommerce-error {
+  background: transparent;
+  color: #BD3D3A;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  border: none;
+  font-weight: var.$bold;
+
+  &::before, &::after {
+    content: none;
   }
 }
 
@@ -36,6 +49,7 @@
 
   @media screen and (min-width: 1400px) {
     margin-bottom: 0;
+    grid-column: 1;
   }
 
   article {

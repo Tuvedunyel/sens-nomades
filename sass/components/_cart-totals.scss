@@ -10,6 +10,10 @@
   max-width: 350px;
   padding: 1rem;
 
+  @media screen and (min-width: 1400px) {
+    grid-column: 2;
+  }
+
   &::before, &::after {
     content: none;
   }
@@ -136,6 +140,7 @@
     #pwgc-redeem-error {
       text-alin: center;
       font-size: 2.1rem !important;
+      color: #BD3D3A;
 
       @media screen and (min-width: 760px) {
         grid-column: 1 / 3;
@@ -148,6 +153,7 @@
       border: 1px solid var.$bleu_odysée;
       border-radius: 10px;
       padding: 1rem 1.4rem;
+      font-size: 1.4rem;
 
       @media screen and (min-width: 760px) {
         grid-column: 1;
