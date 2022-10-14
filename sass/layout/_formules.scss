@@ -138,7 +138,7 @@
   justify-content: center;
   align-items: center;
   align-self: center;
-  position: relative;
+  position: absolute;
   top: -4rem;
 }
 
@@ -148,6 +148,8 @@
   justify-content: center;
   align-items: start;
   width: 88%;
+  position: relative;
+  padding-top: 4rem;
 
   h3 {
     font-weight: var.$regular;

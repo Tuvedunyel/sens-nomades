@@ -22,8 +22,9 @@ get_header(); ?>
 						$coachs_image = get_sub_field( 'coachs_image' );
 						?>
                         <article class="coachs">
-                            <img src="<?= esc_url($coachs_image['url']); ?>" alt="<?= esc_attr($coachs_image['alt']);
-                            ?>">
+                            <img src="<?= esc_url( $coachs_image['url'] ); ?>"
+                                 alt="<?= esc_attr( $coachs_image['alt'] );
+							     ?>">
                             <h2><?php the_sub_field( 'coachs_name' ); ?></h2>
                             <p><?php the_sub_field( 'coachs_description_courte' ); ?></p>
                             <div class="long-description">
@@ -33,18 +34,21 @@ get_header(); ?>
                                          alt="Fermer la
                                     description">
                                 </div>
-                                <h3><?php the_sub_field('coachs_name') ?><span> - <?php the_sub_field('coachs_description_courte') ?></span></h3>
+                                <h3><?php the_sub_field( 'coachs_name' ) ?>
+                                    <span> - <?php the_sub_field( 'coachs_description_courte' ) ?></span></h3>
                                 <div class="description">
-                                    <?php the_sub_field('description'); ?>
+									<?php the_sub_field( 'description' ); ?>
                                 </div>
                                 <div class="lien">
-                                    <?php $lien_portrait = get_sub_field('lien_portrait');
-                                        $lien_sejour = get_sub_field('lien_sejour');
-                                    ?>
-                                    <a href="<?= esc_url($lien_sejour['url']) ?>"><?= esc_html($lien_sejour['title'])
-                                        ?></a>
-                                    <a href="<?= esc_url($lien_portrait['url']); ?>"><?= esc_html($lien_portrait['title']);
-                                        ?></a>
+									<?php $lien_portrait = get_sub_field( 'lien_portrait' );
+									$lien_sejour         = get_sub_field( 'lien_sejour' );
+									if ( $lien_sejour ) :
+										?>
+                                        <a href="<?= esc_url( $lien_sejour['url'] ) ?>"><?= esc_html( $lien_sejour['title'] )
+											?></a>
+									<?php endif; ?>
+                                    <a href="<?= esc_url( $lien_portrait['url'] ); ?>"><?= esc_html( $lien_portrait['title'] );
+										?></a>
                                 </div>
                             </div>
                         </article>
@@ -52,8 +56,8 @@ get_header(); ?>
 					<?php endwhile; endif; ?>
             </div>
         </section>
-        <?php $lien_boutique = get_field('lien_boutique') ?>
-        <a href="<?= esc_url($lien_boutique['url']); ?>" class="btn"><?= esc_html($lien_boutique['title']); ?></a>
+		<?php $lien_boutique = get_field( 'lien_boutique' ) ?>
+        <a href="<?= esc_url( $lien_boutique['url'] ); ?>" class="btn"><?= esc_html( $lien_boutique['title'] ); ?></a>
     </div>
 </main>
 

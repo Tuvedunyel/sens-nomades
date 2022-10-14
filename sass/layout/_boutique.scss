@@ -392,6 +392,12 @@
       border: 1px solid var.$terracota;
       top: 8%;
       right: -2%;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      top: 11%;
+      right: -5%;
     }
   }
 
@@ -416,6 +422,12 @@
       border: 1px solid var.$bleu_glacié;
       top: 8%;
       right: -2%;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      top: 11%;
+      right: -5%;
     }
   }
 }

@@ -424,8 +424,9 @@
     margin-top: 0 !important;
   }
 
-  button {
+  .sejour-portrait {
     text-transform: uppercase;
+    text-decoration: none;
     background: var.$terracota;
     position: relative;
     color: white;
@@ -435,6 +436,9 @@
     width: min(309px, 75%);
     border-radius: 10px;
     height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &::after {
       content: "";

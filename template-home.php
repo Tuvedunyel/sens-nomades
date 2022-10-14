@@ -179,7 +179,7 @@ $categories = get_the_category();
                     const urlParams = JSON.parse(this.currentUrl.search.replace('?', '').replaceAll('%22', '"'));
                     console.log(urlParams)
                     this.categoryId = urlParams.term_id;
-                    this.currentCategory = urlParams.name;
+                    this.currentCategory = urlParams.name.replaceAll('%C3%A9', 'é').replaceAll('%20', ' ');
                 }
             },
             getUrl () {
