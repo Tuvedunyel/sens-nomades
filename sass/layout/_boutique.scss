@@ -686,6 +686,12 @@
       border: 1px solid var.$terracota;
       top: 8%;
       right: -2%;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      top: 13%;
+      right: -5%;
     }
   }
 }

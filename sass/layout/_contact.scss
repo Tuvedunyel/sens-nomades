@@ -189,6 +189,12 @@ label {
     position: absolute;
     top: 5%;
     left: 1%;
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    top: 10%;
+    left: 3%;
   }
 }
 
