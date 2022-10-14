@@ -50,6 +50,12 @@ main.pages {
     @media screen and (min-width: 1200px) {
       flex-direction: row;
       align-items: start;
+      max-width: 85%;
+      gap: 3rem;
+      
+      .content {
+        max-width: calc(100% - 410px);
+      }
 
       .randonneur__top {
         transform: rotateY(180deg);

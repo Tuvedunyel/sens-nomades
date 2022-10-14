@@ -26,7 +26,7 @@ $categories = get_the_category();
                             </ul>
                         </div>
                         <div class="card__content">
-                            <h3 v-html="post.title"></h3>
+                            <h3><a :href="post.permalink" v-html="post.title"></a></h3>
                             <p v-html="handlePostExcerpt(post)"></p>
                             <a :href="post.permalink">Lire la suite</a>
                         </div>
@@ -75,7 +75,7 @@ $categories = get_the_category();
                             </ul>
                         </div>
                         <div class="card__content">
-                            <h3 v-html="post.title"></h3>
+                            <h3><a :href="post.permalink" v-html="post.title"></a></h3>
                             <p v-html="handlePostExcerpt(post)"></p>
                             <a :href="post.permalink">Lire la suite</a>
                         </div>

@@ -91,6 +91,11 @@
 
       .card__content {
         height: 100%;
+
+        h3 a {
+          color: var.$terracota;
+          text-decoration: none;
+        }
       }
     }
   }

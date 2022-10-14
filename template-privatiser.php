@@ -119,7 +119,7 @@ get_header(); ?>
 		?>
         <section class="reviews" v-if="particulier || entreprise">
             <div class="container-narrow">
-                <h2 class="title__reviews">Il parlent de nous :</h2>
+                <h2 class="title__reviews">Ils nous font confiances :</h2>
                 <div class="reviews__contianer">
 					<?php while ( have_rows( 'ils_parlent_de_nous' ) ) : the_row();
 						$lien            = get_sub_field( 'lien' );

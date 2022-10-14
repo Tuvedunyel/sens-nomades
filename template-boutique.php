@@ -120,7 +120,7 @@ json_encode( $resume_product_list );
                     </div>
                 </div>
                 <div class="voyages-card__bottom">
-                    <h3>{{voyage.titre}}</h3>
+                    <h3><a :href="voyage.permalink">{{voyage.titre}}</a></h3>
                     <p class="thematique">{{voyage.thematique}}</p>
                     <div class="prochain-depart">
                         <strong>Prochain(s) départ(s)</strong>

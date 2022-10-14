@@ -510,6 +510,11 @@
     color: var.$terracota;
     text-align: left;
     margin-bottom: 1.4rem;
+
+    a {
+      color: var.$terracota;
+      text-decoration: none;
+    }
   }
 
   .thematique {

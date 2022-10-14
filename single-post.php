@@ -72,9 +72,13 @@
                             </div>
                         </section>
 						<?php wp_reset_postdata(); endif; ?>
-                    <button class="sejour-portrait">
-                        Ses séjours
-                    </button>
+					<?php $sejours_link = get_field( 'sejours' );
+					if ( $sejours_link ) :
+						?>
+                        <a href="<?= esc_url( $sejours_link['url'] ); ?>" class="sejour-portrait">
+                            Ses séjours
+                        </a>
+					<?php endif; ?>
                 </div>
 
             </div>
@@ -116,15 +120,15 @@
     <script>
         const { createApp } = Vue;
 
-        createApp({
-            data() {
+        createApp( {
+            data () {
                 return {
                     categories: [],
                     homeUrl: null,
                     loaded: false,
                 }
             },
-            async mounted() {
+            async mounted () {
                 await this.getCategories();
                 await this.getHomeUrl();
                 this.loaded = true;
@@ -133,11 +137,11 @@
                 getCategories () {
                     this.categories = <?= json_encode( $categories ); ?>;
                 },
-                getHomeUrl() {
+                getHomeUrl () {
                     this.homeUrl = <?= json_encode( $lien_articles_page['url'] ); ?>;
                 }
             }
-        }).mount('#root')
+        } ).mount( '#root' )
     </script>
 
 </main>
