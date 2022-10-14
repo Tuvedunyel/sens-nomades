@@ -107,7 +107,7 @@ get_header(); ?>
 						<?php endwhile; ?>
 					<?php endif; ?>
                     <div class="form-container">
-						<?= do_shortcode( '[contact-form-7 id="656" title="Particulier"]' ) ?>
+						<?= do_shortcode( '[contact-form-7 id="656" title="Entreprise"]' ) ?>
                     </div>
                 </div>
             </div>

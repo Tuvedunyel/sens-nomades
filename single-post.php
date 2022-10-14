@@ -1,18 +1,24 @@
 <?php get_header(); ?>
 
-<main class="single-blog">
+<main class="single-blog" id="root">
     <section class="hero-banner">
         <div class="container-narrow">
             <h2>Les actualités <span>Sens nomades</span></h2>
         </div>
     </section>
-    <article>
+    <article v-if="loaded">
 		<?php $lien_articles_page = get_field( 'page_darticles', 'option' ); ?>
         <a href="<?= esc_url( $lien_articles_page['url'] ); ?>" class="return">&#10094; Retour aux actualités</a>
         <div class="container-narrow">
 			<?php $categories = get_the_category(); ?>
             <h1><?php the_title(); ?></h1>
-			<?php the_category(); ?>
+            <ul class="post-categories">
+                <li v-for="category in categories" :key="category.term_id">
+                    <a :href="`${homeUrl}?${JSON.stringify(category)}`">{{
+                        category.name
+                        }}</a>
+                </li>
+            </ul>
             <section class="top">
 				<?php $image_top = get_field( 'image_haut_de_page' ); ?>
                 <img src="<?= esc_url( $image_top['url'] ); ?>" alt="<?= esc_attr( $image_top['alt'] ); ?>">
@@ -106,6 +112,33 @@
             </div>
         </section>
 		<?php wp_reset_postdata(); endif; ?>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    categories: [],
+                    homeUrl: null,
+                    loaded: false,
+                }
+            },
+            async mounted() {
+                await this.getCategories();
+                await this.getHomeUrl();
+                this.loaded = true;
+            },
+            methods: {
+                getCategories () {
+                    this.categories = <?= json_encode( $categories ); ?>;
+                },
+                getHomeUrl() {
+                    this.homeUrl = <?= json_encode( $lien_articles_page['url'] ); ?>;
+                }
+            }
+        }).mount('#root')
+    </script>
 
 </main>
 

@@ -49,8 +49,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
         <p class="custom-form-validation">
-            <?php $vente = get_field('page_condition_vente', 'option'); ?>
-            <label for="consent">J'ai pris connaissance des <a href="<?= esc_url($vente['url']); ?>>" target="_blank">condition générales de vente</a> et les acceptent</label>
+			<?php $vente = get_field( 'page_condition_vente', 'option' ); ?>
+            <label for="consent">J'accepte les conditions de réservation (contrat de voyage) et <a
+                        href="<?= esc_url( $vente['url'] ); ?>">les conditions générales de vente</a></label>
             <input type="checkbox" name="consent" id="consent" required>
         </p>
 

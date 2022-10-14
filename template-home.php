@@ -138,6 +138,7 @@ $categories = get_the_category();
                 numberOfPages: 0,
                 step: 9,
                 currentCategory: 'Tous les articles',
+                currentUrl: window.location,
             }
         },
         computed: {
@@ -164,6 +165,7 @@ $categories = get_the_category();
             await axios.get( `${this.siteUrl}/wp-json/better-rest-endpoints/v1/posts` ).then( res => {
                 this.posts = res.data
             } )
+            await this.checkCategories();
             this.numberOfPages = Math.ceil( this.posts.length / this.step );
             while ( this.i <= this.numberOfPages ) {
                 this.pagination.push( this.i );
@@ -172,6 +174,14 @@ $categories = get_the_category();
             this.loaded = true
         },
         methods: {
+            checkCategories () {
+                if ( this.currentUrl.search ) {
+                    const urlParams = JSON.parse(this.currentUrl.search.replace('?', '').replaceAll('%22', '"'));
+                    console.log(urlParams)
+                    this.categoryId = urlParams.term_id;
+                    this.currentCategory = urlParams.name;
+                }
+            },
             getUrl () {
                 const url = new URL( window.location.href );
                 this.siteUrl = url.origin
