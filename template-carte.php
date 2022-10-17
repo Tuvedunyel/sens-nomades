@@ -15,7 +15,8 @@ get_header(); ?>
 		public $image;
 		public $link;
 		public $tags;
-        public $days;
+		public $days;
+		public $thematique;
 	}
 
 	$product_list = [];
@@ -33,15 +34,16 @@ get_header(); ?>
 		while ( $loop->have_posts() ) : $loop->the_post();
 			$categories = get_the_terms( $post->ID, 'product_cat' );
 			if ( $categories[0]->name !== 'Options' ) :
-				$product            = new Product();
-				$product->longitude = get_field( 'longitude' );
-				$product->latitude  = get_field( 'latitude' );
-				$product->title     = get_the_title();
-				$product->price     = get_field( 'price' );
-				$product->image     = get_the_post_thumbnail();
-				$product->link      = get_the_permalink();
-				$product->tags      = get_field( 'tag_image' );
-                $product->days      = get_field( 'nombre_de_jours' );
+				$product             = new Product();
+				$product->longitude  = get_field( 'longitude' );
+				$product->latitude   = get_field( 'latitude' );
+				$product->title      = get_the_title();
+				$product->price      = get_field( 'price' );
+				$product->image      = get_the_post_thumbnail();
+				$product->link       = get_the_permalink();
+				$product->tags       = get_field( 'tag_image' );
+				$product->days       = get_field( 'nombre_de_jours' );
+				$product->thematique = get_field( 'thematique' );
 				array_push( $product_list, $product );
 			endif; endwhile; endif;
 	$product_list = json_encode( $product_list );
@@ -83,12 +85,13 @@ get_header(); ?>
                         ).toFixed( 4 ) ], { icon: this.markerIcon } ).addTo( this.map );
                         marker.bindPopup( `<div class="marker-map"><div class="upper">${ product
                             .image }<div class="right-marker"><div class="fanion-container"><div
-                            class="days-spend">${product
-                            .days}</div><div
-                            class="price-marker">${product.price}€</div></div><div class="image__picto"><img
-                            src="${product.tags['url']}"
-                            alt="${product.tags['alt']}" title="${product.title}" /></div></div></div><div
-                            class="lower"><h4>${product.title}</h4><a href="${product.link}"
+                            class="days-spend">${ product
+                            .days }</div><div
+                            class="price-marker">${ product.price }€</div></div><div class="theme__container"><div
+                            class="image__picto"><img
+                            src="${ product.tags[ 'url' ] }"alt="${ product.tags[ 'alt' ] }" title="${ product.title }"
+                            /></div><p>${ product.thematique.replace( '- ', '' ) }</p></div></div></div><div
+                            class="lower"><h4>${ product.title }</h4><a href="${ product.link }"
                             target="_blank">Voir les dates</a></div></div>` );
                     } );
                 }

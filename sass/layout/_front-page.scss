@@ -1,0 +1,60 @@
+@use '../abstracts' as var;
+
+#front {
+
+  .hero-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.recommanded-travel {
+  margin-top: 2.94rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6.5rem;
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 12.5rem;
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    margin-bottom: 0.6rem;
+  }
+
+  p:last-of-type {
+    max-width: 704px;
+    margin-bottom: 4.6rem;
+  }
+
+  .travel__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    @media screen and (min-width: 1200px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 1400px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .thematique {
+      margin-bottom: 0.6rem;
+    }
+  }
+}
+

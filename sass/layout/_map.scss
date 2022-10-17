@@ -76,6 +76,22 @@
   width: 100%;
 }
 
+.theme__container {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  place-items: center;
+  gap: 0.97rem;
+  width: 100%;
+
+  p {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var.$roche;
+    line-height: 1;
+    justify-self: start;
+  }
+}
+
 .days-spend {
   background: url('../assets/fanion-sable.svg');
   background-position: center;

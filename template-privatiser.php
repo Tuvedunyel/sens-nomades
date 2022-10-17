@@ -32,10 +32,10 @@ get_header(); ?>
 									?>
                                     <div class="info-bulle">
                                         <p><?php the_sub_field( 'texte' ); ?></p>
-                                        <?php
-                                            $close = get_template_directory_uri() . '/assets/close.svg';
-                                            $open = get_template_directory_uri() . '/assets/open.svg';
-                                        ?>
+										<?php
+										$close = get_template_directory_uri() . '/assets/close.svg';
+										$open  = get_template_directory_uri() . '/assets/open.svg';
+										?>
                                         <img :src=" infoBulle ? close : open " :alt="infoBulle ? closeInfo : openInfo"
                                              class="open-close" @click="toggleInfoBulle">
                                         <div class="info-bulle__content" v-show="infoBulle">
@@ -136,6 +136,17 @@ get_header(); ?>
         </section>
 	<?php endif; ?>
 
+    <section class="response-form" v-if="sent">
+        <div class="container-center">
+            <h2 class="terracota">Merci pour votre message !</h2>
+            <strong>Nous vous répondrons dans les plus brefs délais.</strong>
+            <div class="btn__container">
+                <a href="<?= home_url(); ?>" class="btn home-btn">Revenir à l'accueil</a>
+                <button class="btn close-btn" @click="closeSent">Fermer cette fenêtre</button>
+            </div>
+        </div>
+    </section>
+
     <script>
         const { createApp } = Vue;
 
@@ -152,7 +163,8 @@ get_header(); ?>
                     close: null,
                     open: null,
                     closeInfo: 'Fermer l\'info bulle',
-                    openInfo: 'Ouvrir l\'info bulle'
+                    openInfo: 'Ouvrir l\'info bulle',
+                    sent: false,
                 }
             },
             computed: {
@@ -160,12 +172,22 @@ get_header(); ?>
                     return this.lien.slice( this.sliceA, this.sliceB );
                 }
             },
-            mounted () {
+            async mounted () {
+                await this.isSent();
                 this.getReviewsInfo();
                 this.windowWidth = window.innerWidth;
                 this.sliceB = this.lien.length;
             },
             methods: {
+                closeSent() {
+                    this.sent = false;
+                },
+                isSent () {
+                    const formUrl = window.location;
+                    if( formUrl.hash ) {
+                        this.sent = true;
+                    }
+                },
                 getReviewsInfo () {
                     this.image = <?= json_encode( $image_reviews ); ?>;
                     this.lien = <?= json_encode( $lien_reviews ); ?>;

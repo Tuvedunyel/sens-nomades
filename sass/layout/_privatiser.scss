@@ -1,6 +1,8 @@
 @use '../abstracts' as var;
 
 .private {
+  position: relative;
+
   h1 {
     font-size: 3.2rem;
     font-weight: var.$bold;
@@ -132,32 +134,41 @@
     width: 86%;
 
     @media screen and (min-width: 1400px) {
+      grid-template-columns: 356px 0.5fr 223px;
       width: 90%;
+      margin-left: -11em;
+
+      .circle {
+        grid-row: 1;
+        grid-column: 2;
+      }
+
+      p{
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+      }
+
+      .chemin {
+        grid-column: 3;
+      }
     }
 
     @media screen and (min-width: 1500px) {
       width: 77%;
-      margin-left: 11em;
+      margin-left: -7em;
     }
 
     @media screen and (min-width: 1617px) {
-      margin-left: 13em;
+      margin-left: -5em;
     }
 
     @media screen and (min-width: 1700px) {
-      margin-left: 9.5em;
+      margin-left: -7.5em;
     }
 
     @media screen and (min-width: 1800px) {
-      margin-left: 11em;
-    }
-
-    @media screen and (min-width: 1868px) {
-      margin-left: 12em;
-    }
-
-    @media screen and (min-width: 1920px) {
-      margin-left: 12.5em;
+      margin-left: -7em;
     }
 
     .chemin {
@@ -681,6 +692,91 @@
     width: 296px;
     text-align: center;
     margin-bottom: 0;
+  }
+}
+
+.response-form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin-inline: auto;
+  background: rgb(0 0 0 / 0.5);
+  z-index: 200;
+}
+
+.container-center {
+  width: 75%;
+  padding: 2.5rem 1.2rem;
+  margin-top: 2em;
+  margin-inline: auto;
+  background: var.$sable;
+  border: 11px solid var.$terracota;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .terracota {
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  strong {
+    font-size: 2.3rem;
+    margin-bottom: 2em;
+  }
+
+  .btn__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+  }
+
+  .btn {
+    text-decoration: none;
+    padding: 1.2rem 1.7rem;
+    border-radius: 10px;
+    color: var.$sable;
+    font-weight: var.$bold;
+    position: relative;
+    border: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 5%;
+      right: -2%;
+      border: 1px solid;
+      border-radius: 10px;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      top: 10%;
+      right: -5%;
+    }
+  }
+
+  .home-btn {
+    background: var.$bleu_glacié;
+
+    &::after {
+      border-color: var.$bleu_glacié;
+    }
+  }
+
+  .close-btn {
+    background: var.$terracota;
+
+    &::after {
+      border-color: var.$terracota;
+    }
   }
 }
 
