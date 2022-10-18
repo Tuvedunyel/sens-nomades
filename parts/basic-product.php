@@ -26,7 +26,7 @@ endif; ?>
             </li>
         </ul>
         <ul class="gallery-container little-one">
-            <li v-for="(image, index) in littleImages.slice(sliceLittleA, sliceLittleB)" :key="index">
+            <li v-for="(image, index) in handleMiniature.slice(sliceLittleA, sliceLittleB)" :key="index">
                 <img :src="image.url" :alt="image.alt">
             </li>
         </ul>
@@ -304,6 +304,7 @@ if ( ! WC()->cart->is_empty() ) {
                 sliceBigB: 1,
                 sliceLittleA: 1,
                 sliceLittleB: 5,
+                step: 5,
                 buttonText: 'Tout le programme',
                 showProgram: false,
                 longitude: 0,
@@ -326,6 +327,15 @@ if ( ! WC()->cart->is_empty() ) {
                 quantity: 0,
                 price: 0,
             }
+        },
+        computed: {
+            handleMiniature () {
+                return this.littleImages = [
+                    ...this.littleImages,
+                    ...this.littleImages.slice( 0, this.step - 1)
+                ]
+            },
+
         },
         async mounted () {
             await this.getImages()
@@ -420,18 +430,9 @@ if ( ! WC()->cart->is_empty() ) {
                     this.sliceBigA = this.images.length - 1
                     this.sliceBigB = this.images.length
                 }
-                if ( this.sliceLittleA === -1 ) {
-                    this.sliceLittleA = -5
-                    if ( this.littleImages.length < 6 ) {
-                        this.sliceLittleA = -this.littleImages.length
-                    }
-                    this.sliceLittleB = -1
-                } else if ( this.sliceLittleA === -14 ) {
-                    this.sliceLittleA = 0
-                    this.sliceLittleB = 4
-                    if ( this.littleImages.length < 6 ) {
-                        this.sliceLittleB = this.littleImages.length - 1;
-                    }
+                if ( this.sliceLittleA === 0 ) {
+                    this.sliceLittleA = this.step
+                    this.sliceLittleB = this.step + (this.step - 1)
                 } else {
                     this.sliceLittleA--
                     this.sliceLittleB--
