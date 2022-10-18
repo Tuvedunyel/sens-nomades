@@ -70,7 +70,7 @@ json_encode( $resume_product_list );
 			<?php the_content(); ?>
 
             <div class="travel__container" v-if="posts">
-                <div class="voyages-card" v-for="(voyage, index) in posts.slice(0, 3)" :key="index">
+                <div class="voyages-card" v-for="(voyage, index) in postsRender" :key="index">
                     <div class="voyages-card__thumbnail">
                         <p class="jours">{{voyage.jours}}</p>
                         <p class="prix">{{voyage.prix}}€</p>
@@ -213,29 +213,29 @@ json_encode( $resume_product_list );
 					wp_reset_postdata(); ?>
                 </div>
 			<?php endif;
-            $lien_actu = get_field('page_darticles', 'option');
-            $lien_actu_target = $lien_actu['target'] ? $lien_actu['target'] : '_self';
-            ?>
-            <a href="<?= esc_url($lien_actu['url']); ?>" class="btn btn-actu" target="<?= esc_attr($lien_actu_target)
-            ; ?>" >Tous nos articles</a>
+			$lien_actu        = get_field( 'page_darticles', 'option' );
+			$lien_actu_target = $lien_actu['target'] ? $lien_actu['target'] : '_self';
+			?>
+            <a href="<?= esc_url( $lien_actu['url'] ); ?>" class="btn btn-actu"
+               target="<?= esc_attr( $lien_actu_target ); ?>">Tous nos articles</a>
         </div>
     </section>
 
-    <?php get_template_part('parts/instagram'); ?>
+	<?php get_template_part( 'parts/instagram' ); ?>
 
     <section class="avis">
         <div class="container-narrow">
-            <h2><?php the_field('titre_avis'); ?></h2>
-            <?php if( have_rows('avis') ) : ?>
+            <h2><?php the_field( 'titre_avis' ); ?></h2>
+			<?php if ( have_rows( 'avis' ) ) : ?>
                 <div class="avis__container">
-                    <?php while( have_rows('avis') ) : the_row(); ?>
+					<?php while ( have_rows( 'avis' ) ) : the_row(); ?>
                         <div class="avis-card">
-                            <?php $image = get_sub_field('image'); ?>
-                            <img src="<?= esc_url($image['url']); ?>" alt="<?= esc_attr($image['alt']); ?>">
+							<?php $image = get_sub_field( 'image' ); ?>
+                            <img src="<?= esc_url( $image['url'] ); ?>" alt="<?= esc_attr( $image['alt'] ); ?>">
                         </div>
-                    <?php endwhile; ?>
+					<?php endwhile; ?>
                 </div>
-            <?php endif; ?>
+			<?php endif; ?>
         </div>
     </section>
     <script>
@@ -257,60 +257,71 @@ json_encode( $resume_product_list );
                     directions: null,
                     directionsShow: [],
                     isLoad: false,
+                    windowWidth: null,
                 }
             },
-            async mounted () {
-                await this.getPost();
-                await this.getDirections();
-                await this.setDirectionShow();
-                this.map = L.map( 'map-container', {
-                    attributionControl: false, dragging: false, zoomControl: false,
-                    boxZoom: false, doubleClickZoom: false, scrollWheelZoom: false, tap: false, touchZoom: false
-                } ).setView( [ 47.393, 2.739 ], 7 );
-                L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                } ).addTo( this.map );
-                this.setMapPoints();
-                this.isLoad = true
-            },
-            methods: {
-                toggleElement ( index ) {
-                    this.directionsShow[ index ].show = !this.directionsShow[ index ].show;
+            computed: {
+                postsRender() {
+                    if ( this.windowWidth >= 1400 ) {
+                        return this.posts.slice( 0, 3 );
+                    } else {
+                        return this.posts.slice( 0, 4 );
+                    }
+                }
                 },
-                setDirectionShow () {
-                    let index = 0;
-                    this.directions.forEach( direction => {
-                        this.directionsShow.push( {
-                            index: index,
-                            show: false
-                        } );
-                        index++;
-                    } )
+                async mounted () {
+                    await this.getPost();
+                    await this.getDirections();
+                    await this.setDirectionShow();
+                    this.windowWidth = window.innerWidth;
+                    this.map = L.map( 'map-container', {
+                        attributionControl: false, dragging: false, zoomControl: false,
+                        boxZoom: false, doubleClickZoom: false, scrollWheelZoom: false, tap: false, touchZoom: false
+                    } ).setView( [ 47.393, 2.739 ], 7 );
+                    L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    } ).addTo( this.map );
+                    this.setMapPoints();
+                    this.isLoad = true
                 },
-                getDirections () {
-                    this.directions = <?= json_encode( $direction_array ); ?>;
-                },
-                setMapPoints () {
-                    this.posts.forEach( product => {
-                        const marker = L.marker( [ Number( product.longitude ).toFixed( 4 ), Number( product.latitude
-                        ).toFixed( 4 ) ], { icon: this.markerIcon } ).addTo( this.map );
-                        marker.bindPopup( `<div class="marker-map"><div class="upper">${ product
-                            .image }<div class="right-marker"><div class="fanion-container"><div
+                methods: {
+                    toggleElement ( index ) {
+                        this.directionsShow[ index ].show = !this.directionsShow[ index ].show;
+                    },
+                    setDirectionShow () {
+                        let index = 0;
+                        this.directions.forEach( direction => {
+                            this.directionsShow.push( {
+                                index: index,
+                                show: false
+                            } );
+                            index++;
+                        } )
+                    },
+                    getDirections () {
+                        this.directions = <?= json_encode( $direction_array ); ?>;
+                    },
+                    setMapPoints () {
+                        this.posts.forEach( product => {
+                            const marker = L.marker( [ Number( product.longitude ).toFixed( 4 ), Number( product.latitude
+                            ).toFixed( 4 ) ], { icon: this.markerIcon } ).addTo( this.map );
+                            marker.bindPopup( `<div class="marker-map"><div class="upper">${ product
+                                .image }<div class="right-marker"><div class="fanion-container"><div
                             class="days-spend">${ product
-                            .days }</div><div
+                                .days }</div><div
                             class="price-marker">${ product.price }€</div></div><div class="theme__container"><div
                             class="image__picto"><img
                             src="${ product.tags[ 'url' ] }"alt="${ product.tags[ 'alt' ] }" title="${ product.title }"
                             /></div><p>${ product.thematique.replace( '- ', '' ) }</p></div></div></div><div
                             class="lower"><h4>${ product.titre }</h4><a href="${ product.link }"
                             target="_blank">Voir les dates</a></div></div>` );
-                    } );
-                },
-                getPost () {
-                    this.posts = <?= json_encode( $resume_product_list ) ?>;
+                        } );
+                    },
+                    getPost () {
+                        this.posts = <?= json_encode( $resume_product_list ) ?>;
+                    }
                 }
-            }
-        } ).mount( '#front' );
+            } ).mount( '#front' );
     </script>
 </main>
 

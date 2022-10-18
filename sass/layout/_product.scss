@@ -753,6 +753,7 @@ div.aside {
   justify-content: center;
   align-items: center;
   gap: 3.2rem;
+  max-width: 379px;
 }
 
 .map, #map, .pictures img {
@@ -762,6 +763,7 @@ div.aside {
 .map, #map {
   height: 456px;
   width: 100%;
+  max-width: 379px;
 }
 
 .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
@@ -1032,4 +1034,46 @@ input[type=number] {
   font-size: 1.7rem;
   text-align: start;
   align-self: start;
+}
+
+.wapf-product-totals {
+  display: none !important;
+}
+
+.wapf-field-number {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 90%;
+  margin-inline: auto;
+}
+
+.wapf-field-label {
+  width: fit-content !important;
+
+  label {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: start;
+  }
+}
+
+.wapf-field-input {
+  width: 24px;
+  height: 24px;
+
+  input {
+    height: 100%;
+    border: 1px solid var.$bleu_odysée;
+  }
+}
+
+.options {
+  align-self: center;
+  text-align: start;
+  width: 90%;
+  display: flow-root;
 }

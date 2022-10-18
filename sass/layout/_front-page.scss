@@ -13,6 +13,7 @@
     position: relative;
     height: 508px;
     width: 100%;
+    max-width: 100%;
 
     #map-container {
       width: 100%;
@@ -43,7 +44,7 @@
     }
 
     h3 {
-      font-size: 3.3rem;
+      font-size: 3rem;
       margin-top: 1.8rem;
       margin-bottom: 1.3rem;
       max-width: 320px;
@@ -113,7 +114,6 @@
   }
 
   p:last-of-type {
-    max-width: 704px;
     margin-bottom: 4.6rem;
   }
 
@@ -123,6 +123,10 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+
+    .voyages-card {
+      margin-inline: auto;
+    }
 
     @media screen and (min-width: 1200px) {
       display: grid;
@@ -227,7 +231,7 @@
   }
 
   h2 {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     color: var.$terracota;
     margin-bottom: 3.2rem;
     text-align: center;
@@ -240,7 +244,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
+
+  @media screen and (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin-bottom: 8rem;
+  }
 
   @media screen and (min-width: 1400px) {
     background: url('../assets/rose-vents-fond.svg') no-repeat center;
@@ -362,7 +373,7 @@
     }
 
     h2 {
-      font-size: 3.4rem;
+      font-size: 3rem;
       color: var.$terracota;
       margin-bottom: 1.3rem;
       text-align: center;

@@ -17,7 +17,6 @@ global $product;
 		?>
         <p class="participant">Nombre de participant.e.s :</p>
 	<?php endif; ?>
-	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	<?php
 	do_action( 'woocommerce_before_add_to_cart_quantity' ); ?>
@@ -35,6 +34,8 @@ global $product;
             <div class="plus" id="plus">+</div>
         </div>
 	<?php endif; ?>
+    <p class="options">En options :</p>
+	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 	<?php do_action( 'woocommerce_after_add_to_cart_quantity' );
 	?>
 	<?php
