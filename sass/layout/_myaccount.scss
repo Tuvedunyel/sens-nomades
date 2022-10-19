@@ -1,0 +1,24 @@
+@use '../abstracts' as var;
+
+#account {
+
+  .content {
+    margin-inline: auto;
+  }
+
+  .woocommerce {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+
+    h2 {
+      font-site: 3rem;
+      color: var.$terracota;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+
+}
