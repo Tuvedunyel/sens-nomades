@@ -94,36 +94,6 @@ function get_contact_menu() {
                     'menu_class'    => 'commerce-list',
 					'fallback_cb'    => false,
 				) ); ?>
-<!--                <nav class="commerce" id="commerce-links">-->
-<!--                    <ul id="commerce-list">-->
-<!--						--><?php //while ( have_rows( 'panier_compte_contact', 'option' ) ) : the_row();
-//							$lien        = get_sub_field( 'lien' );
-//							$lien_url    = $lien['url'];
-//							$lien_title  = $lien['title'];
-//							$lien_target = $lien['target'];
-//
-//							$image_commerce     = get_sub_field( 'image' );
-//							$image_commerce_url = $image_commerce['url'];
-//							$image_commerce_alt = $image_commerce['alt'];
-//							$image_deux         = get_sub_field( 'image_deux' );
-//
-//							$radio = get_sub_field( 'deuxieme_image' );
-//							?>
-<!--                            <li class="--><?//= $radio === 'Oui' ? 'pos' : '' ?><!--">-->
-<!--                                <a href="--><?//= esc_url( $lien_url ) ?><!--" target="--><?//= esc_attr( $lien_target ); ?><!--"-->
-<!--                                   title="--><?//= esc_html( $lien_title ); ?><!--">-->
-<!--                                    <img src="--><?//= esc_url( $image_commerce_url ); ?><!--" alt="--><?//= esc_attr
-//									( $image_commerce_alt ); ?><!--" class="commerce__img">-->
-<!--									--><?php //if ( $radio === 'Oui' ) : ?>
-<!--                                        <img src="--><?//= esc_url( $image_deux['url'] ); ?><!--"-->
-<!--                                             alt="--><?//= esc_attr( $image_deux['alt'] );
-//										     ?><!--" class="commercer__second-img">-->
-<!--									--><?php //endif; ?>
-<!--                                </a>-->
-<!--                            </li>-->
-<!--						--><?php //endwhile; ?>
-<!--                    </ul>-->
-<!--                </nav>-->
             </div>
 		<?php endif; ?>
     </div>

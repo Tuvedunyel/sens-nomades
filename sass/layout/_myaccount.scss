@@ -2,23 +2,42 @@
 
 #account {
 
+  .container-narrow.pages-container {
+    max-width: 62%;
+  }
+
   .content {
     margin-inline: auto;
+  }
+
+  .woocommerce-notices-wrapper {
+    position: absolute;
+    top: -10%;
   }
 
   .woocommerce {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 1.5rem;
+    position: relative;
+
+    &::before {
+      position: absolute;
+    }
 
     h2 {
-      font-site: 3rem;
+      font-size: 3rem;
       color: var.$terracota;
       text-transform: uppercase;
       text-align: center;
+      line-height: 1;
     }
+  }
+
+  .woocommerce-order-details {
+    margin-block: 2em;
   }
 
 }

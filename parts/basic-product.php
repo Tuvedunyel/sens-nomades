@@ -431,8 +431,8 @@ if ( ! WC()->cart->is_empty() ) {
                     this.sliceBigB = this.images.length
                 }
                 if ( this.sliceLittleA === 0 ) {
-                    this.sliceLittleA = this.step
-                    this.sliceLittleB = this.step + (this.step - 1)
+                    this.sliceLittleA = this.step - 1
+                    this.sliceLittleB = this.step + (this.step - 2)
                 } else {
                     this.sliceLittleA--
                     this.sliceLittleB--

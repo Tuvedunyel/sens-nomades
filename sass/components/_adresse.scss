@@ -1,0 +1,10 @@
+@use '../abstracts' as var;
+
+#account {
+
+  .woocommerce-Addresses {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2em;
+  }
+}

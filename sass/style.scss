@@ -120,3 +120,75 @@ h2 {
 select {
   appearance: none;
 }
+
+.button.vi-wcaio-sidebar-cart-bt.vi-wcaio-sidebar-cart-bt-nav.vi-wcaio-sidebar-cart-bt-nav-checkout {
+  background: var.$terracota;
+  color: var.$sable;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  font-weight: var.$bold;
+  position: relative;
+
+  &::after {
+    content: '';
+    border: 1px solid var.$terracota;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 7%;
+    right: -2%;
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover {
+    background: var.$terracota;
+    color: var.$sable;
+
+    &::after {
+      top: 12%;
+      right: -5%;
+    }
+  }
+}
+
+.button.vi-wcaio-bt-coupon-code {
+  color: var.$sable !important;
+  background: var.$bleu_glacié !important;
+  border-radius: 3px !important;
+
+  &:hover {
+    background: var.$bleu_odysée !important;
+  }
+}
+
+.vi-wcaio-sidebar-cart-header-title-wrap {
+  color: var.$roche !important;
+  font-weight: var.$bold;
+}
+
+.vi-wcaio-sidebar-cart-footer-cart_total.vi-wcaio-sidebar-cart-footer-subtotal, .vi-wcaio-sidebar-cart-footer-cart_total-title, .vi-wcaio-sidebar-cart-footer-cart_total1 {
+  color: var.$roche !important;
+}
+
+.vi-wcaio-sidebar-cart-footer-pd-plus-title {
+  display: none !important;
+}
+
+.vi-wcaio-sidebar-cart-footer-pd-name a {
+  color: var.$terracota !important;
+  font-weight: var.$semiBold !important;
+}
+
+.vi-wcaio-sidebar-cart-footer-pd-price span {
+  color: var.$roche !important;
+}
+
+.vi_wcaio_cart_icon-cart-of-ecommerce {
+  color: var.$terracota !important;
+}
+
+.vi-wcaio-sidebar-cart-count-wrap {
+  background: var.$bleu_odysée !important;
+  color: var.$sable !important;
+}

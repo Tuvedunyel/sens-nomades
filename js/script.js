@@ -99,4 +99,9 @@ if (minus && plus && quantity) {
         }
     });
 }
+const woocommerce = document.querySelector('.woocommerce');
+const myAccountContent = document.querySelector('.woocommerce-MyAccount-content');
+if (woocommerce && myAccountContent) {
+    woocommerce.classList.add('row-container');
+}
 //# sourceMappingURL=script.js.map

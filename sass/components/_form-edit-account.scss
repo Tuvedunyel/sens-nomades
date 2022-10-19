@@ -1,0 +1,65 @@
+@use '../abstracts' as var;
+
+#account {
+
+  form {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+
+    h3 {
+      color: var.$sable;
+    }
+  }
+
+  .woocommerce-address-fields {
+    width: 95%;
+  }
+
+  .woocommerce-form-row {
+    width: 95%;
+  }
+
+  em {
+    color: var.$sable;
+  }
+
+  legend {
+    color: var.$sable;
+  }
+
+  .btn-wrapper {
+    margin-bottom: 2.5rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      background: var.$terracota;
+      color: var.$sable;
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      position: relative;
+      font-weight: var.$bold;
+
+      &::after {
+        content: '';
+        border: 1px solid var.$terracota;
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 5%;
+        right: -2%;
+        transition: 0.3s ease-in-out;
+      }
+
+      &:hover::after {
+        right: -5%;
+        top: 10%;
+      }
+    }
+  }
+}
