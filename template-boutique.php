@@ -138,7 +138,7 @@ json_encode( $resume_product_list );
                 <p>N'hésitez pas à modifier votre recherche ou à repassez plus tard !</p>
                 <div class="return-clear">
                     <a href="<?= get_home_url( '/' ) ?>">Revenir à l'accueil</a>
-                    <button class="clear" @click="resetForm()">Réinitialiser la recherche</button>
+                    <button class="clear" @click="resetForm()">Nos autres séjours</button>
                 </div>
             </div>
 
@@ -227,7 +227,7 @@ json_encode( $resume_product_list );
                 </div>
             </div>
             <div class="arrow-up">
-                <p class="moon-flower">Ca c'est gentil</p>
+                <p class="moon-flower">Ça c'est gentil</p>
                 <img src="<?= get_template_directory_uri() ?>/assets/fleche.svg" alt="Flèche pointant vers le haut">
             </div>
         </div>

@@ -1,0 +1,78 @@
+@use '../abstracts' as var;
+
+.equipe-template {
+
+  .pilier .pilier-content.left-part-content {
+
+    .border:first-of-type {
+
+      .picto-pilier {
+        top: -18%;
+
+        @media screen and (min-width: 430px) {
+          top: -21%;
+        }
+
+        @media screen and (min-width: 532px) {
+          top: -23%;
+        }
+
+        @media screen and (min-width: 910px) {
+          top: -20%;
+        }
+
+        @media screen and (min-width: 1048px) {
+          top: -21%;
+        }
+
+        @media screen and (min-width: 1200px) {
+          top: -18%;
+        }
+
+        @media screen and (min-width: 1360px) {
+          top: -20%;
+        }
+
+        @media screen and (min-width: 1550px) {
+          top: -22%;
+        }
+      }
+    }
+
+    .border:last-of-type {
+
+      .picto-pilier {
+        top: -12% !important;
+
+        @media screen and (min-width: 430px) {
+          top: -15% !important;
+        }
+
+        @media screen and (min-width: 532px) {
+          top: -17% !important;
+        }
+
+        @media screen and (min-width: 910px) {
+          top: -14% !important;
+        }
+
+        @media screen and (min-width: 1048px) {
+          top: -15% !important;
+        }
+
+        @media screen and (min-width: 1200px) {
+          top: -12% !important;
+        }
+
+        @media screen and (min-width: 1360px) {
+          top: -14% !important;
+        }
+
+        @media screen and (min-width: 1550px) {
+          top: -16% !important;
+        }
+      }
+
+    }
+  }
+}

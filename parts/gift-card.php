@@ -92,7 +92,7 @@ endif; ?>
             handleMiniature () {
                 return this.littleImages = [
                     ...this.littleImages,
-                    ...this.littleImages.slice(0, this.step - 1)
+                    ...this.littleImages.slice( 0, this.step - 1 )
                 ];
             }
         },
@@ -110,7 +110,6 @@ endif; ?>
                 this.windowWidth = window.innerWidth;
                 if ( this.windowWidth < 660 ) {
                     this.sliceLittleB = 3
-                    console.log( this.sliceLittleB );
                 } else {
                     if ( this.images.length < 6 ) {
                         this.sliceLittleB = this.images.length
@@ -131,8 +130,13 @@ endif; ?>
                     this.sliceBigB = this.images.length
                 }
                 if ( this.sliceLittleA === 0 ) {
-                    this.sliceLittleA = this.step - 1
-                    this.sliceLittleB = this.step + (this.step - 2);
+                    if ( this.windowWidth > 600 ) {
+                        this.sliceLittleA = this.step - 1
+                        this.sliceLittleB = this.step + ( this.step - 2 );
+                    } else {
+                        this.sliceLittleA = ( this.step - 1 ) / 2 + 2
+                        this.sliceLittleB = ( this.step + this.step - 2 ) / 2 + 2;
+                    }
                 } else {
                     this.sliceLittleA--
                     this.sliceLittleB--
@@ -151,8 +155,13 @@ endif; ?>
                     this.sliceLittleB = this.sliceLittleB + 1
                 } else {
                     this.sliceLittleA = 1
-                    this.sliceLittleB = 5
-                    if ( this.images.length < 6 ) {
+                    if ( this.windowWidth < 600 ) {
+                        this.sliceLittleB = 3
+                    } else {
+                        this.sliceLittleB = this.step
+
+                    }
+                    if ( this.images.length < 6 && this.windowWidth > 600 ) {
                         this.sliceLittleB = this.images.length
                     }
                 }

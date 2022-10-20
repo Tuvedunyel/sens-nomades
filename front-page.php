@@ -102,6 +102,11 @@ json_encode( $resume_product_list );
                     <button class="clear" @click="resetForm()">Réinitialiser la recherche</button>
                 </div>
             </div>
+            <div class="voyages-link">
+                <?php $voyages_link = get_field('page_nos_voyages', 'options') ?>
+                <a href="<?= esc_url($voyages_link['url']); ?>" class="btn voyages-btn"><?= esc_html
+                    ($voyages_link['title']); ?></a>
+            </div>
         </div>
     </section>
     <section class="map">
@@ -277,7 +282,7 @@ json_encode( $resume_product_list );
                     this.map = L.map( 'map-container', {
                         attributionControl: false, dragging: false, zoomControl: false,
                         boxZoom: false, doubleClickZoom: false, scrollWheelZoom: false, tap: false, touchZoom: false
-                    } ).setView( [ 47.393, 2.739 ], 7 );
+                    } ).setView( [ 47.393, 2.739 ], 4 );
                     L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     } ).addTo( this.map );

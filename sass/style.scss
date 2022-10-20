@@ -192,3 +192,20 @@ select {
   background: var.$bleu_odysée !important;
   color: var.$sable !important;
 }
+
+.vi-wcaio-sidebar-cart-icon {
+  position: relative;
+
+  &::after {
+    content: '';
+    background: url('../assets/panier-bottom.svg') no-repeat center;
+    width: 75%;
+    height: 75%;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+  }
+  i {
+    display: none !important;
+  }
+}

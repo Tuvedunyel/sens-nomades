@@ -69,3 +69,9 @@
     right: -5%;
   }
 }
+
+#order_review.disabled #place_order {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}

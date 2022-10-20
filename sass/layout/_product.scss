@@ -683,8 +683,8 @@ div.aside {
   display: flex;
   flex-direction: column;
   text-align: start;
-  padding-bottom: 1.2em !important;
-  margin-bottom: 1.2em !important;
+  padding-bottom: 1em !important;
+  margin-bottom: 1em !important;
   width: 100%;
 
   &:not(:last-of-type) {
@@ -892,8 +892,8 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
-  width: 58px;
-  height: 58px;
+  width: 48px !important;
+  height: 48px !important;
   color: black;
   font-size: 1.7rem;
   font-weight: var.$black;
@@ -910,8 +910,8 @@ input[type=number] {
 
   .plus, .minus {
     background: var.$bleu_glacié;
-    width: 58px !important;
-    height: 58px;
+    width: 48px !important;
+    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1066,7 +1066,8 @@ input[type=number] {
   height: 24px;
 
   input {
-    height: 100%;
+    height: 24px !important;
+    width: 24px !important;
     border: 1px solid var.$bleu_odysée;
   }
 }

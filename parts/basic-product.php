@@ -278,13 +278,13 @@ if ( ! WC()->cart->is_empty() ) {
                     <h3><?php the_title(); ?></h3>
                     <p class="dates-texte">{{firstVariation}}</p>
                     <p>Nombre(s) de personne(s) : {{quantity}} - {{secondVariation}}</p>
-                    <strong>Prix : {{price}}</strong>
+                    <strong>Prix : {{price}}€</strong>
                 </div>
             </div>
             <div class="cart-confirmation__btn-container">
-                <button class="btn btn-continue" @click="closeShowNotification">Continuer mes achats</button>
-                <?php $cart_page = get_field('page_panier', 'option') ?>
-                <a href="<?= esc_url($cart_page['url']); ?>" class="btn go-to-cart">Commander</a>
+                <a href="<?= home_url(); ?>" class="btn btn-continue">Continuer mes achats</a>
+				<?php $cart_page = get_field( 'page_panier', 'option' ) ?>
+                <a href="<?= esc_url( $cart_page['url'] ); ?>" class="btn go-to-cart">Commander</a>
             </div>
         </div>
     </div>
@@ -326,13 +326,14 @@ if ( ! WC()->cart->is_empty() ) {
                 secondVariation: 'Aucun produit actuellement dans votre panier',
                 quantity: 0,
                 price: 0,
+                windowWidth: 1920,
             }
         },
         computed: {
             handleMiniature () {
                 return this.littleImages = [
                     ...this.littleImages,
-                    ...this.littleImages.slice( 0, this.step - 1)
+                    ...this.littleImages.slice( 0, this.step - 1 )
                 ]
             },
 
@@ -343,6 +344,7 @@ if ( ! WC()->cart->is_empty() ) {
             await this.setShowNotification()
             await this.getPostId();
             await this.getCartInfo();
+            this.windowWidth = window.innerWidth;
             if ( this.currentCart.length > 0 ) {
                 this.getProductInformation();
             }
@@ -351,8 +353,15 @@ if ( ! WC()->cart->is_empty() ) {
             if ( this.images.length > 0 ) {
                 this.sliceLittleA = 1
             }
-            if ( this.images.length < 6 ) {
-                this.sliceLittleB = this.images.length
+            if ( this.windowWidth < 600 ) {
+                this.sliceLittleB = 3
+            } else {
+                if ( this.images.length < 6 ) {
+                    this.sliceLittleB = this.images.length
+                } else {
+                    this.sliceLittleB = 5
+                }
+
             }
 
             this.map = L.map( 'map', {
@@ -376,10 +385,10 @@ if ( ! WC()->cart->is_empty() ) {
                     if ( item.product_id === this.currentId ) {
                         this.quantity = item.quantity;
                         this.firstVariation = item.variation.attribute_pa_dates;
-                        this.secondVariation = item.variation['attribute_pa_type-de-chambre'];
+                        this.secondVariation = item.variation[ 'attribute_pa_type-de-chambre' ];
                         this.price = item.line_total;
-                        this.firstVariation = this.firstVariation.replaceAll('-', ' ');
-                        this.secondVariation = this.secondVariation.replaceAll('-', ' ');
+                        this.firstVariation = this.firstVariation.replaceAll( '-', ' ' );
+                        this.secondVariation = this.secondVariation.replaceAll( '-', ' ' );
                     }
                 } )
             },
@@ -431,8 +440,13 @@ if ( ! WC()->cart->is_empty() ) {
                     this.sliceBigB = this.images.length
                 }
                 if ( this.sliceLittleA === 0 ) {
-                    this.sliceLittleA = this.step - 1
-                    this.sliceLittleB = this.step + (this.step - 2)
+                    if ( this.windowWidth > 600 ) {
+                        this.sliceLittleA = this.step - 1
+                        this.sliceLittleB = this.step + ( this.step - 2 );
+                    } else {
+                        this.sliceLittleA = ( this.step - 1 ) / 2 + 2
+                        this.sliceLittleB = ( this.step + this.step - 2 ) / 2 + 2;
+                    }
                 } else {
                     this.sliceLittleA--
                     this.sliceLittleB--
@@ -451,8 +465,13 @@ if ( ! WC()->cart->is_empty() ) {
                     this.sliceLittleB = this.sliceLittleB + 1
                 } else {
                     this.sliceLittleA = 1
-                    this.sliceLittleB = 5
-                    if ( this.images.length < 6 ) {
+                    if ( this.windowWidth < 600 ) {
+                        this.sliceLittleB = 3
+                    } else {
+                        this.sliceLittleB = this.step
+
+                    }
+                    if ( this.images.length < 6 && this.windowWidth > 600 ) {
                         this.sliceLittleB = this.images.length
                     }
                 }

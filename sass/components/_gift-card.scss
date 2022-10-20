@@ -36,6 +36,10 @@
     align-items: center;
     margin-top: 1.8rem;
 
+    & > div {
+      width: 100%;
+    }
+
     select {
       min-width: 300px;
       background: white;
@@ -141,13 +145,22 @@
     font-size: 1.4rem;
   }
 
+  .variations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .variations-container {
     position: relative;
+    min-width: 300px;
     width: fit-content;
     height: fit-content;
     margin-inline: auto;
     pointer-events: none;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     select {
       pointer-events: all;
     }

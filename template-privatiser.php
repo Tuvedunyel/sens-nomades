@@ -6,7 +6,7 @@ get_header(); ?>
 
 <main class="private" id="root">
     <div class="container-narrow">
-        <h1><?php the_title(); ?></h1>
+        <h1 class="screen-reader-text"><?php the_title(); ?></h1>
 		<?php the_content(); ?>
     </div>
 

@@ -188,11 +188,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     img {
       max-width: 118px;
       max-height: 118px;
+      position: absolute;
+      inset: 0;
+      margin: auto;
     }
+  }
+}
+
+.raison:first-of-type .circle {
+  img {
+    left: -5%;
+    bottom: -5%;
+  }
+}
+
+.raison:last-of-type .circle {
+  img {
+    top: -6%;
   }
 }
 

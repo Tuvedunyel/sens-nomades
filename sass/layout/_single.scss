@@ -211,11 +211,11 @@
 
 .article {
   margin: 3.2rem auto 0;
-  padding-bottom: 3.2rem;
   max-width: 90%;
 
   &:not(:last-of-type) {
-    border-bottom: 1px solid var.$roche
+    border-bottom: 1px solid var.$roche;
+    padding-bottom: 3.2rem;
   }
 
   img {

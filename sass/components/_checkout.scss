@@ -50,6 +50,10 @@
   width: 100%;
   max-width: 90%;
 
+  p {
+    margin: 0 !important;
+  }
+
   @media screen and (min-width: 650px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -207,4 +211,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.woocommerce-form-coupon-toggle {
+  display: none;
+}
+
+#payment #pwgc-redeem-gift-card-form {
+  display: none;
 }

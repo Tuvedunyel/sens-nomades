@@ -6,7 +6,7 @@ get_header();
 get_template_part( 'parts/hero-wave' );
 ?>
 
-<section class="pages">
+<section class="pages equipe-template">
 	<div class="container-narrow pages-container">
 		<section class="content">
 			<article>
@@ -17,7 +17,7 @@ get_template_part( 'parts/hero-wave' );
 					<h2><?php the_field( 'titre' ); ?></h2>
 				<?php endif; ?>
 				<?php if ( have_rows( 'pillier_gauche' ) ) : ?>
-					<ul class="pilier-content">
+					<ul class="pilier-content left-part-content">
 						<?php while ( have_rows( 'pillier_gauche' ) ) : the_row(); ?>
 							<?php $juste_image = get_sub_field( 'juste_une_image' ); ?>
 							<li class="<?= $juste_image === 'Oui' ? 'no-border' : 'border' ?>">
@@ -39,7 +39,7 @@ get_template_part( 'parts/hero-wave' );
 					</ul>
 				<?php endif; ?>
 				<?php if ( have_rows( 'pillier_droite' ) ) : ?>
-					<ul class="pilier-content">
+					<ul class="pilier-content right-part-content">
 						<?php while ( have_rows( 'pillier_droite' ) ) : the_row(); ?>
 							<?php $juste_image = get_sub_field( 'juste_une_image' ); ?>
 							<li class="<?= $juste_image === 'Oui' ? 'no-border' : 'border' ?>">

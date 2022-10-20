@@ -104,4 +104,17 @@ const myAccountContent = document.querySelector('.woocommerce-MyAccount-content'
 if (woocommerce && myAccountContent) {
     woocommerce.classList.add('row-container');
 }
+const consent = document.getElementById('consent');
+const placeOrder = document.getElementById('order_review');
+if (consent && placeOrder) {
+    placeOrder.classList.add('disabled');
+    consent.addEventListener('click', () => {
+        if (consent.checked) {
+            placeOrder.classList.remove('disabled');
+        }
+        else {
+            placeOrder.classList.add('disabled');
+        }
+    });
+}
 //# sourceMappingURL=script.js.map

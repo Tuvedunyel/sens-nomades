@@ -10,6 +10,48 @@
   gap: 5.6rem;
   width: 100%;
 
+  .pilier-content:first-of-type {
+
+    .border:nth-of-type(2) {
+
+      .picto-pilier {
+        top: -20% !important;
+
+        @media screen and (min-width: 360px) {
+          top: -21% !important;
+        }
+
+        @media screen and (min-width: 400px) {
+          top: -23% !important;
+        }
+
+        @media screen and (min-width: 530px) {
+          top: -26% !important;
+        }
+
+        @media screen and (min-width: 688px) {
+          top: -28% !important;
+        }
+
+        @media screen and (min-width: 1200px) {
+          top: -21% !important;
+        }
+
+        @media screen and (min-width: 1323px) {
+          top: -26% !important;
+        }
+
+        @media screen and (min-width: 1562px) {
+          top: -28% !important;
+        }
+
+        @media screen and (min-width: 1779px) {
+          top: -30% !important;
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: 910px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
