@@ -550,6 +550,15 @@
   height: 100%;
   position: relative;
 
+  span {
+    width: 100%;
+    display: flow-root;
+
+    input {
+      width: 100% !important;
+    }
+  }
+
   &::after {
     content: 'jours';
     position: absolute;

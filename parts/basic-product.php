@@ -222,7 +222,10 @@ endif; ?>
 
     <div class="aside">
         <section class="mon-voyage">
-            <h2>Mon voyage</h2>
+            <h2>
+                Réservez mon<br />voyage
+                <span class="return" id="back-to-date">Retour aux voyages</span>
+            </h2>
             <div class="mon-voyage__content">
 				<?php wc_get_template_part( 'content', 'single-product' );
 				?>

@@ -14,6 +14,7 @@ const containerPos = document.querySelector( '.coachs-list__container-inter' );
 const minus = <HTMLDivElement> <unknown> document.getElementById( 'minus' );
 const plus = <HTMLDivElement> <unknown> document.getElementById( 'plus' );
 const quantity = <HTMLInputElement> <unknown> document.querySelector( '[name="quantity"]' );
+const backToDate = <HTMLDivElement> <unknown> document.getElementById( 'back-to-date' );
 let y: null | number = null;
 let x: null | number = null;
 
@@ -40,9 +41,9 @@ if (coachs && coachsBtn && longDescription && containerPos) {
 
     document.addEventListener( 'click', e => {
         longDescription.forEach( item => {
-            item.classList.remove('active');
-        });
-        coachs.forEach( coach => coach.style['pointer-events'] = 'all' );
+            item.classList.remove( 'active' );
+        } );
+        coachs.forEach( coach => coach.style[ 'pointer-events' ] = 'all' );
     } )
 
     containerPos.addEventListener( 'mousemove', e => {
@@ -87,13 +88,39 @@ if (linkChildren) {
     } );
 }
 
-if (reserver && cart && typeChambre) {
+if (reserver && cart && typeChambre && input && reververBtn) {
+
+    const toggleClasses = ( state ) => {
+
+        if (state === 'close') {
+            typeChambre.classList.remove( 'active' );
+            cart.classList.remove( 'active' );
+            reserverContainer.classList.remove( 'inactive' );
+            backToDate.classList.remove( 'active' );
+
+            for ( let i = 0; i < input.length; i++ ) {
+                for ( let j = 0; j < optionsContainer.length; j++ ) {
+                    optionsContainer[ j ].classList.remove( 'checkout' );
+                    optionsContainer[ j ].classList.remove( 'active' )
+                }
+            }
+        } else if (state === 'open') {
+            typeChambre.classList.add( 'active' );
+            cart.classList.add( 'active' );
+            reserverContainer.classList.add( 'inactive' );
+            backToDate.classList.add( 'active' );
+        }
+    }
+
     reserver.addEventListener( 'click', ( e ) => {
         e.preventDefault();
-        typeChambre.classList.toggle( 'active' );
-        cart.classList.toggle( 'active' );
-        reserverContainer.classList.toggle( 'inactive' );
+        toggleClasses('open');
     } );
+
+    backToDate.addEventListener( 'click', () => {
+        toggleClasses('close');
+    } )
+
 }
 
 if (minus && plus && quantity) {
@@ -112,23 +139,23 @@ if (minus && plus && quantity) {
     } )
 }
 
-const woocommerce = document.querySelector('.woocommerce');
-const myAccountContent = document.querySelector('.woocommerce-MyAccount-content');
+const woocommerce = document.querySelector( '.woocommerce' );
+const myAccountContent = document.querySelector( '.woocommerce-MyAccount-content' );
 
 if (woocommerce && myAccountContent) {
-    woocommerce.classList.add('row-container');
+    woocommerce.classList.add( 'row-container' );
 }
 
-const consent = document.getElementById('consent');
-const placeOrder = document.getElementById('order_review')
+const consent = document.getElementById( 'consent' );
+const placeOrder = document.getElementById( 'order_review' )
 
-if( consent && placeOrder ) {
-    placeOrder.classList.add('disabled')
-    consent.addEventListener('click', () => {
-        if( consent.checked ) {
-            placeOrder.classList.remove('disabled')
+if (consent && placeOrder) {
+    placeOrder.classList.add( 'disabled' )
+    consent.addEventListener( 'click', () => {
+        if (consent.checked) {
+            placeOrder.classList.remove( 'disabled' )
         } else {
-            placeOrder.classList.add('disabled')
+            placeOrder.classList.add( 'disabled' )
         }
-    })
+    } )
 }

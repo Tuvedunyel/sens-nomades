@@ -1,4 +1,4 @@
-<?php get_header();
+<?php
 get_template_part( 'parts/hero-wave' );
 ?>
     <section class="pages-section">

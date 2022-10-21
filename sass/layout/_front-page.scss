@@ -261,15 +261,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
-    margin-bottom: 8rem;
+    margin-bottom: 3rem;
   }
 
   @media screen and (min-width: 1400px) {
     background: url('../assets/rose-vents-fond.svg') no-repeat center;
-    background-size: 566px 565px;
+    background-size: 466px 465px;
     display: grid;
-    grid-template-columns: repeat(3, 300px);
-    grid-template-rows: repeat(4, 234px);
+    grid-template-columns: repeat(3, 271px);
+    grid-template-rows: repeat(4, 211px);
     place-items: center;
     row-gap: 1em;
   }
@@ -297,7 +297,7 @@
       justify-content: center;
 
       .texte-direction {
-        bottom: -48% !important;
+        bottom: -70% !important;
       }
     }
 
@@ -324,10 +324,10 @@
     &:last-of-type {
       grid-column: 2;
       grid-row: 4;
-      justify-content: center;
+      justify-content: end;
 
       .texte-direction {
-        bottom: -14% !important;
+        bottom: -82% !important;
       }
     }
   }
@@ -357,7 +357,7 @@
 
     @media screen and (min-width: 1400px) {
       position: absolute;
-      bottom: -30%;
+      bottom: -68%;
       right: 0;
       left: 0;
       margin-inline: auto;
@@ -391,7 +391,7 @@
     }
 
     p {
-      margin-bottom: 2.6rem;
+      margin-bottom: 0.6rem;
       text-align: center;
       max-width: 732px;
     }
@@ -416,7 +416,7 @@
 
     .card__content {
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
       height: 100%;
 
       a {

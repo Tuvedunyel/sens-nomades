@@ -38,7 +38,7 @@
   }
 
   @media screen and (min-width: 1200px) {
-    max-width: 100%;
+    max-width: 80%;
     margin-inline: auto;
   }
 
@@ -55,7 +55,7 @@
     justify-content: start;
     height: 100%;
     align-items: center;
-    border-radius: none;
+    border-radius: 0;
     padding-bottom: 3rem;
 
     .formule-unit__content {
@@ -75,7 +75,7 @@
     justify-content: start;
     height: 100%;
     align-items: center;
-    border-radius: none;
+    border-radius: 0;
     padding-bottom: 3rem;
   }
 }

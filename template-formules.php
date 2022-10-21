@@ -2,7 +2,6 @@
 /*
  * Template Name: Formules
  */
-get_header();
 get_template_part( 'parts/hero-wave' );
 ?>
 

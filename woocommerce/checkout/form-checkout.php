@@ -50,7 +50,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         <p class="custom-form-validation">
 			<?php $vente = get_field( 'page_condition_vente', 'option' ); ?>
             <label for="consent">J'accepte les conditions de réservation (contrat de voyage) et <a
-                        href="<?= esc_url( $vente['url'] ); ?>">les conditions générales de vente</a></label>
+                        href="<?= esc_url( $vente['url'] ); ?>">les conditions générales de vente</a><span style="color:red">*</span></label>
             <input type="checkbox" name="consent" id="consent" required="true">
         </p>
 

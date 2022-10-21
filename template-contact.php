@@ -2,9 +2,9 @@
 /*
  * Template Name: Contact
  */
-get_template_part( 'parts/hero-wave' );
+get_header();
 ?>
-
+<main class="pages">
 <section class="contact">
     <div class="container-narrow">
         <div class="contact-content">

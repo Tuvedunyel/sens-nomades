@@ -14,6 +14,7 @@ const containerPos = document.querySelector('.coachs-list__container-inter');
 const minus = document.getElementById('minus');
 const plus = document.getElementById('plus');
 const quantity = document.querySelector('[name="quantity"]');
+const backToDate = document.getElementById('back-to-date');
 let y = null;
 let x = null;
 const input = document.querySelectorAll('.variable-item-radio-input');
@@ -77,12 +78,33 @@ if (linkChildren) {
         });
     });
 }
-if (reserver && cart && typeChambre) {
+if (reserver && cart && typeChambre && input && reververBtn) {
+    const toggleClasses = (state) => {
+        if (state === 'close') {
+            typeChambre.classList.remove('active');
+            cart.classList.remove('active');
+            reserverContainer.classList.remove('inactive');
+            backToDate.classList.remove('active');
+            for (let i = 0; i < input.length; i++) {
+                for (let j = 0; j < optionsContainer.length; j++) {
+                    optionsContainer[j].classList.remove('checkout');
+                    optionsContainer[j].classList.remove('active');
+                }
+            }
+        }
+        else if (state === 'open') {
+            typeChambre.classList.add('active');
+            cart.classList.add('active');
+            reserverContainer.classList.add('inactive');
+            backToDate.classList.add('active');
+        }
+    };
     reserver.addEventListener('click', (e) => {
         e.preventDefault();
-        typeChambre.classList.toggle('active');
-        cart.classList.toggle('active');
-        reserverContainer.classList.toggle('inactive');
+        toggleClasses('open');
+    });
+    backToDate.addEventListener('click', () => {
+        toggleClasses('close');
     });
 }
 if (minus && plus && quantity) {

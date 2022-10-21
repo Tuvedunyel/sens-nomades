@@ -280,8 +280,8 @@ json_encode( $resume_product_list );
                     await this.setDirectionShow();
                     this.windowWidth = window.innerWidth;
                     this.map = L.map( 'map-container', {
-                        attributionControl: false, dragging: false, zoomControl: false,
-                        boxZoom: false, doubleClickZoom: false, scrollWheelZoom: false, tap: false, touchZoom: false
+                        attributionControl: false, dragging: false,
+                        boxZoom: false, scrollWheelZoom: false, tap: false
                     } ).setView( [ 47.393, 2.739 ], 4 );
                     L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
