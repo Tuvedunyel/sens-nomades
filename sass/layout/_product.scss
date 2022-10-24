@@ -1067,12 +1067,13 @@ input[type=number] {
 }
 
 .wapf-field-input {
-  width: 24px;
-  height: 24px;
+  width: 44px;
+  height: 44px;
 
   input {
-    height: 24px !important;
-    width: 24px !important;
+    appearance: initial !important;
+    height: 44px !important;
+    width: 44px !important;
     border: 1px solid var.$bleu_odysée;
   }
 }

@@ -43,8 +43,8 @@ if (coachs && coachsBtn && longDescription && containerPos) {
     });
     containerPos.addEventListener('mousemove', e => {
         let rect = containerPos.getBoundingClientRect();
-        x = e.clientX - rect.left - 28;
-        y = (e.clientY - rect.top) + 49;
+        x = e["clientX"] - rect.left - 28;
+        y = (e["clientY"] - rect.top) + 49;
         for (let i = 0; i < coachs.length; i++) {
             coachs[i].addEventListener('click', e => {
                 e.stopPropagation();
@@ -109,15 +109,16 @@ if (reserver && cart && typeChambre && input && reververBtn) {
 }
 if (minus && plus && quantity) {
     minus.addEventListener('click', () => {
-        if (quantity.value > 1) {
-            quantity.value = Number(quantity.value) - 1;
+        if (Number(quantity.value) > 1) {
+            quantity.value = String(Number(quantity.value) - 1);
         }
     });
     plus.addEventListener('click', () => {
         let inStock = document.querySelector('.in-stock');
+        console.log(inStock);
         let currentStock = inStock.textContent.slice(0, 1);
         if (Number(quantity.value) < Number(currentStock)) {
-            quantity.value = Number(quantity.value) + 1;
+            quantity.value = String(Number(quantity.value) + 1);
         }
     });
 }
