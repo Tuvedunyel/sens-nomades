@@ -90,6 +90,16 @@
       }
     }
   }
+
+  .leaflet-top.leaflet-left {
+    top: unset;
+    bottom: 0;
+
+    @media screen and (min-width: 1200px) {
+      top: 0;
+      bottom: unset;
+    }
+  }
 }
 
 .recommanded-travel {
@@ -297,7 +307,7 @@
       justify-content: center;
 
       .texte-direction {
-        bottom: -70% !important;
+        bottom: -81% !important;
       }
     }
 
@@ -327,7 +337,7 @@
       justify-content: end;
 
       .texte-direction {
-        bottom: -82% !important;
+        bottom: -89% !important;
       }
     }
   }
@@ -357,7 +367,7 @@
 
     @media screen and (min-width: 1400px) {
       position: absolute;
-      bottom: -68%;
+      bottom: -80%;
       right: 0;
       left: 0;
       margin-inline: auto;
@@ -458,6 +468,10 @@
     padding: 1.4rem 2.8rem;
     border-radius: 10px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
     &::after {
       content: '';

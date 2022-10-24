@@ -3,6 +3,7 @@
 header {
   width: 100%;
   position: relative;
+  z-index: 3;
 
   .container {
     display: grid;
@@ -146,6 +147,7 @@ header {
     width: 95%;
     border-radius: 10px;
     padding-block: 0.5em;
+    z-index: 4;
 
     @media screen and (min-width: 620px) {
       width: 75%;
