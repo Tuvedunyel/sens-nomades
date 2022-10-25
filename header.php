@@ -56,6 +56,21 @@ function get_contact_menu() {
 ?>
 
 <header>
+	<?php if ( is_user_logged_in() ) :
+		$current_user = wp_get_current_user(); ?>
+        <div class="logged-in-container">
+            <div class="container logged-in-user">
+                <section class="say-hello">
+                    <strong>Bonjour <?= esc_html( $current_user->user_firstname ); ?>, comment allez-vous aujourd'hui
+                        ?</strong>
+                </section>
+                <section class="logout">
+                    <a href="<?= esc_url( wc_logout_url() ) ?>">Se déconnecter</a>
+                </section>
+            </div>
+        </div>
+	<?php endif; ?>
+
     <div class="container">
 		<?php $logo = get_field( 'logo', 'option' );
 		$logo_url   = $logo['url'];
@@ -86,13 +101,13 @@ function get_contact_menu() {
 		<?php if ( have_rows( 'panier_compte_contact', 'option' ) ) : ?>
             <div class="header-infos">
 				<?php wp_nav_menu( array(
-					'theme_location' => 'icon-menu',
-					'container'      => 'nav',
-                    'container_id'   => 'commerce-links',
-                    'container_class'   => 'commerce',
-					'menu_id'        => 'commerce-list',
-                    'menu_class'    => 'commerce-list',
-					'fallback_cb'    => false,
+					'theme_location'  => 'icon-menu',
+					'container'       => 'nav',
+					'container_id'    => 'commerce-links',
+					'container_class' => 'commerce',
+					'menu_id'         => 'commerce-list',
+					'menu_class'      => 'commerce-list',
+					'fallback_cb'     => false,
 				) ); ?>
             </div>
 		<?php endif; ?>

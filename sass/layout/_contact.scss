@@ -30,55 +30,7 @@
     font-weight: 600;
     border-bottom: 1px solid white;
     position: relative;
-
-    &::before, &::after {
-      content: '';
-      width: 13px;
-      height: 13px;
-      background: url('../assets/fanion-blanc.svg');
-      background-size: contain;
-      position: absolute;
-      bottom: -20%;
-      right: -3.5%;
-    }
-
-    &::before {
-      display: none;
-
-      @media screen and (min-width: 496px) {
-        display: block;
-      }
-
-
-      @media screen and (min-width: 818px) {
-        right: -2.5%;
-      }
-
-      @media screen and (min-width: 1200px) {
-        right: -3.5%;
-      }
-    }
-
-    &::after {
-      right: -6.5%;
-
-      @media screen and (min-width: 496px) {
-        display: none;
-      }
-
-      @media screen and (min-width: 988px) {
-        display: block;
-        right: -5.5%;
-      }
-
-      @media screen and (min-width: 988px) {
-        right: -5%;
-      }
-
-      @media screen and (min-width: 1200px) {
-        right: -7%;
-      }
-    }
+    
 
     @media screen and (min-width: 988px) {
       width: 65%;

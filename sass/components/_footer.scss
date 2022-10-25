@@ -130,9 +130,9 @@ aside {
 }
 
 .vignettes__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
   gap: 0.3em;
 }
 

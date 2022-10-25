@@ -7,6 +7,7 @@ get_header();
 <main class="pages">
 <section class="contact">
     <div class="container-narrow">
+		<h1 class="screen-reader-text"><?php the_title(); ?></h1>
         <div class="contact-content">
             <div class="contact-wrapper">
 				<?php the_content(); ?>
