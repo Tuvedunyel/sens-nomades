@@ -70,7 +70,6 @@ function get_contact_menu() {
             </div>
         </div>
 	<?php endif; ?>
-
     <div class="container">
 		<?php $logo = get_field( 'logo', 'option' );
 		$logo_url   = $logo['url'];
@@ -97,6 +96,19 @@ function get_contact_menu() {
                 </div><ul id="%1$s" class="%2$s">%3$s<div class="form-button__container">
             </div>' . get_contact_menu() . '</ul>',
 			) ); ?>
+        </div>
+        <div class="search-container">
+            <form role="search" method="get" id="search-header" class="search-form" action="<?php echo home_url( '/' ); ?>">
+                <label>
+                    <span class="screen-reader-text">Rechercher</span>
+                    <input type="search" class="search-field"
+                           placeholder="<?php echo esc_attr_x( 'Rechercher …', 'placeholder' ) ?>"
+                           value="<?php echo get_search_query() ?>" name="s"
+                           title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>"/>
+                </label>
+                <input type="submit" class="search-submit"
+                       value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>"/>
+            </form>
         </div>
 		<?php if ( have_rows( 'panier_compte_contact', 'option' ) ) : ?>
             <div class="header-infos">

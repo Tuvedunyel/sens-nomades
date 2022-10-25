@@ -50,7 +50,7 @@ $categories = get_the_category();
                     </div>
                 </div>
             </div>
-            <h2>Toutes les articles</h2>
+            <h2>Tous les articles</h2>
             <div v-if="loaded" class="categories">
                 <ul>
                     <li @click="handleClick(0, 'Tous les articles')" v-model="currentCategory"

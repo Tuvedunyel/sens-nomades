@@ -29,7 +29,7 @@ endif; ?>
     </div>
 </section>
 <section class="return-voyages">
-    <a href="#" class="return">&#10094; Retours au voyages</a>
+    <a href="#" class="return">&#10094; Retours aux voyages</a>
 </section>
 
 <section id="gift-card__page">
