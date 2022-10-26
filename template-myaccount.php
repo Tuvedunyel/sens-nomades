@@ -8,6 +8,7 @@ get_header();
     <section class="pages-section" id="account">
         <div class="container-narrow pages-container">
             <section class="content">
+				<h1 class="account-title"><?php the_title(); ?></h1>
 				<?php the_content(); ?>
             </section>
 			<?php get_template_part( 'parts/left-part-page' ); ?>
