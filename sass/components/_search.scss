@@ -1,0 +1,64 @@
+@use '../abstracts' as var;
+
+
+#search-header {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+  position: relative;
+  width: 100%;
+  z-index: 3;
+
+  @media screen and (min-width: 1200px) {
+    display: flex;
+  }
+
+  #search-label {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    z-index: 1;
+    width: 0;
+    font-size: 0;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+    transform-origin: right;
+
+    input {
+      border: 1px solid var.$bleu_glacié;
+      background: var.$bleu_glacié;
+      color: var.$sable;
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      width: 100%;
+    }
+
+    &.active {
+      transform: scaleX(1) translateX(-63%);
+      width: 100%;
+      font-size: inherit;
+    }
+  }
+}
+
+.submit-container {
+  position: relative;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+
+  #search-submit, #dummy-search-submit {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+}

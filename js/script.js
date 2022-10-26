@@ -140,4 +140,15 @@ if (consent && placeOrder) {
         }
     });
 }
+const searchLabel = document.getElementById('search-label');
+const searchSubmit = document.getElementById('search-submit');
+const dummySubmit = document.getElementById('dummy-search-submit');
+if (searchLabel && searchSubmit && dummySubmit) {
+    dummySubmit.addEventListener('click', e => {
+        e.preventDefault();
+        searchLabel.classList.add('active');
+        dummySubmit.classList.remove('active');
+        searchSubmit.classList.add('active');
+    });
+}
 //# sourceMappingURL=script.js.map

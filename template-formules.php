@@ -19,8 +19,8 @@ get_template_part( 'parts/hero-wave' );
 						?>
                         <div class="<?= $couleur === 'Sable' ? 'sable' : 'bleu_glacie' ?> formule-unit">
                             <div class="formule-unit__image">
-                                <a href="<?php the_field('lien_page_voyages'); ?>?<?php the_sub_field('titre');
-                                ?>">
+                                <a href="<?php the_field( 'lien_page_voyages' ); ?>?<?php the_sub_field( 'titre' );
+								?>">
                                     <img src="<?= esc_url( $image['url'] ); ?>" alt="<?= esc_attr( $image['alt'] ); ?>">
                                 </a>
                             </div>
@@ -57,10 +57,13 @@ get_template_part( 'parts/hero-wave' );
                     <div class="moon-flower randonneur-formule"><?php the_field( 'texte_randonneur' ); ?></div>
                     <img src="<?= get_template_directory_uri() ?>/assets/fleche.svg" alt="Flèche pointant vers le haut">
                 </div>
-                <strong class="coliving"><?php the_field( 'coliving_texte' ); ?></strong>
-				<?php $coliving = get_field( 'coliving' ); ?>
-                <a href="<?= esc_url( $coliving['url'] ); ?>" class="coliving-btn"><?= esc_html( $coliving['title'] );
-					?></a>
+				<?php $coliving = get_field( 'coliving' );
+				if ( $coliving ) : ?>
+                    <strong class="coliving"><?php the_field( 'coliving_texte' ); ?></strong>
+                    <a href="<?= esc_url( $coliving['url'] ); ?>" class="coliving-btn"
+                       aria-disabled="<?= (bool) $coliving ?>"><?= esc_html( $coliving['title'] );
+						?></a>
+				<?php endif; ?>
             </section>
         </article>
 		<?php get_template_part( 'parts/left-part-page' ); ?>

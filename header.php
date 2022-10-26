@@ -97,19 +97,23 @@ function get_contact_menu() {
             </div>' . get_contact_menu() . '</ul>',
 			) ); ?>
         </div>
-        <div class="search-container">
-            <form role="search" method="get" id="search-header" class="search-form" action="<?php echo home_url( '/' ); ?>">
-                <label>
-                    <span class="screen-reader-text">Rechercher</span>
-                    <input type="search" class="search-field"
-                           placeholder="<?php echo esc_attr_x( 'Rechercher …', 'placeholder' ) ?>"
-                           value="<?php echo get_search_query() ?>" name="s"
-                           title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>"/>
-                </label>
-                <input type="submit" class="search-submit"
-                       value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>"/>
-            </form>
-        </div>
+        <form role="search" method="get" id="search-header" class="search-form" action="<?php echo home_url( '/' ); ?>">
+            <label id="search-label">
+                <span class="screen-reader-text">Rechercher</span>
+                <input type="search" class="search-field"
+                       placeholder="<?php echo esc_attr_x( 'Votre recherche', 'placeholder' ) ?>"
+                       value="<?php echo get_search_query() ?>" name="s"
+                       title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>"/>
+            </label>
+            <div class="submit-container">
+                <button type="submit" id="search-submit">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/recherche.png" alt="Rechercher sur la site">
+                </button>
+                <button id="dummy-search-submit" class="active">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/recherche.png" alt="Rechercher sur la site">
+                </button>
+            </div>
+        </form>
 		<?php if ( have_rows( 'panier_compte_contact', 'option' ) ) : ?>
             <div class="header-infos">
 				<?php wp_nav_menu( array(

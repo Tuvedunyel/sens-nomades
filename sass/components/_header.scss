@@ -17,19 +17,8 @@ header {
     }
 
     @media screen and (min-width: 1200px) {
-      grid-template-columns: 0.2fr 1fr 0.2fr;
-    }
-
-    @media screen and (min-width: 1300px) {
-      gap: 3em;
-    }
-
-    @media screen and (min-width: 1500px) {
-      gap: 5em;
-    }
-
-    @media screen and (min-width: 1700px) {
-      gap: 10em;
+      grid-template-columns: 0.2fr 1fr 0.2fr 215px;
+      gap: 0;
     }
   }
 }
