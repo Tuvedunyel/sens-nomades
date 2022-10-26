@@ -36,7 +36,7 @@ endif; ?>
     </div>
 </section>
 <section class="return-voyages">
-    <a href="#" class="return">&#10094; Retours aux voyages</a>
+    <a href="#" class="return">&#10094; Retour aux voyages</a>
 </section>
 <section class="upper">
     <div class="container-narrow">
