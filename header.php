@@ -61,7 +61,7 @@ function get_contact_menu() {
         <div class="logged-in-container">
             <div class="container logged-in-user">
                 <section class="say-hello">
-                    <strong>Bonjour <?= esc_html( $current_user->user_firstname ); ?>, comment allez-vous aujourd'hui
+                    <strong>Bonjour <?= $current_user->user_firstname ? esc_html( $current_user->user_firstname ) : esc_html( $current_user->user_email ); ?>, comment allez-vous aujourd'hui
                         ?</strong>
                 </section>
                 <section class="logout">

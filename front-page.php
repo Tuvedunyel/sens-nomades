@@ -174,7 +174,7 @@ json_encode( $resume_product_list );
                             <img src="<?= get_template_directory_uri() ?>/assets/open.svg" alt="Ouvrir le détail"
                                  class="open" @click="toggleElement(index)" v-if="!directionsShow[index].show">
                             <img src="<?= get_template_directory_uri() ?>/assets/close.svg" alt="Fermer le détail"
-                                 class="close" @click="toggleElement(index)" v-else>
+                                 class="close" @click="toggleElement(index)" v-if="directionsShow[index].show">
                         </div>
                         <div class="texte-direction" v-if="directionsShow[index].show">
                             <p>{{direction.texte}}</p>
