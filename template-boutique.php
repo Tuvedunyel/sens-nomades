@@ -114,7 +114,7 @@ json_encode( $resume_product_list );
                 <div class="voyages-card__thumbnail">
                     <p class="jours">{{voyage.jours}}</p>
                     <p class="prix">{{voyage.prix}}€</p>
-                    <a :href="voyage.permalink" class="image" v-html="voyage.image"></a>
+                    <a :href="voyage.permalink" class="image" :title="`Se rendre sur la page ${voyage.titre}`" v-html="voyage.image"></a>
                     <div class="icon-container">
                         <img :src="voyage.tags.url" :alt="voyage.tags.alt">
                     </div>

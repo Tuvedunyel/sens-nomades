@@ -79,7 +79,8 @@ function get_contact_menu() {
 		$logo_mobile_url = $logo_mobile['url'];
 		$logo_mobile_alt = $logo_mobile['alt'];
 		?>
-        <a href="<?= home_url( $path = '/', $scheme = 'https' ); ?>" class="logo-link">
+        <a href="<?= home_url( $path = '/', $scheme = 'https' ); ?>" class="logo-link" title="Retour à l'accueil">
+		  <span class="screen-reader-text">Retour à l'accueil</span>
             <img src="<?= esc_url( $logo_url ) ?>" alt="<?= esc_attr( $logo_alt ) ?>" class="logo-desktop">
             <img src="<?= esc_url( $logo_mobile_url ); ?>" alt="<?= esc_attr( $logo_mobile_alt ); ?>"
                  class="logo-mobile">
