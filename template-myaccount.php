@@ -11,7 +11,6 @@ get_header();
 				<h1 class="account-title"><?php the_title(); ?></h1>
 				<?php the_content(); ?>
             </section>
-			<?php get_template_part( 'parts/left-part-page' ); ?>
         </div>
     </section>
 </main>

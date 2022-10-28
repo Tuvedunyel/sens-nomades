@@ -9,6 +9,7 @@
   .content {
     margin-inline: auto;
     width: 100%;
+    max-width: 100% !important;
   }
 
   .woocommerce-notices-wrapper {
@@ -34,6 +35,10 @@
       text-transform: uppercase;
       text-align: center;
       line-height: 1;
+    }
+
+    p:not(:last-of-type) {
+      margin-bottom: 1em;
     }
   }
 

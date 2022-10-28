@@ -151,4 +151,18 @@ if (searchLabel && searchSubmit && dummySubmit) {
         searchSubmit.classList.add('active');
     });
 }
+const showLogin = document.querySelector('.showlogin');
+const loginCheckout = document.getElementById('login-checkout');
+const showCoupon = document.querySelector('.showcoupon');
+const checkoutCoupon = document.getElementById('checkout-coupon');
+if (showLogin) {
+    showLogin.addEventListener('click', () => {
+        loginCheckout.classList.toggle('active');
+    });
+}
+if (showCoupon) {
+    showCoupon.addEventListener('click', () => {
+        checkoutCoupon.classList.toggle('active');
+    });
+}
 //# sourceMappingURL=script.js.map

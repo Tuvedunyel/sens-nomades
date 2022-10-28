@@ -209,3 +209,9 @@ select {
     display: none !important;
   }
 }
+
+.woocommerce-form-login-toggle {
+  margin: auto;
+  grid-column: 1 / 3;
+  place-items: center;
+}
