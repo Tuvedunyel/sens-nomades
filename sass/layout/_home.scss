@@ -70,11 +70,15 @@
   article {
     width: 100%;
     background: var.$sable;
-    padding-block: 11.1rem 17.4rem;
+    padding-block: 5rem 17.4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media screen and (min-width: 1000px) {
+      padding-block: 11.7rem 17.4rem;
+    }
   }
 
 
