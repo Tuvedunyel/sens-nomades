@@ -18,7 +18,7 @@ get_header();
             <img src="<?= esc_url( $logo['url'] ); ?>" alt="<?= esc_attr( $logo['alt'] ); ?>">
             <address>
                 <p><?php the_field( 'adresse' ); ?></p>
-                <div>
+                <div class="horaires-container">
 					<?php the_field( 'horaires' ); ?>
                 </div>
             </address>

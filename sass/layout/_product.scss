@@ -1091,6 +1091,10 @@ input[type=number] {
   text-align: start;
   width: 90%;
   display: flow-root;
+
+  &.remove {
+      display: none;
+  }
 }
 
 section.related.products {
@@ -1112,4 +1116,9 @@ section.related.products {
   &.active {
     display: flow-root;
   }
+}
+
+.mon-voyage__content .woocommerce-notices-wrapper .woocommerce-error li {
+    font-size: 1.7rem !important;
+    margin-bottom: 1em !important;
 }

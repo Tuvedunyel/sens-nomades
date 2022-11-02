@@ -207,7 +207,6 @@
   top: 102%;
   right: 0;
   left: 0;
-  margin-inline: auto;
 
   @media screen and (min-width: 740px) {
     top: 129%;
@@ -218,7 +217,6 @@
   .arrow-select {
     position: relative;
     width: fit-content;
-    height: fit-content;
     border-radius: 10px;
     pointer-events: none;
     height: 75.5px;
@@ -329,7 +327,6 @@
   justify-content: space-between;
   align-items: center;
   max-width: 379px;
-  border-radius: 10px;
   border: 1px solid rgb(79 92 92 / 0.11);
   padding-bottom: 3.25rem;
 
@@ -494,6 +491,7 @@
     right: 5%;
     background: url('../assets/fanion.svg') no-repeat center center;
     color: var.$sable;
+    font-size: 1.8rem;
   }
 
   .jours {

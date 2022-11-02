@@ -56,8 +56,7 @@
 }
 
 .price-marker {
-  background: url('../assets/fanion.svg');
-  background-position: center;
+  background: url('../assets/fanion.svg') no-repeat center;
   background-size: contain;
   font-size: 1.5rem;
   color: var.$sable;

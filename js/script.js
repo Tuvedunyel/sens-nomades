@@ -97,6 +97,11 @@ if (reserver && cart && typeChambre && input && reververBtn) {
             cart.classList.add('active');
             reserverContainer.classList.add('inactive');
             backToDate.classList.add('active');
+            const options = document.querySelector('.wapf');
+            const optionsText = document.getElementById('options');
+            if (!options) {
+                optionsText.classList.add('remove');
+            }
         }
     };
     reserver.addEventListener('click', (e) => {

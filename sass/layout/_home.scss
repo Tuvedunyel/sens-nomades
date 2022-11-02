@@ -87,6 +87,12 @@
     max-width: 600px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    .card__content h3 a {
+      color: var.$terracota;
+      text-decoration: none;
+    }
+
     @media screen and (min-width: 1000px) {
       height: 402px;
       width: 100%;
@@ -95,11 +101,6 @@
 
       .card__content {
         height: 100%;
-
-        h3 a {
-          color: var.$terracota;
-          text-decoration: none;
-        }
       }
     }
   }

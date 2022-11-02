@@ -36,7 +36,8 @@ endif; ?>
     </div>
 </section>
 <section class="return-voyages">
-    <a href="#" class="return">&#10094; Retour aux voyages</a>
+    <?php $url_boutique = get_field('page_nos_voyages', 'option'); ?>
+    <a href="<?= esc_url($url_boutique['url']);  ?>" class="return">&#10094; Retour aux voyages</a>
 </section>
 <section class="upper">
     <div class="container-narrow">
