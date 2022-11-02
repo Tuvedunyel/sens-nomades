@@ -402,8 +402,12 @@
 #front {
   .actualites {
     background: var.$sable;
-    padding-block: 8.4rem 8.4rem;
+    padding-block: 4.4rem;
     margin-bottom: 5.9rem;
+
+    @media screen and (min-width: 1000px) {
+        padding-block: 8.4rem; 
+    }
 
     .container-narrow {
       display: flex;

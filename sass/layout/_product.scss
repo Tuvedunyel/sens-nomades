@@ -26,6 +26,10 @@ main.product {
   justify-content: center;
   align-items: center;
 
+  .product-container-narrow {
+    width: 100%;
+  }
+
   @media screen and (min-width: 1200px) {
     flex-direction: row;
     align-items: start;
@@ -474,10 +478,9 @@ main.product {
   @media screen and (min-width: 900px) {
     &::before {
       content: '';
-      background: url('../assets/non-inclus.svg');
       width: 37px;
       height: 33px;
-      background-repeat: no-repeat;
+      background: url('../assets/non-inclus.svg') no-repeat;
       background-size: contain;
     }
   }
@@ -499,6 +502,10 @@ main.product {
   p strong {
     display: flow-root;
     margin-top: 2rem;
+  }
+
+  a {
+    word-wrap: break-word;
   }
 }
 
@@ -944,6 +951,7 @@ input[type=number] {
 
 .up-sells.upsells.products {
   padding: 2.1rem 3.4rem;
+
   h2 {
     display: none;
   }
@@ -989,9 +997,9 @@ input[type=number] {
     }
 
     .price, .price bdi {
-        font-size: 1.7rem !important;
-        color: var.$roche !important;
-        font-weight: var.$black !important;
+      font-size: 1.7rem !important;
+      color: var.$roche !important;
+      font-weight: var.$black !important;
       margin-bottom: 0 !important;
     }
 
