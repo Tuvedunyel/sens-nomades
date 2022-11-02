@@ -59,7 +59,7 @@
 									<?php endwhile; ?>
                                 </ul>
 							<?php endif; ?>
-                            <div class="immatriculation"><?php the_field('immatriculation', 'option'); ?></div>
+                            <div class="immatriculation"><?php the_field( 'immatriculation', 'option' ); ?></div>
                         </div>
                     </aside>
 				<?php endif; ?>
@@ -68,12 +68,12 @@
     </section>
     <section class="legals">
         <div class="container-narrow">
-	        <?php wp_nav_menu( array(
-		        'theme_location' => 'legals',
-		        'container'      => 'nav',
-		        'menu_id'        => 'legals-menu',
-		        'fallback_cb'    => false,
-	        ) ); ?>
+			<?php wp_nav_menu( array(
+				'theme_location' => 'legals',
+				'container'      => 'nav',
+				'menu_id'        => 'legals-menu',
+				'fallback_cb'    => false,
+			) ); ?>
             <aside class="realiser">
                 <p>Site réalisé par : <a href="https://www.btg-communication.fr" target="_blank">btg
                         communication</a></p>

@@ -216,8 +216,8 @@ $categories = get_the_category();
                 }
             },
             handlePostExcerpt(post) {
-                if (post.excerpt.length > 200) {
-                    return post.excerpt.slice(0, 200) + '...'
+                if (post.excerpt.length > 150) {
+                    return post.excerpt.slice(0, 150) + '...'
                 } else {
                     return post.excerpt
                 }
