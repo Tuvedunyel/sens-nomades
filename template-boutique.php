@@ -363,14 +363,16 @@ json_encode( $resume_product_list );
                 },
                 splitData () {
                     this.data.forEach( ( item ) => {
+                        let tempDuree = [];
+                        let tempStyle = [];
                         if ( !this.duree.includes( item.jours ) ) {
-                            this.duree.push( item.jours );
-                            this.duree = [ ...new Set( this.duree ) ];
+                            tempDuree.push( item.jours )
                         }
                         if ( !this.style.includes( item.thematique ) ) {
-                            this.style.push( item.thematique );
-                            this.style = [ ...new Set( this.style ) ];
+                            tempStyle.push( item.thematique )
                         }
+                        this.duree = this.duree.concat( [...new Set(tempDuree)] );
+                        this.style = this.style.concat( [...new Set(tempStyle)] );
                     } );
                 },
                 resetForm () {
