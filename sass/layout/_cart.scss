@@ -3,6 +3,13 @@
 
 main#cart {
   margin-bottom: 2em;
+
+  .container-narrow {
+
+      @media screen and (min-width: 1400px) {
+          max-width: 80%;
+      }
+  }
 }
 
 .page-template-template-cart .woocommerce {
@@ -11,7 +18,7 @@ main#cart {
     grid-template-columns: 1fr 350px;
     justify-items: center;
     align-items: start;
-    gap: 0.2em;
+    column-gap: 13em;
 
     .woocommerce-notices-wrapper {
       grid-column: 1 / 3;

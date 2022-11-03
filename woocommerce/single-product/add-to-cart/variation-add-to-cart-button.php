@@ -34,7 +34,7 @@ global $product;
             <div class="plus" id="plus">+</div>
         </div>
 	<?php endif; ?>
-    <p class="options" id="options">En options :</p>
+    <p class="options" id="options">En option :</p>
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 	<?php do_action( 'woocommerce_after_add_to_cart_quantity' );
 	?>

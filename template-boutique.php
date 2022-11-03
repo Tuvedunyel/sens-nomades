@@ -114,7 +114,8 @@ json_encode( $resume_product_list );
                 <div class="voyages-card__thumbnail">
                     <p class="jours">{{voyage.jours}}</p>
                     <p class="prix">{{voyage.prix}}€</p>
-                    <a :href="voyage.permalink" class="image" :title="`Se rendre sur la page ${voyage.titre}`" v-html="voyage.image"></a>
+                    <a :href="voyage.permalink" class="image" :title="`Se rendre sur la page ${voyage.titre}`"
+                       v-html="voyage.image"></a>
                     <div class="icon-container">
                         <img :src="voyage.tags.url" :alt="voyage.tags.alt">
                     </div>
@@ -364,9 +365,11 @@ json_encode( $resume_product_list );
                     this.data.forEach( ( item ) => {
                         if ( !this.duree.includes( item.jours ) ) {
                             this.duree.push( item.jours );
+                            this.duree = [ ...new Set( this.duree ) ];
                         }
                         if ( !this.style.includes( item.thematique ) ) {
                             this.style.push( item.thematique );
+                            this.style = [ ...new Set( this.style ) ];
                         }
                     } );
                 },

@@ -194,7 +194,7 @@ endif; ?>
 		<?php endif; ?>
 		<?php if ( get_field( 'inclus_dans_le_prix' ) ) : ?>
             <section class="inclus">
-                <h2>Ce qui est inclus dans le prix du voyage : </h2>
+                <h2>Ce qui est inclus dans le prix du voyage</h2>
 				<?php the_field( 'inclus_dans_le_prix' ); ?>
             </section>
 		<?php endif;
